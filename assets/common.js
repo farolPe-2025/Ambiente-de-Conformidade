@@ -207,12 +207,11 @@ function renderNav(activePage){
   var items = [
     {href:'index.html#painel-geral', key:'index', label:'Início'},
     {href:'painel.html', key:'painel', label:'Painel'},
-    {href:'reunioes.html', key:'reunioes', label:'Reuniões', lock:true},
-    {href:'contatos.html', key:'contatos', label:'Contatos', lock:true}
+    {href:'reunioes.html', key:'reunioes', label:'Reuniões'},
+    {href:'contatos.html', key:'contatos', label:'Contatos'}
   ];
   var links = items.map(function(it){
-    var lockIco = it.lock ? '<span class="lock-ico">'+(authed?'🔓':'🔒')+'</span>' : '';
-    return '<a class="navlink'+(activePage===it.key?' active':'')+'" href="'+it.href+'">'+esc(it.label)+lockIco+'</a>';
+    return '<a class="navlink'+(activePage===it.key?' active':'')+'" href="'+it.href+'">'+esc(it.label)+'</a>';
   }).join('');
   var loginBtn = authed
     ? '<button class="btn btn-secondary small" id="navLogoutBtn">Sair ('+esc((localStorage.getItem(AUTH_STORAGE+'_user')||'').split('@')[0])+')</button>'
@@ -238,9 +237,8 @@ function lockGate(containerId, onUnlocked){
   if(isAuthed()){ if(onUnlocked) onUnlocked(); return; }
   el.innerHTML = ''
     + '<div class="locked-wrap card elev-md" style="padding:var(--space-6);">'
-    + '<span class="locked-badge">🔒 Acesso restrito</span>'
-    + '<h3 style="margin-top:0;">Entrar para continuar</h3>'
-    + '<p class="text-muted" style="font-size:13px;">Esta área é de uso interno da equipe. Faça login com sua conta institucional.</p>'
+    + '<h3 style="margin-top:0;">Entrar na sua conta</h3>'
+    + '<p class="text-muted" style="font-size:13px;">Acesse com sua conta institucional.</p>'
     + '<div class="field" style="margin-bottom:var(--space-3);"><label>E-mail institucional</label><input class="input" id="gateEmail" type="email" placeholder="nome@seaiee.pe.gov.br"></div>'
     + '<div class="field" style="margin-bottom:var(--space-3);"><label>Senha</label><input class="input" id="gatePass" type="password" placeholder="••••••••"></div>'
     + '<button class="btn btn-primary btn-block" id="gateBtn">Acessar</button>'

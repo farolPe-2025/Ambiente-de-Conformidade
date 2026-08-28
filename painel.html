@@ -27,8 +27,6 @@
     <div id="editToggleArea"></div>
   </div>
 
-  <div id="notAuthedNote" class="readonly-note hidden">🔒 Modo somente leitura — <a href="index.html#login">faça login</a> para editar.</div>
-
   <div id="dashArea"></div>
   <div id="filtersArea"></div>
   <div id="sheetContent"></div>
@@ -49,12 +47,9 @@ var UI = { sheetKey:'interno', editMode:false, filters:{text:'',responsavel:'',s
 function renderToolbar(){
   var el = document.getElementById('toolbarArea');
   var authed = isAuthed();
-  var buttons = '<button class="btn small" id="btnPrint">🖨️ Imprimir</button>'
-    + '<button class="btn small" id="btnExportJson">⬇️ Backup (JSON)</button>';
+  var buttons = '';
   if(authed){ buttons += '<button class="btn small btn-danger" id="btnReset">↺ Restaurar publicado</button>'; }
   el.innerHTML = buttons;
-  document.getElementById('btnPrint').onclick = function(){ window.print(); };
-  document.getElementById('btnExportJson').onclick = exportDataJson;
   var rb = document.getElementById('btnReset'); if(rb) rb.onclick = resetData;
 
   var editEl = document.getElementById('editToggleArea');
@@ -62,11 +57,9 @@ function renderToolbar(){
     editEl.innerHTML = '<div class="badge-toggle" style="display:flex;align-items:center;gap:6px;font-size:12.5px;">'
       + '<div class="switch '+(UI.editMode?'on':'')+'" id="editSwitch"></div><span>Modo de edição</span></div>';
     document.getElementById('editSwitch').onclick = function(){ UI.editMode=!UI.editMode; renderAll(); };
-    document.getElementById('notAuthedNote').classList.add('hidden');
   } else {
     UI.editMode = false;
     editEl.innerHTML = '';
-    document.getElementById('notAuthedNote').classList.remove('hidden');
   }
 }
 

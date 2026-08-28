@@ -12,7 +12,7 @@
 
 <main class="wrap" style="padding:var(--space-6) 0 var(--space-8);">
   <h1 style="text-transform:uppercase;font-size:32px;margin-bottom:4px;">Mailing / Contatos</h1>
-  <p class="text-muted">Área interna — cadastro de contatos institucionais, investidores e parceiros da SEAIEE.</p>
+  <p class="text-muted">Cadastro de contatos institucionais, investidores e parceiros da SEAIEE.</p>
 
   <div id="gate"></div>
   <div id="content" class="hidden"></div>
@@ -41,7 +41,7 @@ function renderContent(){
 
   var html = '<div style="display:flex;justify-content:space-between;align-items:center;margin:var(--space-6) 0 var(--space-4);flex-wrap:wrap;gap:8px;">'
     + '<h2 style="margin:0;text-transform:uppercase;">Contatos cadastrados</h2>'
-    + '<div style="display:flex;gap:8px;"><button class="btn small" id="btnExport">⬇️ Exportar JSON</button><button class="btn btn-primary" id="btnNew">➕ Novo contato</button></div>'
+    + '<div style="display:flex;gap:8px;"><button class="btn btn-primary" id="btnNew">➕ Novo contato</button></div>'
     + '</div>'
     + '<div class="filters"><input type="text" id="fSearch" placeholder="🔎 Buscar por nome, organização, categoria..." value="'+esc(search)+'"></div>'
     + '<div id="formArea"></div>';
@@ -60,10 +60,6 @@ function renderContent(){
 
   document.getElementById('content').innerHTML = html;
   document.getElementById('fSearch').oninput = function(e){ search=e.target.value; renderContent(); };
-  document.getElementById('btnExport').onclick = function(){
-    downloadBlob('contatos_'+new Date().toISOString().slice(0,10)+'.json', JSON.stringify(contacts,null,2), 'application/json');
-    showToast('Contatos exportados.');
-  };
   document.getElementById('btnNew').onclick = function(){ editingId=null; renderForm(); };
   Array.prototype.forEach.call(document.querySelectorAll('[data-edit]'), function(b){ b.onclick=function(){ editingId=b.getAttribute('data-edit'); renderForm(); }; });
   Array.prototype.forEach.call(document.querySelectorAll('[data-del]'), function(b){ b.onclick=function(){

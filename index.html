@@ -40,8 +40,7 @@
   <div class="grid2" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);align-items:start;">
     <div>
       <h2 style="text-transform:uppercase;">Acesso ao ambiente</h2>
-      <p class="text-muted" style="max-width:480px;">Leitura liberada para toda a secretaria. A edição dos planos de ação, das reuniões e do mailing é restrita ao time — faça login com sua conta institucional para editar.</p>
-      <p class="text-muted" style="font-size:12px;max-width:480px;">⚠ Este login é uma barreira simples de organização interna, não uma proteção de segurança avançada — trate as credenciais como internas ao time.</p>
+      <p class="text-muted" style="max-width:480px;">Acesse sua conta institucional para acompanhar os planos de ação, as reuniões e o mailing da SEAIEE.</p>
     </div>
     <div class="card blueprint" style="padding:var(--space-6);">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
@@ -137,8 +136,7 @@ renderFooter();
         + '<div class="field" style="margin-bottom:var(--space-4);"><label for="email">E-mail institucional</label><input class="input" id="email" type="email" placeholder="nome@seaiee.pe.gov.br"></div>'
         + '<div class="field" style="margin-bottom:var(--space-3);"><label for="senha">Senha</label><input class="input" id="senha" type="password" placeholder="••••••••"></div>'
         + '<button class="btn btn-primary btn-block" id="loginBtn">Acessar painel</button>'
-        + '<p id="loginErr" style="font-size:12px;color:var(--color-bad);text-align:center;margin-top:var(--space-3);display:none;">E-mail ou senha inválidos.</p>'
-        + '<p style="font-size:12px;color:color-mix(in srgb, var(--color-text) 60%, transparent);text-align:center;margin-top:var(--space-4);line-height:1.5;">Leitura liberada para toda a secretaria.<br>Edição restrita à equipe da SEAIEE.</p>';
+        + '<p id="loginErr" style="font-size:12px;color:var(--color-bad);text-align:center;margin-top:var(--space-3);display:none;">E-mail ou senha inválidos.</p>';
       document.getElementById('loginBtn').onclick = function(){
         var email = document.getElementById('email').value.trim();
         var pass = document.getElementById('senha').value;

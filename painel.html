@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel — Ambiente de Conformidade</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="nav" id="site-nav"></header>
+
+<main class="wrap" style="padding:var(--space-6) 0 var(--space-8);">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:var(--space-4);margin-bottom:var(--space-4);">
+    <div>
+      <h1 style="text-transform:uppercase;font-size:32px;margin-bottom:4px;">Painel de acompanhamento</h1>
+      <p class="text-muted" style="margin:0;">Visão consolidada dos 6 núcleos da SEAIEE — selecione o tipo de acompanhamento abaixo.</p>
+    </div>
+    <div id="toolbarArea" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;"></div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-4);margin-bottom:var(--space-6);">
+    <div class="seg" id="viewSeg">
+      <label class="seg-opt"><input type="radio" name="view" value="acao" checked> Ação (Interno)</label>
+      <label class="seg-opt"><input type="radio" name="view" value="execucao"> Execução (Produção)</label>
+    </div>
+    <div id="editToggleArea"></div>
+  </div>
+
+  <div id="notAuthedNote" class="readonly-note hidden">🔒 Modo somente leitura — <a href="index.html#login">faça login</a> para editar.</div>
+
+  <div id="dashArea"></div>
+  <div id="filtersArea"></div>
+  <div id="sheetContent"></div>
+</main>
+
+<footer class="site-foot" id="site-foot"></footer>
+<div class="toast" id="toast"></div>
+
+<script src="assets/data.js"></script>
+<script src="assets/data-producao.js"></script>
+<script src="assets/common.js"></script>
+<script>
+renderNav('painel');
+renderFooter();
+
+var UI = { sheetKey:'interno', editMode:false, filters:{text:'',responsavel:'',status:'',nucleo:''} };
+
+function renderToolbar(){
+  var el = document.getElementById('toolbarArea');
+  var authed = isAuthed();
+  var buttons = '<button class="btn small" id="btnPrint">🖨️ Imprimir</button>'
+    + '<button class="btn small" id="btnExportJson">⬇️ Backup (JSON)</button>';
+  if(authed){ buttons += '<button class="btn small btn-danger" id="btnReset">↺ Restaurar publicado</button>'; }
+  el.innerHTML = buttons;
+  document.getElementById('btnPrint').onclick = function(){ window.print(); };
+  document.getElementById('btnExportJson').onclick = exportDataJson;
+  var rb = document.getElementById('btnReset'); if(rb) rb.onclick = resetData;
+
+  var editEl = document.getElementById('editToggleArea');
+  if(authed){
+    editEl.innerHTML = '<div class="badge-toggle" style="display:flex;align-items:center;gap:6px;font-size:12.5px;">'
+      + '<div class="switch '+(UI.editMode?'on':'')+'" id="editSwitch"></div><span>Modo de edição</span></div>';
+    document.getElementById('editSwitch').onclick = function(){ UI.editMode=!UI.editMode; renderAll(); };
+    document.getElementById('notAuthedNote').classList.add('hidden');
+  } else {
+    UI.editMode = false;
+    editEl.innerHTML = '';
+    document.getElementById('notAuthedNote').classList.remove('hidden');
+  }
+}
+
+/* ---- dashboard ---- */
+function renderDash(){
+  var rows = collectRows(UI.sheetKey);
+  var k = computeKpis(rows);
+  var stats = computeByNucleo(UI.sheetKey);
+  var html = '<div class="kpi-row">'
+    + '<div class="kpi"><div class="n">'+k.total+'</div><div class="l">Total</div></div>'
+    + '<div class="kpi good"><div class="n">'+k.done+'</div><div class="l">Concluídas</div></div>'
+    + '<div class="kpi warn"><div class="n">'+k.progress+'</div><div class="l">Em andamento</div></div>'
+    + '<div class="kpi"><div class="n">'+k.todo+'</div><div class="l">A iniciar</div></div>'
+    + '<div class="kpi bad"><div class="n">'+k.late+'</div><div class="l">Atrasadas</div></div>'
+    + '</div>';
+  var attention = computeAttentionList(rows).slice(0,10);
+  html += '<div class="card" style="padding:var(--space-4);margin-bottom:var(--space-6);">'
+    + '<div class="card-kicker">⚠ Radar de prazos</div>';
+  if(attention.length===0){ html += '<p class="text-muted" style="margin-top:8px;">Nenhum item em atraso identificado.</p>'; }
+  else {
+    html += '<div class="table-scroll" style="margin-top:8px;"><table class="table"><thead><tr><th>Núcleo</th><th>Atividade</th><th>Responsável</th><th>Prazo previsto</th><th>Motivo</th></tr></thead><tbody>'
+      + attention.map(function(a){ return '<tr><td>'+esc(a.r.nucleoNome)+'</td><td>'+esc(a.r.f.nome)+'</td><td>'+esc(a.r.f.responsavel)+'</td><td>'+esc(a.r.f.ppFim)+'</td><td>'+esc(a.motivo)+'</td></tr>'; }).join('')
+      + '</tbody></table></div>';
+  }
+  html += '</div>';
+  document.getElementById('dashArea').innerHTML = html;
+}
+
+/* ---- filters ---- */
+function renderFilters(){
+  var rows = collectRows(UI.sheetKey);
+  var respSet={}; rows.forEach(function(r){ String(r.f.responsavel||"").split(/[\/,;]/).forEach(function(p){p=p.trim(); if(p&&p!=='-'&&p!=='...'&&p!=='?') respSet[p]=true;}); });
+  var resps = Object.keys(respSet).sort(function(a,b){return a.localeCompare(b,'pt-BR');});
+  var nucleos = DATA[UI.sheetKey].nucleos.map(function(n){return n.nome||'(sem nome)';});
+  document.getElementById('filtersArea').innerHTML = '<div class="filters">'
+    + '<input type="text" id="fltText" placeholder="🔎 Buscar..." value="'+esc(UI.filters.text)+'">'
+    + '<select id="fltResp"><option value="">Todos os responsáveis</option>'+resps.map(function(r){return '<option '+(UI.filters.responsavel===r?'selected':'')+'>'+esc(r)+'</option>';}).join('')+'</select>'
+    + '<select id="fltStatus"><option value="">Todos os status</option>'+STATUS_OPTS.map(function(s){return '<option '+(UI.filters.status===s?'selected':'')+'>'+esc(s)+'</option>';}).join('')+'</select>'
+    + '<select id="fltNucleo"><option value="">Todos os núcleos</option>'+nucleos.map(function(n){return '<option '+(UI.filters.nucleo===n?'selected':'')+'>'+esc(n)+'</option>';}).join('')+'</select>'
+    + '<button class="btn small" id="fltClear">Limpar</button></div>';
+  document.getElementById('fltText').oninput = function(e){ UI.filters.text=e.target.value; applyFilters(); };
+  document.getElementById('fltResp').onchange = function(e){ UI.filters.responsavel=e.target.value; applyFilters(); };
+  document.getElementById('fltStatus').onchange = function(e){ UI.filters.status=e.target.value; applyFilters(); };
+  document.getElementById('fltNucleo').onchange = function(e){ UI.filters.nucleo=e.target.value; applyFilters(); };
+  document.getElementById('fltClear').onclick = function(){ UI.filters={text:'',responsavel:'',status:'',nucleo:''}; renderAll(); };
+}
+function rowMatches(f, nucleoNome){
+  var F=UI.filters;
+  if(F.nucleo && nucleoNome!==F.nucleo) return false;
+  if(F.status && (f.status||'')!==F.status) return false;
+  if(F.responsavel){ var parts=String(f.responsavel||"").split(/[\/,;]/).map(function(p){return p.trim();}); if(parts.indexOf(F.responsavel)<0) return false; }
+  if(F.text){ var hay=(f.nome+' '+f.indicador+' '+f.obs+' '+f.responsavel).toLowerCase(); if(hay.indexOf(F.text.toLowerCase())<0) return false; }
+  return true;
+}
+function applyFilters(){
+  var root = document.getElementById('sheetContent');
+  Array.prototype.forEach.call(root.querySelectorAll('tr[data-row]'), function(tr){
+    var f = {nome:tr.getAttribute('data-f-nome')||'', indicador:tr.getAttribute('data-f-indicador')||'', obs:tr.getAttribute('data-f-obs')||'', responsavel:tr.getAttribute('data-f-resp')||'', status:tr.getAttribute('data-f-status')||''};
+    tr.style.display = rowMatches(f, tr.getAttribute('data-nucleo-nome')) ? '' : 'none';
+  });
+}
+
+/* ---- field render ---- */
+function fieldInput(path, field, value){
+  if(!UI.editMode){
+    if(field==='status') return '<span class="tag '+statusTagClass(value)+'">'+esc(value||'-')+'</span>';
+    if(field==='statusPrazo') return '<span class="tag '+prazoTagClass(value)+'">'+esc(value||'-')+'</span>';
+    if(field==='driveLink') return value ? '<a href="'+esc(value)+'" target="_blank" rel="noopener">📄 Drive</a>' : '<span class="text-muted">—</span>';
+    return '<span>'+esc(value)+'</span>';
+  }
+  var dp = 'data-path="'+esc(path)+'" data-field="'+esc(field)+'"';
+  if(field==='status') return '<select '+dp+'>'+STATUS_OPTS.map(function(o){return '<option '+(o===value?'selected':'')+'>'+esc(o)+'</option>';}).join('')+'</select>';
+  if(field==='statusPrazo') return '<select '+dp+'>'+SPRAZO_OPTS.map(function(o){return '<option '+(o===value?'selected':'')+'>'+esc(o)+'</option>';}).join('')+'</select>';
+  if(field==='driveLink') return '<input type="text" '+dp+' placeholder="https://drive.google.com/..." value="'+esc(value)+'">';
+  return '<input type="text" '+dp+' value="'+esc(value)+'">';
+}
+
+var BASE_COLS = [['numero','52px'],['nome','230px'],['responsavel','130px'],['recursos','100px'],
+  ['ppIni','88px'],['ppFim','88px'],['prIni','88px'],['prFim','88px'],['atraso','60px'],
+  ['indicador','140px'],['qtd','48px'],['status','130px'],['statusPrazo','100px'],['obs','240px']];
+
+function renderItemRow(ni,ai,ii,si,f,isSub,nucleoNome,cols){
+  var path=[UI.sheetKey,ni,ai,ii,si].join('.');
+  var tds = cols.map(function(c){ return '<td style="min-width:'+c[1]+';">'+fieldInput(path,c[0],f[c[0]])+'</td>'; }).join('');
+  var actions='';
+  if(UI.editMode){
+    if(!isSub) actions = '<button class="iconbtn" data-act="add-sub" data-path="'+esc(path)+'" title="Adicionar sub-item">➕</button><button class="iconbtn del" data-act="del-item" data-path="'+esc(path)+'" title="Remover">🗑</button>';
+    else actions = '<button class="iconbtn del" data-act="del-sub" data-path="'+esc(path)+'" title="Remover">🗑</button>';
+  }
+  return '<tr data-row="1" class="'+(isSub?'sub-row':'')+'" data-nucleo-nome="'+esc(nucleoNome)+'" data-f-nome="'+esc(f.nome)+'" data-f-indicador="'+esc(f.indicador)+'" data-f-obs="'+esc(f.obs)+'" data-f-resp="'+esc(f.responsavel)+'" data-f-status="'+esc(f.status)+'">'
+    + tds + '<td>'+fieldInput(path,'driveLink',f.driveLink)+'</td><td>'+actions+'</td></tr>';
+}
+
+function renderAcaoBlock(ni,ai,ac,nucleoNome){
+  var f = ac.fields; var path=[UI.sheetKey,ni,ai].join('.');
+  var head = UI.editMode
+    ? '<span class="num">'+esc(f.numero||(ai+1))+'</span><input class="input" style="max-width:420px;font-weight:700;" data-path="'+esc(path)+'" data-field="nome" value="'+esc(f.nome)+'">'
+      + '<button class="iconbtn del" data-act="del-acao" data-path="'+esc(path)+'">🗑 remover ação</button>'
+    : '<span class="num">'+esc(f.numero||(ai+1))+'</span><span class="nm">'+esc(f.nome||'(sem título)')+'</span>';
+  var metaParts=[];
+  if(f.responsavel) metaParts.push('Responsável: '+esc(f.responsavel));
+  if(f.recursos) metaParts.push('Recursos: '+esc(f.recursos));
+  if(f.ppIni||f.ppFim) metaParts.push('Prazo: '+esc(f.ppIni||'—')+' a '+esc(f.ppFim||'—'));
+  var meta = metaParts.length ? '<div class="acao-meta">'+metaParts.join(' &nbsp;·&nbsp; ')+'</div>' : '';
+
+  var rowsHtml = ac.itens.map(function(it,ii){
+    var r = renderItemRow(ni,ai,ii,-1,it.fields,false,nucleoNome,BASE_COLS);
+    var subs = it.sub.map(function(su,si){ return renderItemRow(ni,ai,ii,si,su.fields,true,nucleoNome,BASE_COLS); }).join('');
+    return r+subs;
+  }).join('');
+
+  var addItemBtn = UI.editMode ? '<div style="margin-top:8px;"><button class="btn small" data-act="add-item" data-path="'+esc(path)+'">➕ Adicionar item</button></div>' : '';
+
+  var headerCells = BASE_COLS.map(function(c){ return '<th>'+labelFor(c[0])+'</th>'; }).join('') + '<th>Drive</th>' + (UI.editMode?'<th></th>':'');
+
+  return '<div class="acao-block"><div class="acao-head">'+head+'</div>'+meta
+    + '<div class="table-scroll"><table class="table"><thead><tr>'+headerCells+'</tr></thead><tbody>'+rowsHtml+'</tbody></table></div>'
+    + addItemBtn + '</div>';
+}
+function labelFor(k){
+  var m={numero:'Nº',nome:'Ação / Atividade',responsavel:'Responsável',recursos:'Recursos',ppIni:'Prev. Início',ppFim:'Prev. Término',prIni:'Real Início',prFim:'Real Término',atraso:'Atraso',indicador:'Indicador',qtd:'Nº',status:'Status',statusPrazo:'Prazo'};
+  return m[k]||k;
+}
+
+function renderNucleo(ni,nu){
+  var total=0,done=0;
+  nu.acoes.forEach(function(ac){ ac.itens.forEach(function(it){ total++; if((it.fields.status||'').toUpperCase().indexOf('CONCLU')>=0) done++; it.sub.forEach(function(su){ total++; if((su.fields.status||'').toUpperCase().indexOf('CONCLU')>=0) done++; }); }); });
+  var pct = total?Math.round(done/total*100):0;
+  var path=[UI.sheetKey,ni].join('.');
+  var headInner = UI.editMode
+    ? '<span class="chev">▾</span><input class="input" style="flex:1;font-weight:700;background:transparent;color:#fff;border-color:rgba(255,255,255,.4);" data-path="'+esc(path)+'" data-field="__nucleoNome" value="'+esc(nu.nome)+'">'
+      + '<span style="font-size:12px;">'+done+'/'+total+'</span><div class="nucleo-progress"><div class="fill" style="width:'+pct+'%"></div></div>'
+      + '<button class="iconbtn" style="color:#fff;" data-act="del-nucleo" data-path="'+esc(path)+'">🗑</button>'
+    : '<span class="chev">▾</span><span class="title">'+esc(nu.nome||'(sem nome)')+'</span><span style="font-size:12px;">'+done+'/'+total+' concluídas</span><div class="nucleo-progress"><div class="fill" style="width:'+pct+'%"></div></div>';
+  var acoesHtml = nu.acoes.map(function(ac,ai){ return renderAcaoBlock(ni,ai,ac,nu.nome); }).join('');
+  var addAcaoBtn = UI.editMode ? '<div style="margin-top:8px;"><button class="btn small" data-act="add-acao" data-path="'+esc(path)+'">➕ Adicionar ação</button></div>' : '';
+  return '<div class="nucleo"><div class="nucleo-head '+(nu.collapsed?'collapsed':'')+'" data-act="toggle-nucleo" data-path="'+esc(path)+'">'+headInner+'</div>'
+    + '<div class="nucleo-body" style="'+(nu.collapsed?'display:none;':'')+'">'+acoesHtml+addAcaoBtn+'</div></div>';
+}
+
+function renderSheet(){
+  var sh = DATA[UI.sheetKey];
+  var nucleosHtml = sh.nucleos.map(function(nu,ni){ return renderNucleo(ni,nu); }).join('');
+  var addNucleoBtn = UI.editMode ? '<button class="btn btn-primary" data-act="add-nucleo" data-path="'+UI.sheetKey+'">➕ Adicionar novo núcleo</button>' : '';
+  document.getElementById('sheetContent').innerHTML = '<h3 style="text-transform:uppercase;margin:0 0 var(--space-4);">'+esc(sh.title)+'</h3>'+nucleosHtml+addNucleoBtn;
+}
+
+/* ---- edit mutation handlers (delegated) ---- */
+function getByPath(path){
+  var parts=path.split('.'); var sheetKey=parts[0]; var ni=parseInt(parts[1],10);
+  if(isNaN(ni)) return {sheetKey:sheetKey};
+  var nu = DATA[sheetKey].nucleos[ni];
+  if(parts.length===2) return {sheetKey:sheetKey,nucleo:nu,ni:ni};
+  var ai=parseInt(parts[2],10); var ac=nu.acoes[ai];
+  if(parts.length===3) return {sheetKey:sheetKey,nucleo:nu,ni:ni,acao:ac,ai:ai};
+  var ii=parseInt(parts[3],10); var it=ac.itens[ii]; var si=parseInt(parts[4],10);
+  if(si>=0){ return {sheetKey:sheetKey,nucleo:nu,ni:ni,acao:ac,ai:ai,item:it,ii:ii,sub:it.sub[si],si:si}; }
+  return {sheetKey:sheetKey,nucleo:nu,ni:ni,acao:ac,ai:ai,item:it,ii:ii};
+}
+function bindHandlers(){
+  var root = document.getElementById('sheetContent');
+  root.oninput = function(e){
+    var t=e.target; var path=t.getAttribute('data-path'); var field=t.getAttribute('data-field');
+    if(!path||!field) return;
+    var ctx = getByPath(path);
+    if(field==='__nucleoNome'){ ctx.nucleo.nome=t.value; }
+    else if(ctx.sub){ ctx.sub.fields[field]=t.value; }
+    else if(ctx.item){ ctx.item.fields[field]=t.value; }
+    else if(ctx.acao){ ctx.acao.fields[field]=t.value; }
+    scheduleSave();
+  };
+  root.onchange = function(e){ if(e.target.tagName==='SELECT'){ root.oninput(e); renderAll(); } };
+  root.onclick = function(e){
+    var t=e.target; while(t && t!==root && !t.getAttribute('data-act')) t=t.parentElement;
+    if(!t||t===root) return;
+    var act=t.getAttribute('data-act'); var path=t.getAttribute('data-path');
+    if(act==='toggle-nucleo'){ var c=getByPath(path); c.nucleo.collapsed=!c.nucleo.collapsed; renderAll(); return; }
+    if(!UI.editMode) return;
+    var blank = fieldsFromRow([]);
+    if(act==='add-nucleo'){ DATA[path].nucleos.push({id:uid(),nome:"Novo Núcleo",responsavel:"",data:"",collapsed:false,acoes:[{id:uid(),fields:fieldsFromRow(["1","Nova Ação","","","","","","","","","","","",""]),itens:[{id:uid(),fields:fieldsFromRow(["1.1","Nova atividade","","","","","","","","","","A INICIAR","NO PRAZO",""]),sub:[]}]}]}); }
+    else if(act==='add-acao'){ var c2=getByPath(path); c2.nucleo.acoes.push({id:uid(),fields:fieldsFromRow([String(c2.nucleo.acoes.length+1),"Nova Ação","","","","","","","","","","","",""]),itens:[{id:uid(),fields:fieldsFromRow(["1","Nova atividade","","","","","","","","","","A INICIAR","NO PRAZO",""]),sub:[]}]}); }
+    else if(act==='del-nucleo'){ if(confirm("Remover este núcleo?")){ var p=path.split('.'); DATA[p[0]].nucleos.splice(parseInt(p[1],10),1); } }
+    else if(act==='add-item'){ var c3=getByPath(path); var nf=blank; nf.status="A INICIAR"; nf.statusPrazo="NO PRAZO"; c3.acao.itens.push({id:uid(),fields:nf,sub:[]}); }
+    else if(act==='add-sub'){ var c4=getByPath(path); var b2=fieldsFromRow([]); b2.status="A INICIAR"; b2.statusPrazo="NO PRAZO"; c4.item.sub.push({id:uid(),fields:b2}); }
+    else if(act==='del-item'){ if(confirm("Remover este item?")){ var c5=getByPath(path); c5.acao.itens.splice(c5.ii,1); } }
+    else if(act==='del-sub'){ if(confirm("Remover este sub-item?")){ var c6=getByPath(path); c6.item.sub.splice(c6.si,1); } }
+    else if(act==='del-acao'){ if(confirm("Remover esta ação?")){ var c7=getByPath(path); c7.nucleo.acoes.splice(c7.ai,1); } }
+    else return;
+    scheduleSave(); renderAll();
+  };
+}
+
+function renderAll(){
+  renderToolbar();
+  renderDash();
+  renderFilters();
+  renderSheet();
+  bindHandlers();
+  applyFilters();
+}
+
+Array.prototype.forEach.call(document.querySelectorAll('#viewSeg input'), function(r){
+  r.onchange = function(){ UI.sheetKey = (r.value==='acao') ? 'interno' : 'producao'; renderAll(); };
+});
+
+renderAll();
+</script>
+</body>
+</html>

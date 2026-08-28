@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contatos — Ambiente de Conformidade</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="nav" id="site-nav"></header>
+
+<main class="wrap" style="padding:var(--space-6) 0 var(--space-8);">
+  <h1 style="text-transform:uppercase;font-size:32px;margin-bottom:4px;">Mailing / Contatos</h1>
+  <p class="text-muted">Área interna — cadastro de contatos institucionais, investidores e parceiros da SEAIEE.</p>
+
+  <div id="gate"></div>
+  <div id="content" class="hidden"></div>
+</main>
+
+<footer class="site-foot" id="site-foot"></footer>
+<div class="toast" id="toast"></div>
+
+<script src="assets/data.js"></script>
+<script src="assets/data-producao.js"></script>
+<script src="assets/common.js"></script>
+<script>
+renderNav('contatos');
+renderFooter();
+
+var contacts = loadContacts();
+var editingId = null;
+var search = '';
+
+function renderContent(){
+  var filtered = contacts.filter(function(c){
+    if(!search) return true;
+    var hay = (c.nome+' '+c.organizacao+' '+c.cargo+' '+c.categoria+' '+c.obs).toLowerCase();
+    return hay.indexOf(search.toLowerCase())>=0;
+  }).sort(function(a,b){ return (a.nome||'').localeCompare(b.nome||'','pt-BR'); });
+
+  var html = '<div style="display:flex;justify-content:space-between;align-items:center;margin:var(--space-6) 0 var(--space-4);flex-wrap:wrap;gap:8px;">'
+    + '<h2 style="margin:0;text-transform:uppercase;">Contatos cadastrados</h2>'
+    + '<div style="display:flex;gap:8px;"><button class="btn small" id="btnExport">⬇️ Exportar JSON</button><button class="btn btn-primary" id="btnNew">➕ Novo contato</button></div>'
+    + '</div>'
+    + '<div class="filters"><input type="text" id="fSearch" placeholder="🔎 Buscar por nome, organização, categoria..." value="'+esc(search)+'"></div>'
+    + '<div id="formArea"></div>';
+
+  html += '<div class="table-scroll"><table class="table"><thead><tr><th>Nome</th><th>Organização</th><th>Cargo</th><th>E-mail</th><th>Telefone</th><th>Categoria</th><th></th></tr></thead><tbody>';
+  filtered.forEach(function(c){
+    html += '<tr><td><strong>'+esc(c.nome)+'</strong>'+(c.obs?'<div class="text-muted" style="font-size:11px;max-width:260px;">'+esc(c.obs)+'</div>':'')+'</td>'
+      + '<td>'+esc(c.organizacao)+'</td><td>'+esc(c.cargo)+'</td>'
+      + '<td>'+(c.email?'<a href="mailto:'+esc(c.email)+'">'+esc(c.email)+'</a>':'—')+'</td>'
+      + '<td>'+esc(c.telefone||'—')+'</td>'
+      + '<td><span class="tag tag-accent">'+esc(c.categoria||'—')+'</span></td>'
+      + '<td><button class="iconbtn" data-edit="'+esc(c.id)+'">✎</button><button class="iconbtn del" data-del="'+esc(c.id)+'">🗑</button></td></tr>';
+  });
+  if(filtered.length===0) html += '<tr><td colspan="7" class="text-muted" style="text-align:center;padding:var(--space-6);">Nenhum contato encontrado.</td></tr>';
+  html += '</tbody></table></div>';
+
+  document.getElementById('content').innerHTML = html;
+  document.getElementById('fSearch').oninput = function(e){ search=e.target.value; renderContent(); };
+  document.getElementById('btnExport').onclick = function(){
+    downloadBlob('contatos_'+new Date().toISOString().slice(0,10)+'.json', JSON.stringify(contacts,null,2), 'application/json');
+    showToast('Contatos exportados.');
+  };
+  document.getElementById('btnNew').onclick = function(){ editingId=null; renderForm(); };
+  Array.prototype.forEach.call(document.querySelectorAll('[data-edit]'), function(b){ b.onclick=function(){ editingId=b.getAttribute('data-edit'); renderForm(); }; });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-del]'), function(b){ b.onclick=function(){
+    if(confirm('Remover este contato?')){ contacts = contacts.filter(function(c){return c.id!==b.getAttribute('data-del');}); saveContacts(contacts); renderContent(); showToast('Contato removido.'); }
+  }; });
+}
+
+function renderForm(){
+  var c = editingId ? contacts.filter(function(x){return x.id===editingId;})[0] : {id:uid(),nome:'',organizacao:'',cargo:'',email:'',telefone:'',categoria:'',obs:''};
+  var el = document.getElementById('formArea');
+  el.innerHTML = '<div class="card blueprint" style="padding:var(--space-4);margin-bottom:var(--space-6);">'
+    + '<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>'
+    + '<div class="card-kicker">'+(editingId?'Editar contato':'Novo contato')+'</div>'
+    + '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-3);margin-top:var(--space-3);">'
+    + '<div class="field"><label>Nome</label><input class="input" id="fNome" value="'+esc(c.nome)+'"></div>'
+    + '<div class="field"><label>Organização</label><input class="input" id="fOrg" value="'+esc(c.organizacao)+'"></div>'
+    + '<div class="field"><label>Cargo</label><input class="input" id="fCargo" value="'+esc(c.cargo)+'"></div>'
+    + '<div class="field"><label>E-mail</label><input class="input" id="fEmail" type="email" value="'+esc(c.email)+'"></div>'
+    + '<div class="field"><label>Telefone</label><input class="input" id="fTel" value="'+esc(c.telefone)+'"></div>'
+    + '<div class="field"><label>Categoria</label><input class="input" id="fCat" list="catList" value="'+esc(c.categoria)+'"><datalist id="catList"><option>Investidor / Prospecção</option><option>Câmara de Comércio</option><option>Institucional</option><option>Fornecedor</option><option>Imprensa</option></datalist></div>'
+    + '<div class="field" style="grid-column:1/4;"><label>Observação</label><textarea class="input" id="fObs">'+esc(c.obs)+'</textarea></div>'
+    + '</div>'
+    + '<div style="display:flex;gap:8px;margin-top:var(--space-3);"><button class="btn btn-primary" id="fSave">Salvar</button><button class="btn btn-secondary" id="fCancel">Cancelar</button></div>'
+    + '</div>';
+  document.getElementById('fCancel').onclick = function(){ editingId=null; el.innerHTML=''; };
+  document.getElementById('fSave').onclick = function(){
+    c.nome = document.getElementById('fNome').value.trim();
+    c.organizacao = document.getElementById('fOrg').value.trim();
+    c.cargo = document.getElementById('fCargo').value.trim();
+    c.email = document.getElementById('fEmail').value.trim();
+    c.telefone = document.getElementById('fTel').value.trim();
+    c.categoria = document.getElementById('fCat').value.trim();
+    c.obs = document.getElementById('fObs').value.trim();
+    if(!c.nome){ alert('Preencha ao menos o nome.'); return; }
+    if(editingId){ contacts = contacts.map(function(x){ return x.id===editingId ? c : x; }); }
+    else { contacts.push(c); }
+    saveContacts(contacts); editingId=null; renderContent(); showToast('Contato salvo.');
+  };
+}
+
+lockGate('gate', function(){
+  document.getElementById('content').classList.remove('hidden');
+  renderContent();
+});
+</script>
+</body>
+</html>

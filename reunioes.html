@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reuniões — Ambiente de Conformidade</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="nav" id="site-nav"></header>
+
+<main class="wrap" style="padding:var(--space-6) 0 var(--space-8);">
+  <h1 style="text-transform:uppercase;font-size:32px;margin-bottom:4px;">Controle de reuniões e eventos</h1>
+  <p class="text-muted">Área interna — o que for salvo aqui alimenta o calendário "Próximas reuniões" da página inicial após publicação.</p>
+
+  <div id="gate"></div>
+  <div id="content" class="hidden"></div>
+</main>
+
+<footer class="site-foot" id="site-foot"></footer>
+<div class="toast" id="toast"></div>
+
+<script src="assets/data.js"></script>
+<script src="assets/data-producao.js"></script>
+<script src="assets/common.js"></script>
+<script>
+renderNav('reunioes');
+renderFooter();
+
+var meetings = loadMeetings();
+var editingId = null;
+
+function statusTag(s){ return s==='CONCLUÍDA'?'tag-good':s==='CANCELADA'?'tag-neutral':'tag-accent'; }
+
+function renderContent(){
+  var sorted = meetings.slice().sort(function(a,b){ return (a.data||'').localeCompare(b.data||''); });
+  var html = '<div style="display:flex;justify-content:space-between;align-items:center;margin:var(--space-6) 0 var(--space-4);flex-wrap:wrap;gap:8px;">'
+    + '<h2 style="margin:0;text-transform:uppercase;">Reuniões cadastradas</h2>'
+    + '<div style="display:flex;gap:8px;"><button class="btn small" id="btnExport">⬇️ Exportar JSON</button><button class="btn btn-primary" id="btnNew">➕ Nova reunião</button></div>'
+    + '</div>';
+
+  html += '<div id="formArea"></div>';
+
+  html += '<div class="table-scroll"><table class="table"><thead><tr><th>Data</th><th>Hora</th><th>Título</th><th>Núcleo</th><th>Local</th><th>Participantes</th><th>Status</th><th></th></tr></thead><tbody>';
+  sorted.forEach(function(m){
+    html += '<tr><td>'+esc(m.data)+'</td><td>'+esc(m.hora)+'</td><td>'+esc(m.titulo)+'</td><td>'+esc(m.nucleo)+'</td><td>'+esc(m.local)+'</td><td>'+esc(m.participantes)+'</td>'
+      + '<td><span class="tag '+statusTag(m.status)+'">'+esc(m.status)+'</span></td>'
+      + '<td><button class="iconbtn" data-edit="'+esc(m.id)+'">✎</button><button class="iconbtn del" data-del="'+esc(m.id)+'">🗑</button></td></tr>';
+  });
+  if(sorted.length===0) html += '<tr><td colspan="8" class="text-muted" style="text-align:center;padding:var(--space-6);">Nenhuma reunião cadastrada.</td></tr>';
+  html += '</tbody></table></div>';
+
+  document.getElementById('content').innerHTML = html;
+  document.getElementById('btnExport').onclick = function(){
+    downloadBlob('reunioes_'+new Date().toISOString().slice(0,10)+'.json', JSON.stringify(meetings,null,2), 'application/json');
+    showToast('Reuniões exportadas.');
+  };
+  document.getElementById('btnNew').onclick = function(){ editingId=null; renderForm(); };
+  Array.prototype.forEach.call(document.querySelectorAll('[data-edit]'), function(b){ b.onclick=function(){ editingId=b.getAttribute('data-edit'); renderForm(); }; });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-del]'), function(b){ b.onclick=function(){
+    if(confirm('Remover esta reunião?')){ meetings = meetings.filter(function(m){return m.id!==b.getAttribute('data-del');}); saveMeetings(meetings); renderContent(); showToast('Reunião removida.'); }
+  }; });
+}
+
+function renderForm(){
+  var m = editingId ? meetings.filter(function(x){return x.id===editingId;})[0] : {id:uid(),titulo:'',data:'',hora:'',nucleo:'',local:'',participantes:'',status:'AGENDADA',obs:''};
+  var nucleos = DATA.interno.nucleos.map(function(n){return n.nome;});
+  var el = document.getElementById('formArea');
+  el.innerHTML = '<div class="card blueprint" style="padding:var(--space-4);margin-bottom:var(--space-6);">'
+    + '<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>'
+    + '<div class="card-kicker">'+(editingId?'Editar reunião':'Nova reunião')+'</div>'
+    + '<div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:var(--space-3);margin-top:var(--space-3);">'
+    + '<div class="field"><label>Título</label><input class="input" id="fTitulo" value="'+esc(m.titulo)+'"></div>'
+    + '<div class="field"><label>Data</label><input class="input" id="fData" type="date" value="'+esc(m.data)+'"></div>'
+    + '<div class="field"><label>Hora</label><input class="input" id="fHora" type="time" value="'+esc(m.hora)+'"></div>'
+    + '<div class="field"><label>Núcleo</label><select class="input" id="fNucleo"><option value="">—</option>'+nucleos.map(function(n){return '<option '+(n===m.nucleo?'selected':'')+'>'+esc(n)+'</option>';}).join('')+'</select></div>'
+    + '<div class="field"><label>Local / link</label><input class="input" id="fLocal" value="'+esc(m.local)+'"></div>'
+    + '<div class="field"><label>Status</label><select class="input" id="fStatus"><option '+(m.status==='AGENDADA'?'selected':'')+'>AGENDADA</option><option '+(m.status==='CONCLUÍDA'?'selected':'')+'>CONCLUÍDA</option><option '+(m.status==='CANCELADA'?'selected':'')+'>CANCELADA</option></select></div>'
+    + '<div class="field" style="grid-column:1/3;"><label>Participantes</label><input class="input" id="fPart" value="'+esc(m.participantes)+'"></div>'
+    + '<div class="field" style="grid-column:1/4;"><label>Observação</label><textarea class="input" id="fObs">'+esc(m.obs)+'</textarea></div>'
+    + '</div>'
+    + '<div style="display:flex;gap:8px;margin-top:var(--space-3);"><button class="btn btn-primary" id="fSave">Salvar</button><button class="btn btn-secondary" id="fCancel">Cancelar</button></div>'
+    + '</div>';
+  document.getElementById('fCancel').onclick = function(){ editingId=null; el.innerHTML=''; };
+  document.getElementById('fSave').onclick = function(){
+    m.titulo = document.getElementById('fTitulo').value.trim();
+    m.data = document.getElementById('fData').value;
+    m.hora = document.getElementById('fHora').value;
+    m.nucleo = document.getElementById('fNucleo').value;
+    m.local = document.getElementById('fLocal').value.trim();
+    m.status = document.getElementById('fStatus').value;
+    m.participantes = document.getElementById('fPart').value.trim();
+    m.obs = document.getElementById('fObs').value.trim();
+    if(!m.titulo || !m.data){ alert('Preencha ao menos título e data.'); return; }
+    if(editingId){ meetings = meetings.map(function(x){ return x.id===editingId ? m : x; }); }
+    else { meetings.push(m); }
+    saveMeetings(meetings); editingId=null; renderContent(); showToast('Reunião salva.');
+  };
+}
+
+lockGate('gate', function(){
+  document.getElementById('content').classList.remove('hidden');
+  renderContent();
+});
+</script>
+</body>
+</html>

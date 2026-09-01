@@ -125,8 +125,7 @@ lockGate('gate', function(){
   document.getElementById('content').classList.remove('hidden');
   fetchContacts(function(list){
     published = list;
-    var draft = hasLocalDraft(CONTACTS_KEY, published);
-    contacts = draft || JSON.parse(JSON.stringify(published));
+    contacts = JSON.parse(JSON.stringify(published));
     renderContent();
     renderPublishArea();
     renderDraftBanner('draftBanner', CONTACTS_KEY, published, function(d){ contacts = d; renderContent(); }, function(){ contacts = JSON.parse(JSON.stringify(published)); renderContent(); });

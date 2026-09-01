@@ -121,8 +121,7 @@ lockGate('gate', function(){
   initData(function(){
     fetchMeetings(function(list){
       published = list;
-      var draft = hasLocalDraft(MEETINGS_KEY, published);
-      meetings = draft || JSON.parse(JSON.stringify(published));
+      meetings = JSON.parse(JSON.stringify(published));
       renderContent();
       renderPublishArea();
       renderDraftBanner('draftBanner', MEETINGS_KEY, published, function(d){ meetings = d; renderContent(); }, function(){ meetings = JSON.parse(JSON.stringify(published)); renderContent(); });

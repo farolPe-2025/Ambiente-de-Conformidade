@@ -163,7 +163,7 @@
       "nome": "Núcleo de Inteligência de Mercado e Estratégia",
       "responsavel": "Caio/Marcus",
       "data": "9-jun-26",
-      "collapsed": true,
+      "collapsed": false,
       "acoes": [
         {
           "id": "x8pmd6f",
@@ -190,7 +190,7 @@
               "fields": {
                 "numero": "1.1",
                 "nome": "Reunião para apresentar a ideia para o Observatório Econômico de PE",
-                "responsavel": "Pedro/Marcus",
+                "responsavel": "Pedro Lacerda/Marcus Ferraz/Caio Coutinho",
                 "recursos": "-",
                 "ppIni": "-",
                 "ppFim": "9-jun-26",
@@ -211,7 +211,7 @@
               "fields": {
                 "numero": "1.2",
                 "nome": "Modelar o ambiente",
-                "responsavel": "Caio/Marcus/Eduardo",
+                "responsavel": "Caio Coutinho/Marcus Ferraz/Pedro Melo/Eduardo Aguiar",
                 "recursos": "-",
                 "ppIni": "11-jun-26",
                 "ppFim": "30-jun-26",
@@ -232,7 +232,7 @@
               "fields": {
                 "numero": "1.3",
                 "nome": "Construir a plataforma (coleta inicial/definir infra)",
-                "responsavel": "Pedro/Eduardo",
+                "responsavel": "Pedro Melo/Eduardo Aguiar",
                 "recursos": "-",
                 "ppIni": "30-jun-26",
                 "ppFim": "21-ago-26",
@@ -253,7 +253,7 @@
               "fields": {
                 "numero": "1.4",
                 "nome": "Definir identidade (nome (logomarca) e aspectos gráficos da plataforma)",
-                "responsavel": "Caio/Marcus",
+                "responsavel": "Caio Coutinho/Marcus Ferraz",
                 "recursos": "-",
                 "ppIni": "24-jul-26",
                 "ppFim": "7-ago-26",
@@ -274,7 +274,7 @@
               "fields": {
                 "numero": "1.5",
                 "nome": "Realizar os ajustes finais na Plataforma",
-                "responsavel": "Caio/Pedro/Eduardo",
+                "responsavel": "Caio Coutinho/Pedro Melo/Eduardo Aguiar",
                 "recursos": "-",
                 "ppIni": "17-ago-26",
                 "ppFim": "21-ago-26",
@@ -295,7 +295,7 @@
               "fields": {
                 "numero": "1.6",
                 "nome": "Infraestrutura (contratar/adquirir)",
-                "responsavel": "Caio/Pedro/Marcus/Cleyton",
+                "responsavel": "Caio Coutinho/Pedro Melo/Marcus Ferraz/Cleyton Santos",
                 "recursos": "Hospedagem/Armazenagem (BD)",
                 "ppIni": "18-ago-26",
                 "ppFim": "28-ago-26",
@@ -316,7 +316,7 @@
               "fields": {
                 "numero": "1.7",
                 "nome": "Entregar a Plataforma \"FarolPE\"",
-                "responsavel": "Caio/Pedro/Eduardo/Marcus",
+                "responsavel": "Caio Coutinho/Pedro Melo/Eduardo Aguiar/Marcus Ferraz",
                 "recursos": "Depende da Infra Hospedagem",
                 "ppIni": "1-set-26",
                 "ppFim": "4-set-26",
@@ -337,7 +337,7 @@
               "fields": {
                 "numero": "1.8",
                 "nome": "Lançamento da Plataforma \"FarolPE\"",
-                "responsavel": "Secretária",
+                "responsavel": "Secretária Danielle",
                 "recursos": "?",
                 "ppIni": "1ª semana nov/26",
                 "ppFim": "",
@@ -358,7 +358,7 @@
               "fields": {
                 "numero": "1.9",
                 "nome": "Manter a Plataforma \"FarolPE\" (coletar, tratar, inserir, ajustar etc.)",
-                "responsavel": "Caio/Pedro/Eduardo",
+                "responsavel": "Caio Coutinho/Pedro Melo/Eduardo Aguiar",
                 "recursos": "Hospedagem/Armazenagem (BD)",
                 "ppIni": "",
                 "ppFim": "",
@@ -379,7 +379,7 @@
               "fields": {
                 "numero": "1.10",
                 "nome": "Desenvolver novos módulos para o FarolPE",
-                "responsavel": "Caio/Marcus",
+                "responsavel": "Caio Coutinho/Marcus Ferraz",
                 "recursos": "-",
                 "ppIni": "1-nov-26",
                 "ppFim": "15-dez-26",

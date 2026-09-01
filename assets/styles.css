@@ -133,6 +133,14 @@ textarea.input { min-height: 80px; resize: vertical; }
 .nav .btn-primary:hover { background: #d38708; }
 .nav .btn-secondary { background: rgba(255,255,255,.1); color: #fff; border-color: rgba(255,255,255,.2); box-shadow: none; }
 .nav .btn-secondary:hover { background: rgba(255,255,255,.18); }
+@media (max-width: 720px) {
+  .nav { flex-wrap: wrap; row-gap: var(--space-2); }
+  .nav-brand { width: 100%; margin-right: 0; }
+  .nav-brand .t1 { font-size: 15px; }
+  .nav > nav { width: 100%; flex-wrap: wrap; gap: var(--space-4) !important; row-gap: var(--space-2); }
+  .nav a.navlink { font-size: 13px; padding: 4px 2px; }
+  .nav .btn.small { padding: 6px 12px; font-size: 12px; }
+}
 
 /* — tables — */
 .table-scroll { overflow-x: auto; border: 1px solid var(--color-divider); border-radius: var(--radius-lg); background: var(--color-block); }
@@ -159,8 +167,25 @@ textarea.input { min-height: 80px; resize: vertical; }
   background: linear-gradient(100deg, rgba(13,36,64,.95) 0%, rgba(13,36,64,.9) 40%, rgba(13,36,64,.6) 72%, rgba(13,36,64,.4) 100%); }
 .hero-full-content { position: relative; z-index: 2; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: var(--space-8); align-items: center; padding: var(--space-8) var(--space-8); width: 100%; }
 @media (max-width: 900px) { .hero-full-content { grid-template-columns: 1fr; padding: var(--space-6) var(--space-4); } .hero-full { min-height: 0; } }
+@media (max-width: 480px) {
+  .hero-text h1 { font-size: 32px !important; }
+  .hero-text p { font-size: 15px !important; }
+  .hero-login-card { padding: var(--space-4) !important; }
+}
 .hero-text h1, .hero-text h2, .hero-text h3 { color: #fff; }
 .hero-login-card { padding: var(--space-6); }
+
+/* — grids responsivos — */
+.grid2 { display: grid; grid-template-columns: 1.1fr 0.9fr; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); }
+.form-grid-title { display: grid; grid-template-columns: 2fr 1fr 1fr; }
+.form-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 780px) {
+  .grid2, .grid3, .form-grid-title, .form-grid-3 { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 1080px) {
+  .grid3 { grid-template-columns: repeat(2, 1fr); }
+}
 
 /* — calendar / agenda — */
 .agenda-item { display: grid; grid-template-columns: 64px 1fr auto; gap: var(--space-4); align-items: center; padding: var(--space-3) 0; border-bottom: 1px solid var(--color-divider); }

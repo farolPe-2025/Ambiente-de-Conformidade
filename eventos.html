@@ -73,7 +73,7 @@ function renderForm(){
   var el = document.getElementById('formArea');
   el.innerHTML = '<div class="card" style="padding:var(--space-4);margin-bottom:var(--space-6);">'
     + '<div class="card-kicker">'+(editingId?'Editar evento':'Novo evento')+'</div>'
-    + '<div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:var(--space-3);margin-top:var(--space-3);">'
+    + '<div class="form-grid-title" style="gap:var(--space-3);margin-top:var(--space-3);">'
     + '<div class="field"><label>Título</label><input class="input" id="fTitulo" value="'+esc(m.titulo)+'"></div>'
     + '<div class="field"><label>Data</label><input class="input" id="fData" type="date" value="'+esc(m.data)+'"></div>'
     + '<div class="field"><label>Hora</label><input class="input" id="fHora" type="time" value="'+esc(m.hora)+'"></div>'

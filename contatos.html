@@ -80,7 +80,7 @@ function renderForm(){
   var el = document.getElementById('formArea');
   el.innerHTML = '<div class="card" style="padding:var(--space-4);margin-bottom:var(--space-6);">'
     + '<div class="card-kicker">'+(editingId?'Editar contato':'Novo contato')+'</div>'
-    + '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-3);margin-top:var(--space-3);">'
+    + '<div class="form-grid-3" style="gap:var(--space-3);margin-top:var(--space-3);">'
     + '<div class="field"><label>Nome</label><input class="input" id="fNome" value="'+esc(c.nome)+'"></div>'
     + '<div class="field"><label>Organização</label><input class="input" id="fOrg" value="'+esc(c.organizacao)+'"></div>'
     + '<div class="field"><label>Cargo</label><input class="input" id="fCargo" value="'+esc(c.cargo)+'"></div>'

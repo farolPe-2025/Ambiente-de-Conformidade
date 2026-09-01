@@ -151,11 +151,16 @@ textarea.input { min-height: 80px; resize: vertical; }
 .kpi .l { font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--color-neutral-600); margin-top: 2px; font-weight: 600; }
 .kpi.good .n { color: var(--color-good); } .kpi.warn .n { color: var(--color-gold); } .kpi.bad .n { color: var(--color-bad); }
 
-/* — hero — */
-.hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: var(--space-8); align-items: stretch; padding: var(--space-8); max-width: 1480px; margin: 0 auto; }
-@media (max-width: 900px) { .hero { grid-template-columns: 1fr; padding: var(--space-6) var(--space-4); } }
-.hero-photo { position: relative; min-height: 300px; border-radius: var(--radius-lg); }
-.hero-photo .cap { position: absolute; left: 0; right: 0; bottom: 0; padding: var(--space-3) var(--space-4); background: linear-gradient(to top, rgba(13,36,64,.75), transparent); color: #fff; font-size: 12.5px; z-index: 2; border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
+/* — hero (full-bleed, foto em cor original, estilo FarolPE) — */
+.hero-full { position: relative; min-height: 560px; display: flex; align-items: center; overflow: hidden; background: linear-gradient(135deg, var(--color-navy-2), var(--color-navy)); }
+.hero-full .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.hero-full.no-image .hero-bg { display: none; }
+.hero-full .hero-scrim { position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(100deg, rgba(13,36,64,.92) 0%, rgba(13,36,64,.82) 32%, rgba(13,36,64,.35) 62%, rgba(13,36,64,.15) 100%); }
+.hero-full-content { position: relative; z-index: 2; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: var(--space-8); align-items: center; padding: var(--space-8) var(--space-8); width: 100%; }
+@media (max-width: 900px) { .hero-full-content { grid-template-columns: 1fr; padding: var(--space-6) var(--space-4); } .hero-full { min-height: 0; } }
+.hero-text h1, .hero-text h2, .hero-text h3 { color: #fff; }
+.hero-login-card { padding: var(--space-6); }
 
 /* — calendar / agenda — */
 .agenda-item { display: grid; grid-template-columns: 64px 1fr auto; gap: var(--space-4); align-items: center; padding: var(--space-3) 0; border-bottom: 1px solid var(--color-divider); }

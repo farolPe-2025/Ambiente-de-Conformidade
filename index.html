@@ -10,40 +10,24 @@
 
 <header class="nav" id="site-nav"></header>
 
-<section class="hero">
-  <div>
-    <span class="tag tag-outline" style="margin-bottom:var(--space-4);display:inline-block;text-transform:uppercase;">Secretaria de Desenvolvimento Econômico · PE</span>
-    <h1 style="font-size:44px;line-height:1.1;margin:var(--space-4) 0 var(--space-4);">Ambiente de Conformidade da SEAIEE</h1>
-    <p style="font-size:17px;line-height:1.6;color:color-mix(in srgb, var(--color-text) 82%, transparent);max-width:560px;margin:0 0 var(--space-6);">
-      Acompanhamento e controle da Secretaria Executiva de Atração de Investimentos e Estudos Econômicos (SEAIEE), da Secretaria de Desenvolvimento Econômico de Pernambuco.
-      Um único ambiente para prazos, responsáveis e status de cada ação e cada entrega — visível para toda a secretaria, com edição restrita ao time.
-    </p>
-    <div style="display:flex;gap:var(--space-4);align-items:center;flex-wrap:wrap;">
-      <a href="#painel-geral" class="btn btn-primary">Ver painel geral ↓</a>
-      <a href="painel.html" style="font-size:14px;">Abrir painel completo (Ação / Execução) →</a>
+<section class="hero-full" id="heroFull">
+  <img class="hero-bg" src="assets/secretaria.jpg" alt="" onerror="this.style.display='none';document.getElementById('heroFull').classList.add('no-image');">
+  <div class="hero-scrim"></div>
+  <div class="wrap hero-full-content">
+    <div class="hero-text">
+      <span class="tag tag-outline" style="margin-bottom:var(--space-4);display:inline-block;">Secretaria de Desenvolvimento Econômico · PE</span>
+      <h1 style="font-size:44px;line-height:1.1;margin:var(--space-4) 0 var(--space-4);color:#fff;">Ambiente de Conformidade da SEAIEE</h1>
+      <p style="font-size:17px;line-height:1.6;color:rgba(255,255,255,.88);max-width:560px;margin:0 0 var(--space-6);">
+        Acompanhamento e controle da Secretaria Executiva de Atração de Investimentos e Estudos Econômicos (SEAIEE), da Secretaria de Desenvolvimento Econômico de Pernambuco.
+        Um único ambiente para prazos, responsáveis e status de cada ação e cada entrega — visível para toda a secretaria, com edição restrita ao time.
+      </p>
+      <div style="display:flex;gap:var(--space-4);align-items:center;flex-wrap:wrap;">
+        <a href="#painel-geral" class="btn btn-primary">Ver painel geral ↓</a>
+        <a href="painel.html" style="font-size:14px;color:#fff;">Abrir painel completo (Ação / Execução) →</a>
+      </div>
+      <div id="heroStats" style="display:flex;gap:var(--space-8);margin-top:var(--space-8);padding-top:var(--space-4);border-top:1px solid rgba(255,255,255,.25);flex-wrap:wrap;"></div>
     </div>
-    <div id="heroStats" style="display:flex;gap:var(--space-8);margin-top:var(--space-8);padding-top:var(--space-4);border-top:1px solid var(--color-divider);flex-wrap:wrap;"></div>
-  </div>
-
-  <div class="card blueprint duotone no-image hero-photo" id="heroPhotoCard">
-    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-    <img id="heroPhoto" src="assets/secretaria.jpg" alt="Sede da Secretaria de Desenvolvimento Econômico de PE" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;" onerror="this.remove();document.getElementById('heroPhotoCard').classList.add('no-image');">
-    <div class="cap">Sede da Secretaria de Desenvolvimento Econômico — Recife/PE</div>
-  </div>
-</section>
-
-<div class="wrap">
-  <hr class="hr">
-</div>
-
-<section class="wrap" id="login" style="padding:var(--space-8) 0;">
-  <div class="grid2" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);align-items:start;">
-    <div>
-      <h2 style="">Acesso ao ambiente</h2>
-      <p class="text-muted" style="max-width:480px;">Acesse sua conta institucional para acompanhar os planos de ação, os eventos e o mailing da SEAIEE.</p>
-    </div>
-    <div class="card blueprint" style="padding:var(--space-6);">
-      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div class="card elev-lg hero-login-card" id="login">
       <div id="loginArea"></div>
     </div>
   </div>
@@ -84,7 +68,7 @@
 <section class="wrap" id="agenda" style="padding:var(--space-8) 0;">
   <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--space-4);flex-wrap:wrap;gap:var(--space-3);">
     <div>
-      <h2 style="">Próximos eventos de monitoramento</h2>
+      <h2 style="">Próximas reuniões e eventos</h2>
       <p class="text-muted" style="margin:0;">Calendário de acompanhamento — atualizado pela equipe na área de Eventos.</p>
     </div>
     <a href="eventos.html" class="btn btn-secondary">Gerenciar eventos →</a>

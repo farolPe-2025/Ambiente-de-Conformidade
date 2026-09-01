@@ -145,10 +145,13 @@ function getCachedToken(){ try{ return sessionStorage.getItem(GH_TOKEN_KEY); }ca
 function setCachedToken(t){ try{ sessionStorage.setItem(GH_TOKEN_KEY, t); }catch(e){} }
 function clearCachedToken(){ try{ sessionStorage.removeItem(GH_TOKEN_KEY); showToast('Token esquecido.'); }catch(e){} }
 
+var _tokenModalOpen = false;
 function promptForToken(){
   return new Promise(function(resolve){
     var existing = getCachedToken();
     if(existing){ resolve(existing); return; }
+    if(_tokenModalOpen){ resolve(null); return; }
+    _tokenModalOpen = true;
     var overlay = document.createElement('div');
     overlay.className = 'modal-backdrop';
     overlay.innerHTML = '<div class="modal-card card elev-lg">'
@@ -162,11 +165,12 @@ function promptForToken(){
       + '</div>';
     document.body.appendChild(overlay);
     document.getElementById('ghTokenInput').focus();
-    document.getElementById('ghTokenCancel').onclick = function(){ document.body.removeChild(overlay); resolve(null); };
+    document.getElementById('ghTokenCancel').onclick = function(){ document.body.removeChild(overlay); _tokenModalOpen=false; resolve(null); };
     document.getElementById('ghTokenOk').onclick = function(){
       var v = document.getElementById('ghTokenInput').value.trim();
       var remember = document.getElementById('ghTokenRemember').checked;
       document.body.removeChild(overlay);
+      _tokenModalOpen = false;
       if(!v){ resolve(null); return; }
       if(remember) setCachedToken(v);
       resolve(v);
@@ -199,6 +203,7 @@ function publishJSON(path, dataObj, message){
 function bindPublishButton(btnId, publishFn, onSuccess){
   var btn = document.getElementById(btnId); if(!btn) return;
   btn.onclick = function(){
+    if(btn.disabled) return;
     var orig = btn.textContent;
     btn.disabled = true; btn.textContent = 'Publicando…';
     publishFn().then(function(){

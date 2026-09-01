@@ -140,7 +140,7 @@ var SEED_INTERNO = {
         }
       ]
     },
-    { nome:"Núcleo de Recionamento e Legado (Aftercare)", responsavel:"Marcus/ADEPE", data:"",
+    { nome:"Núcleo de Relacionamento e Legado (Aftercare)", responsavel:"Marcus/ADEPE", data:"",
       acoes:[
         { row:["1","Aftercare e Expansão de Investimentos","Marcus Ferraz","","","","","","","","","","",""],
           itens:[

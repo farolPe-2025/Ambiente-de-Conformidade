@@ -1,0 +1,2014 @@
+﻿{
+  "title": "Acompanhamento Interno de Ações 2026",
+  "nucleos": [
+    {
+      "id": "x8pzcox",
+      "nome": "Reestruturação da SEAIEE",
+      "responsavel": "Pedro Leonardo/Marcus",
+      "data": "15-abr-26",
+      "collapsed": false,
+      "acoes": [
+        {
+          "id": "xtjumk",
+          "fields": {
+            "numero": "1",
+            "nome": "Reestruturação da SEAIEE (Proposta)",
+            "responsavel": "Pedro Leonardo Lacerda",
+            "recursos": "",
+            "ppIni": "",
+            "ppFim": "",
+            "prIni": "",
+            "prFim": "",
+            "atraso": "",
+            "indicador": "",
+            "qtd": "",
+            "status": "A INICIAR",
+            "statusPrazo": "-",
+            "obs": "",
+            "driveLink": ""
+          },
+          "itens": [
+            {
+              "id": "x9bgzfg",
+              "fields": {
+                "numero": "1.1",
+                "nome": "Modelar a nova estrutura da SEAIEE",
+                "responsavel": "Marcus Ferraz",
+                "recursos": "-",
+                "ppIni": "11-mai-26",
+                "ppFim": "15-jun-26",
+                "prIni": "11-mai-26",
+                "prFim": "15-jun-26",
+                "atraso": "-",
+                "indicador": "proposta finalizada",
+                "qtd": "1",
+                "status": "CONCLUÍDA",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xbeg8nl",
+              "fields": {
+                "numero": "1.2",
+                "nome": "Validar a nova estrutura da SEAIEE",
+                "responsavel": "Pedro Leonardo Lacerda",
+                "recursos": "-",
+                "ppIni": "17-jun-26",
+                "ppFim": "17-jun-26",
+                "prIni": "17-jun-26",
+                "prFim": "17-jun-26",
+                "atraso": "-",
+                "indicador": "proposta validada",
+                "qtd": "1",
+                "status": "CONCLUÍDA",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x6xpcrl",
+              "fields": {
+                "numero": "1.3",
+                "nome": "Apresentar a proposta para o Time (reunião)",
+                "responsavel": "Pedro Leonardo Lacerda",
+                "recursos": "-",
+                "ppIni": "26-jun-26",
+                "ppFim": "26-jun-26",
+                "prIni": "26-jun-26",
+                "prFim": "26-jun-26",
+                "atraso": "-",
+                "indicador": "reunião realizada",
+                "qtd": "1",
+                "status": "CONCLUÍDA",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x2h6c9n",
+              "fields": {
+                "numero": "1.4",
+                "nome": "Propor (construir) e validar o modelo de ferramenta de Acompanhamento e Produção",
+                "responsavel": "Marcus Ferraz",
+                "recursos": "-",
+                "ppIni": "2-jul-26",
+                "ppFim": "4-ago-26",
+                "prIni": "2-jul-26",
+                "prFim": "4-ago-26",
+                "atraso": "-",
+                "indicador": "ferramenta validada",
+                "qtd": "1",
+                "status": "CONCLUÍDA",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Período de construção e validação do modelo.",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x1smlru",
+              "fields": {
+                "numero": "1.5",
+                "nome": "Elaborar Planos de Trabalho (PT) com o Time e validar com Pedro Lacerda.",
+                "responsavel": "Marcus Ferraz",
+                "recursos": "-",
+                "ppIni": "13-ago-26",
+                "ppFim": "28-ago-26",
+                "prIni": "13-ago-26",
+                "prFim": "28-ago-26",
+                "atraso": "-",
+                "indicador": "Planos de Trabalho elaborados",
+                "qtd": "4",
+                "status": "CONCLUÍDA",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Dos 6 Núcleos da SEAIEE.",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x2boa6e",
+              "fields": {
+                "numero": "1.6",
+                "nome": "Monitorar processos (Ciclos de Monitoramento)",
+                "responsavel": "Marcus Ferraz",
+                "recursos": "-",
+                "ppIni": "1-set-26",
+                "ppFim": "15-dez-26",
+                "prIni": "1-set-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "núcleos monitorados",
+                "qtd": "4",
+                "status": "EM ANDAMENTO",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Ação contínua",
+                "driveLink": ""
+              },
+              "sub": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "x9htlkd",
+      "nome": "Núcleo de Inteligência de Mercado e Estratégia",
+      "responsavel": "Caio/Marcus",
+      "data": "9-jun-26",
+      "collapsed": false,
+      "acoes": [
+        {
+          "id": "x8pmd6f",
+          "fields": {
+            "numero": "1",
+            "nome": "Plataforma \"FarolPE\"",
+            "responsavel": "Caio Coutinho/Marcus Ferraz",
+            "recursos": "",
+            "ppIni": "",
+            "ppFim": "",
+            "prIni": "",
+            "prFim": "",
+            "atraso": "",
+            "indicador": "",
+            "qtd": "",
+            "status": "A INICIAR",
+            "statusPrazo": "-",
+            "obs": "",
+            "driveLink": ""
+          },
+          "itens": [
+            {
+              "id": "x1caqu2",
+              "fields": {
+                "numero": "1.1",
+                "nome": "Reunião para apresentar a ideia para o Observatório Econômico de PE",
+                "responsavel": "Pedro/Marcus",
+                "recursos": "-",
+                "ppIni": "-",
+                "ppFim": "9-jun-26",
+                "prIni": "-",
+                "prFim": "9-jun-26",
+                "atraso": "-",
+                "indicador": "-",
+                "qtd": "-",
+                "status": "CONCLUÍDA",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Reunião de kick-off.",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x9nb4y4",
+              "fields": {
+                "numero": "1.2",
+                "nome": "Modelar o ambiente",
+                "responsavel": "Caio/Marcus/Eduardo",
+                "recursos": "-",
+                "ppIni": "11-jun-26",
+                "ppFim": "30-jun-26",
+                "prIni": "11-jun-26",
+                "prFim": "30-jun-26",
+                "atraso": "-",
+                "indicador": "Organograma do site modelado",
+                "qtd": "1",
+                "status": "CONCLUÍDA",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xcog8qv",
+              "fields": {
+                "numero": "1.3",
+                "nome": "Construir a plataforma (coleta inicial/definir infra)",
+                "responsavel": "Pedro/Eduardo",
+                "recursos": "-",
+                "ppIni": "30-jun-26",
+                "ppFim": "21-ago-26",
+                "prIni": "30-jun-26",
+                "prFim": "21-ago-26",
+                "atraso": "-",
+                "indicador": "-",
+                "qtd": "-",
+                "status": "CONCLUÍDA",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xfgaviw",
+              "fields": {
+                "numero": "1.4",
+                "nome": "Definir identidade (nome (logomarca) e aspectos gráficos da plataforma)",
+                "responsavel": "Caio/Marcus",
+                "recursos": "-",
+                "ppIni": "24-jul-26",
+                "ppFim": "7-ago-26",
+                "prIni": "24-jul-26",
+                "prFim": "7-ago-26",
+                "atraso": "-",
+                "indicador": "Marca e aspectos gráficos definidos",
+                "qtd": "1",
+                "status": "CONCLUÍDA",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Logomarca da Plataforma \"FarolPE\".",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x426pje",
+              "fields": {
+                "numero": "1.5",
+                "nome": "Realizar os ajustes finais na Plataforma",
+                "responsavel": "Caio/Pedro/Eduardo",
+                "recursos": "-",
+                "ppIni": "17-ago-26",
+                "ppFim": "21-ago-26",
+                "prIni": "17-ago-26",
+                "prFim": "21-ago-26",
+                "atraso": "-",
+                "indicador": "-",
+                "qtd": "-",
+                "status": "EM ANDAMENTO",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xe7u9f8",
+              "fields": {
+                "numero": "1.6",
+                "nome": "Infraestrutura (contratar/adquirir)",
+                "responsavel": "Caio/Pedro/Marcus/Cleyton",
+                "recursos": "Hospedagem/Armazenagem (BD)",
+                "ppIni": "18-ago-26",
+                "ppFim": "28-ago-26",
+                "prIni": "21-ago-26",
+                "prFim": "",
+                "atraso": "-",
+                "indicador": "Hosp/Armaz contratada",
+                "qtd": "1",
+                "status": "EM ANDAMENTO",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Reunião no gabinete c/ Sra. Danielle/Pres. ATI e equipe/Gustavo/Pedro/Cleyton/Caio/Pedro/Marcus (em 21/ago) p/ discutir infraestrutura > Agendar reunião técnica na ATI.",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x2sb7c2",
+              "fields": {
+                "numero": "1.7",
+                "nome": "Entregar a Plataforma \"FarolPE\"",
+                "responsavel": "Caio/Pedro/Eduardo/Marcus",
+                "recursos": "Depende da Infra Hospedagem",
+                "ppIni": "1-set-26",
+                "ppFim": "4-set-26",
+                "prIni": "",
+                "prFim": "",
+                "atraso": "-",
+                "indicador": "Plataforma finalizada",
+                "qtd": "1",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Criar um relatório da construção da Plataforma e módulos.",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xf4ed7f",
+              "fields": {
+                "numero": "1.8",
+                "nome": "Lançamento da Plataforma \"FarolPE\"",
+                "responsavel": "Secretária",
+                "recursos": "?",
+                "ppIni": "1ª semana nov/26",
+                "ppFim": "",
+                "prIni": "",
+                "prFim": "",
+                "atraso": "-",
+                "indicador": "Evento de lançamento realizado",
+                "qtd": "1",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x759ozw",
+              "fields": {
+                "numero": "1.9",
+                "nome": "Manter a Plataforma \"FarolPE\" (coletar, tratar, inserir, ajustar etc.)",
+                "responsavel": "Caio/Pedro/Eduardo",
+                "recursos": "Hospedagem/Armazenagem (BD)",
+                "ppIni": "",
+                "ppFim": "",
+                "prIni": "",
+                "prFim": "",
+                "atraso": "-",
+                "indicador": "Plataforma lançada",
+                "qtd": "1",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Ação contínua",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xbs10q0",
+              "fields": {
+                "numero": "1.10",
+                "nome": "Desenvolver novos módulos para o FarolPE",
+                "responsavel": "Caio/Marcus",
+                "recursos": "-",
+                "ppIni": "1-nov-26",
+                "ppFim": "15-dez-26",
+                "prIni": "1-nov-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "-",
+                "qtd": "1",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Ação contínua",
+                "driveLink": ""
+              },
+              "sub": []
+            }
+          ]
+        },
+        {
+          "id": "xeffip1",
+          "fields": {
+            "numero": "2",
+            "nome": "Módulo 1 \"Integrador Produção e Mercado\"",
+            "responsavel": "Caio Coutinho",
+            "recursos": "",
+            "ppIni": "15-set-26",
+            "ppFim": "15-dez-26",
+            "prIni": "",
+            "prFim": "",
+            "atraso": "",
+            "indicador": "",
+            "qtd": "",
+            "status": "A INICIAR",
+            "statusPrazo": "-",
+            "obs": "",
+            "driveLink": ""
+          },
+          "itens": [
+            {
+              "id": "xauevo8",
+              "fields": {
+                "numero": "2.1",
+                "nome": "Coleta de dados (construir instrumento/contato/coleta primária)",
+                "responsavel": "Caio/Marcus",
+                "recursos": "-",
+                "ppIni": "1-set-26",
+                "ppFim": "16-out-26",
+                "prIni": "",
+                "prFim": "",
+                "atraso": "-",
+                "indicador": "Organograma do site",
+                "qtd": "1",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x8vu1m7",
+              "fields": {
+                "numero": "2.2",
+                "nome": "Modelar o ambiente",
+                "responsavel": "Caio/Pedro/Eduardo/Marcus",
+                "recursos": "-",
+                "ppIni": "19-out-26",
+                "ppFim": "30-out-26",
+                "prIni": "",
+                "prFim": "",
+                "atraso": "-",
+                "indicador": "-",
+                "qtd": "-",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xadkym5",
+              "fields": {
+                "numero": "2.3",
+                "nome": "Construir o módulo (coleta inicial/definir infra)",
+                "responsavel": "Pedro/Eduardo",
+                "recursos": "-",
+                "ppIni": "após nov/26",
+                "ppFim": "",
+                "prIni": "",
+                "prFim": "",
+                "atraso": "-",
+                "indicador": "-",
+                "qtd": "-",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Ver com Pedro Lacerda > Decisão (continua ou não).",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x5ljj6j",
+              "fields": {
+                "numero": "2.4",
+                "nome": "Definir identidade (nome (logomarca) e aspectos gráficos da plataforma)",
+                "responsavel": "Caio/Marcus",
+                "recursos": "-",
+                "ppIni": "",
+                "ppFim": "",
+                "prIni": "",
+                "prFim": "",
+                "atraso": "-",
+                "indicador": "Marca e aspectos gráficos definidos",
+                "qtd": "1",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x9z8ut2",
+              "fields": {
+                "numero": "2.5",
+                "nome": "Realizar os ajustes finais no módulo \"Integrador\"",
+                "responsavel": "Caio/Pedro/Eduardo",
+                "recursos": "-",
+                "ppIni": "",
+                "ppFim": "",
+                "prIni": "",
+                "prFim": "",
+                "atraso": "-",
+                "indicador": "-",
+                "qtd": "-",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x1xjwo8",
+              "fields": {
+                "numero": "2.6",
+                "nome": "Entregar o módulo \"Integrador\"",
+                "responsavel": "Caio/Pedro/Eduardo/Marcus",
+                "recursos": "",
+                "ppIni": "",
+                "ppFim": "",
+                "prIni": "",
+                "prFim": "",
+                "atraso": "-",
+                "indicador": "Plataforma finalizada",
+                "qtd": "1",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xa8j0bw",
+              "fields": {
+                "numero": "2.7",
+                "nome": "Lançamento do módulo \"Integrador\"",
+                "responsavel": "Secretária",
+                "recursos": "?",
+                "ppIni": "mar/27",
+                "ppFim": "",
+                "prIni": "",
+                "prFim": "",
+                "atraso": "-",
+                "indicador": "Evento de lançamento realizado",
+                "qtd": "1",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Previsão março/27 > A depender.",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xgf6knt",
+              "fields": {
+                "numero": "2.8",
+                "nome": "Manter o módulo \"Integrador\" (coletar, tratar, inserir, ajustar etc.)",
+                "responsavel": "Caio/Pedro/Eduardo",
+                "recursos": "",
+                "ppIni": "",
+                "ppFim": "",
+                "prIni": "",
+                "prFim": "",
+                "atraso": "-",
+                "indicador": "Plataforma lançada",
+                "qtd": "1",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Ação contínua",
+                "driveLink": ""
+              },
+              "sub": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "xfraveo",
+      "nome": "Núcleo de Atração de Investimentos (Front-End)",
+      "responsavel": "Marcus/Pedro Lacerda/ADEPE",
+      "data": "",
+      "collapsed": false,
+      "acoes": [
+        {
+          "id": "xbqejqf",
+          "fields": {
+            "numero": "1",
+            "nome": "Prospecção Ativa de Investidores (Lead Generation)",
+            "responsavel": "Marcus Ferraz/ADEPE",
+            "recursos": "",
+            "ppIni": "",
+            "ppFim": "",
+            "prIni": "",
+            "prFim": "",
+            "atraso": "",
+            "indicador": "",
+            "qtd": "",
+            "status": "A INICIAR",
+            "statusPrazo": "-",
+            "obs": "",
+            "driveLink": ""
+          },
+          "itens": [
+            {
+              "id": "x27c78j",
+              "fields": {
+                "numero": "1.1",
+                "nome": "Realizar prospecção ativa (empresas nacionais e internacionais)",
+                "responsavel": "Marcus/ADEPE",
+                "recursos": "-",
+                "ppIni": "1-jul-26",
+                "ppFim": "15-dez-26",
+                "prIni": "1-jul-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "CRM de investidores",
+                "qtd": "X",
+                "status": "EM ANDAMENTO",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Ação contínua",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x5m7c0t",
+              "fields": {
+                "numero": "1.2",
+                "nome": "Receber investidores e realizar reuniões (empresas, fundos e grupos econômicos)",
+                "responsavel": "Marcus/Pedro/ADEPE",
+                "recursos": "-",
+                "ppIni": "1-jul-26",
+                "ppFim": "15-dez-26",
+                "prIni": "1-jul-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "nº de investidores contatado",
+                "qtd": "X",
+                "status": "EM ANDAMENTO",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Ação contínua",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xesj0ox",
+              "fields": {
+                "numero": "1.3",
+                "nome": "Registrar contatos (Planilha de Prospecção)",
+                "responsavel": "Marcus",
+                "recursos": "-",
+                "ppIni": "1-jul-26",
+                "ppFim": "15-dez-26",
+                "prIni": "1-jul-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "Planilha de Prospecção",
+                "qtd": "1",
+                "status": "EM ANDAMENTO",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Ação contínua",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xf4v478",
+              "fields": {
+                "numero": "1.4",
+                "nome": "Registrar informações (Planilha de E-mail)",
+                "responsavel": "Marcus",
+                "recursos": "-",
+                "ppIni": "1-jul-26",
+                "ppFim": "15-dez-26",
+                "prIni": "1-jul-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "Planilha de Mailing",
+                "qtd": "1",
+                "status": "EM ANDAMENTO",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Ação contínua",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x6avtvj",
+              "fields": {
+                "numero": "1.5",
+                "nome": "Criar pipeline de oportunidades",
+                "responsavel": "Marcus/Caio/ADEPE",
+                "recursos": "-",
+                "ppIni": "",
+                "ppFim": "",
+                "prIni": "",
+                "prFim": "",
+                "atraso": "-",
+                "indicador": "",
+                "qtd": "",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Pipeline orientado pelas reuniões do CONDIC.",
+                "driveLink": ""
+              },
+              "sub": []
+            }
+          ]
+        },
+        {
+          "id": "xe1lfs9",
+          "fields": {
+            "numero": "2",
+            "nome": "Promover Pernambuco como Destino de Investimentos (Investment Promotion)",
+            "responsavel": "Marcus Ferraz/ADEPE",
+            "recursos": "",
+            "ppIni": "",
+            "ppFim": "",
+            "prIni": "",
+            "prFim": "",
+            "atraso": "",
+            "indicador": "",
+            "qtd": "",
+            "status": "A INICIAR",
+            "statusPrazo": "-",
+            "obs": "",
+            "driveLink": ""
+          },
+          "itens": [
+            {
+              "id": "x3st3lf",
+              "fields": {
+                "numero": "2.1",
+                "nome": "Criar materiais institucionais de atração de investimentos",
+                "responsavel": "Valdecarlos/Jota/Gabinete",
+                "recursos": "?",
+                "ppIni": "1-set-26",
+                "ppFim": "16-out-26",
+                "prIni": "1-set-26",
+                "prFim": "16-out-26",
+                "atraso": "-",
+                "indicador": "guia do Investidor PE criado",
+                "qtd": "1",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Ver se a ADEPE tem um Guia de Investidores",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x74eoyy",
+              "fields": {
+                "numero": "2.2",
+                "nome": "Desenvolver apresentações setoriais (investment decks)",
+                "responsavel": "Marcus/Caio",
+                "recursos": "-",
+                "ppIni": "1-set-26",
+                "ppFim": "16-out-26",
+                "prIni": "1-set-26",
+                "prFim": "16-out-26",
+                "atraso": "-",
+                "indicador": "apresentações setoriais",
+                "qtd": "x",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Padronizar apresentações",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xqrubs",
+              "fields": {
+                "numero": "2.3",
+                "nome": "Desenvolver relacionamento com câmaras de comércio, blocos econômicos, consulados e embaixadas",
+                "responsavel": "Pedro/Marcus",
+                "recursos": "-",
+                "ppIni": "30-jun-26",
+                "ppFim": "15-dez-26",
+                "prIni": "30-jun-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "câmaras de comércio em contato",
+                "qtd": "3",
+                "status": "EM ANDAMENTO",
+                "statusPrazo": "NO PRAZO",
+                "obs": "África Ocidental (28/jul); CCIB (30/jul); CCAB (19/ago)",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x9luzrw",
+              "fields": {
+                "numero": "2.4",
+                "nome": "Divulgar vantagens competitivas do Estado",
+                "responsavel": "SDEC PE/ADEPE",
+                "recursos": "-",
+                "ppIni": "30-jun-26",
+                "ppFim": "15-dez-26",
+                "prIni": "30-jun-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "",
+                "qtd": "",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xcs9awg",
+              "fields": {
+                "numero": "2.5",
+                "nome": "Criar campanhas digitais de promoção econômica (por segmentos etc.)",
+                "responsavel": "Valdecarlos/Jota/Gabinete",
+                "recursos": "-",
+                "ppIni": "15-set-26",
+                "ppFim": "15-dez-26",
+                "prIni": "15-set-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "",
+                "qtd": "",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Ver com Valdecarlos/Jota",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xbhvrqp",
+              "fields": {
+                "numero": "2.6",
+                "nome": "Utilizar LinkedIn e redes institucionais",
+                "responsavel": "Marcus/...",
+                "recursos": "-",
+                "ppIni": "15-abr-26",
+                "ppFim": "15-dez-26",
+                "prIni": "15-abr-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "relatório de contatos realizados",
+                "qtd": "",
+                "status": "EM ANDAMENTO",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Ver com Valdecarlos/Jota",
+                "driveLink": ""
+              },
+              "sub": []
+            }
+          ]
+        },
+        {
+          "id": "x86ldq4",
+          "fields": {
+            "numero": "3",
+            "nome": "Atendimento e Facilitação ao Investidor (Investor Care)",
+            "responsavel": "ADEPE/Marcus",
+            "recursos": "",
+            "ppIni": "",
+            "ppFim": "",
+            "prIni": "",
+            "prFim": "",
+            "atraso": "",
+            "indicador": "",
+            "qtd": "",
+            "status": "A INICIAR",
+            "statusPrazo": "-",
+            "obs": "",
+            "driveLink": ""
+          },
+          "itens": [
+            {
+              "id": "xfvx18p",
+              "fields": {
+                "numero": "3.1",
+                "nome": "Atender demandas de investidores",
+                "responsavel": "ADEPE",
+                "recursos": "-",
+                "ppIni": "15-abr-26",
+                "ppFim": "15-dez-26",
+                "prIni": "15-abr-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "plano de atendimento ao investidor",
+                "qtd": "-",
+                "status": "EM ANDAMENTO",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Ver se a ADEPE tem procedimentos",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xcr2pd7",
+              "fields": {
+                "numero": "3.2",
+                "nome": "Identificar necessidades de localização",
+                "responsavel": "ADEPE",
+                "recursos": "-",
+                "ppIni": "-",
+                "ppFim": "-",
+                "prIni": "-",
+                "prFim": "-",
+                "atraso": "-",
+                "indicador": "relatório de demandas",
+                "qtd": "-",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x8uv61m",
+              "fields": {
+                "numero": "3.3",
+                "nome": "Apresentar áreas disponíveis (site selection)",
+                "responsavel": "ADEPE",
+                "recursos": "-",
+                "ppIni": "-",
+                "ppFim": "-",
+                "prIni": "-",
+                "prFim": "-",
+                "atraso": "-",
+                "indicador": "matriz de facilitação",
+                "qtd": "-",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x5vjqgv",
+              "fields": {
+                "numero": "3.4",
+                "nome": "Conectar investidores com órgãos públicos",
+                "responsavel": "ADEPE",
+                "recursos": "-",
+                "ppIni": "-",
+                "ppFim": "-",
+                "prIni": "-",
+                "prFim": "-",
+                "atraso": "-",
+                "indicador": "mapa de parceiros institucionais",
+                "qtd": "-",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x6gh471",
+              "fields": {
+                "numero": "3.5",
+                "nome": "Apoiar processos de licenciamento",
+                "responsavel": "ADEPE",
+                "recursos": "-",
+                "ppIni": "-",
+                "ppFim": "-",
+                "prIni": "-",
+                "prFim": "-",
+                "atraso": "-",
+                "indicador": "-",
+                "qtd": "-",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x7354xh",
+              "fields": {
+                "numero": "3.6",
+                "nome": "Orientar sobre incentivos fiscais e financeiros",
+                "responsavel": "ADEPE",
+                "recursos": "-",
+                "ppIni": "-",
+                "ppFim": "-",
+                "prIni": "-",
+                "prFim": "-",
+                "atraso": "-",
+                "indicador": "-",
+                "qtd": "-",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x3lm9qn",
+              "fields": {
+                "numero": "3.7",
+                "nome": "Facilitar acesso a fornecedores e parceiros",
+                "responsavel": "ADEPE",
+                "recursos": "-",
+                "ppIni": "-",
+                "ppFim": "-",
+                "prIni": "-",
+                "prFim": "-",
+                "atraso": "-",
+                "indicador": "-",
+                "qtd": "-",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x8h43pk",
+              "fields": {
+                "numero": "3.8",
+                "nome": "Apoiar processos burocráticos",
+                "responsavel": "ADEPE",
+                "recursos": "-",
+                "ppIni": "-",
+                "ppFim": "-",
+                "prIni": "-",
+                "prFim": "-",
+                "atraso": "-",
+                "indicador": "-",
+                "qtd": "-",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            }
+          ]
+        },
+        {
+          "id": "x6kqavi",
+          "fields": {
+            "numero": "4",
+            "nome": "Desenvolvimento de Propostas de Investimento (Investment Proposal)",
+            "responsavel": "ADEPE/Marcus",
+            "recursos": "",
+            "ppIni": "",
+            "ppFim": "",
+            "prIni": "",
+            "prFim": "",
+            "atraso": "",
+            "indicador": "",
+            "qtd": "",
+            "status": "A INICIAR",
+            "statusPrazo": "-",
+            "obs": "",
+            "driveLink": ""
+          },
+          "itens": [
+            {
+              "id": "x8ey72t",
+              "fields": {
+                "numero": "4.1",
+                "nome": "Elaborar propostas personalizadas para investidores",
+                "responsavel": "ADEPE",
+                "recursos": "-",
+                "ppIni": "15-abr-26",
+                "ppFim": "15-dez-26",
+                "prIni": "15-abr-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "Investor Proposal Book",
+                "qtd": "-",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Ver se a ADEPE tem procedimentos",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xa1grem",
+              "fields": {
+                "numero": "4.2",
+                "nome": "Desenvolver estudos preliminares de localização",
+                "responsavel": "ADEPE",
+                "recursos": "-",
+                "ppIni": "-",
+                "ppFim": "-",
+                "prIni": "-",
+                "prFim": "-",
+                "atraso": "-",
+                "indicador": "Estudos de viabilidade inicial",
+                "qtd": "-",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x6y2nwv",
+              "fields": {
+                "numero": "4.3",
+                "nome": "Apresentar infraestrutura disponível",
+                "responsavel": "ADEPE",
+                "recursos": "-",
+                "ppIni": "-",
+                "ppFim": "-",
+                "prIni": "-",
+                "prFim": "-",
+                "atraso": "-",
+                "indicador": "Dossiês de oportunidades",
+                "qtd": "-",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xdxgf9q",
+              "fields": {
+                "numero": "4.4",
+                "nome": "Levantar dados econômicos e mão de obra",
+                "responsavel": "ADEPE",
+                "recursos": "-",
+                "ppIni": "-",
+                "ppFim": "-",
+                "prIni": "-",
+                "prFim": "-",
+                "atraso": "-",
+                "indicador": "-",
+                "qtd": "-",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xet4y2q",
+              "fields": {
+                "numero": "4.5",
+                "nome": "Identificar fornecedores locais",
+                "responsavel": "ADEPE",
+                "recursos": "-",
+                "ppIni": "-",
+                "ppFim": "-",
+                "prIni": "-",
+                "prFim": "-",
+                "atraso": "-",
+                "indicador": "-",
+                "qtd": "-",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xby7pdx",
+              "fields": {
+                "numero": "4.6",
+                "nome": "Estruturar argumentos de competitividade",
+                "responsavel": "ADEPE",
+                "recursos": "-",
+                "ppIni": "-",
+                "ppFim": "-",
+                "prIni": "-",
+                "prFim": "-",
+                "atraso": "-",
+                "indicador": "-",
+                "qtd": "-",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xefyw2p",
+              "fields": {
+                "numero": "4.7",
+                "nome": "Apoiar elaboração de business cases",
+                "responsavel": "ADEPE",
+                "recursos": "-",
+                "ppIni": "-",
+                "ppFim": "-",
+                "prIni": "-",
+                "prFim": "-",
+                "atraso": "-",
+                "indicador": "-",
+                "qtd": "-",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            }
+          ]
+        },
+        {
+          "id": "x4z8x3d",
+          "fields": {
+            "numero": "5",
+            "nome": "Eventos de Negócios e Missões Empresariais",
+            "responsavel": "Marcus Ferraz/ADEPE",
+            "recursos": "",
+            "ppIni": "",
+            "ppFim": "",
+            "prIni": "",
+            "prFim": "",
+            "atraso": "",
+            "indicador": "",
+            "qtd": "",
+            "status": "A INICIAR",
+            "statusPrazo": "-",
+            "obs": "",
+            "driveLink": ""
+          },
+          "itens": [
+            {
+              "id": "xfn59zu",
+              "fields": {
+                "numero": "5.1",
+                "nome": "Participar de eventos nacionais e internacionais (feiras, congressos, eventos empresariais, missões etc.)",
+                "responsavel": "Pedro/Marcus/ADEPE",
+                "recursos": "?",
+                "ppIni": "30-jun-26",
+                "ppFim": "15-dez-26",
+                "prIni": "30-jun-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "Calendário anual de eventos",
+                "qtd": "X",
+                "status": "EM ANDAMENTO",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Multimodal Nordeste 2026 (4 a 6/ago)",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xdnkkt7",
+              "fields": {
+                "numero": "5.2",
+                "nome": "Promover eventos locais",
+                "responsavel": "Pedro/Marcus/ADEPE",
+                "recursos": "?",
+                "ppIni": "1-set-26",
+                "ppFim": "15-dez-26",
+                "prIni": "30-jun-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "Relatórios de participação",
+                "qtd": "2",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Webinars setoriais, workshops, roadshows, fóruns de investimentos, encontros B2B, missões, agendas com investidores etc.",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x47gd2w",
+              "fields": {
+                "numero": "5.3",
+                "nome": "Recepcionar delegações empresariais",
+                "responsavel": "SDEC PE/ADEPE",
+                "recursos": "?",
+                "ppIni": "1-set-26",
+                "ppFim": "15-dez-26",
+                "prIni": "30-jun-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "Leads gerados",
+                "qtd": "",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            }
+          ]
+        },
+        {
+          "id": "x1xsiup",
+          "fields": {
+            "numero": "6",
+            "nome": "Governança e Monitoramento",
+            "responsavel": "Marcus Ferraz/ADEPE",
+            "recursos": "",
+            "ppIni": "",
+            "ppFim": "",
+            "prIni": "",
+            "prFim": "",
+            "atraso": "",
+            "indicador": "",
+            "qtd": "",
+            "status": "A INICIAR",
+            "statusPrazo": "-",
+            "obs": "",
+            "driveLink": ""
+          },
+          "itens": [
+            {
+              "id": "x7dy327",
+              "fields": {
+                "numero": "6.1",
+                "nome": "Realizar reuniões semanais de acompanhamento",
+                "responsavel": "Marcus Ferraz e equipe",
+                "recursos": "-",
+                "ppIni": "1-set-26",
+                "ppFim": "15-dez-26",
+                "prIni": "30-jun-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "Investimentos atraídos (R$) e empregos gerados",
+                "qtd": "",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Ação contínua",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x5h3dfj",
+              "fields": {
+                "numero": "6.2",
+                "nome": "Atualizar dashboard de gestão",
+                "responsavel": "Marcus Ferraz",
+                "recursos": "-",
+                "ppIni": "1-set-26",
+                "ppFim": "15-dez-26",
+                "prIni": "30-jun-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "Setores atendidos e Empresas atraídas",
+                "qtd": "",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Ação contínua",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xa9312r",
+              "fields": {
+                "numero": "6.3",
+                "nome": "Definir metas trimestrais",
+                "responsavel": "Pedro/Marcus",
+                "recursos": "-",
+                "ppIni": "1-set-26",
+                "ppFim": "15-dez-26",
+                "prIni": "30-jun-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "Municípios beneficiados",
+                "qtd": "",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Ação contínua",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xcnwci4",
+              "fields": {
+                "numero": "6.4",
+                "nome": "Monitorar indicadores",
+                "responsavel": "Marcus Ferraz",
+                "recursos": "-",
+                "ppIni": "1-set-26",
+                "ppFim": "15-dez-26",
+                "prIni": "30-jun-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "Tempo médio de atendimento ao investidor",
+                "qtd": "",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Ação contínua",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xgcf980",
+              "fields": {
+                "numero": "6.5",
+                "nome": "Produzir relatórios executivos para liderança",
+                "responsavel": "Marcus Ferraz",
+                "recursos": "-",
+                "ppIni": "1-set-26",
+                "ppFim": "15-dez-26",
+                "prIni": "30-jun-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "Conversão de oportunidades",
+                "qtd": "",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Ação contínua",
+                "driveLink": ""
+              },
+              "sub": []
+            }
+          ]
+        },
+        {
+          "id": "x42fi4x",
+          "fields": {
+            "numero": "7",
+            "nome": "Planos Territorias de Redes/Cadeias Produtivas (PTRPs)",
+            "responsavel": "Marcus/Caio",
+            "recursos": "2026/2027",
+            "ppIni": "",
+            "ppFim": "",
+            "prIni": "",
+            "prFim": "",
+            "atraso": "",
+            "indicador": "",
+            "qtd": "",
+            "status": "A INICIAR",
+            "statusPrazo": "-",
+            "obs": "Estratégias de Desenvolvimento.",
+            "driveLink": ""
+          },
+          "itens": [
+            {
+              "id": "xeykle3",
+              "fields": {
+                "numero": "7.1",
+                "nome": "Diagnosticar e mapear as redes/cadeias produtivas vocacionadas do Estado de PE",
+                "responsavel": "Marcus/Caio",
+                "recursos": "até dez/26",
+                "ppIni": "",
+                "ppFim": "",
+                "prIni": "",
+                "prFim": "",
+                "atraso": "-",
+                "indicador": "Diagnósticos realizados",
+                "qtd": "",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "OBJETIVO: Diagnosticar e mapear, com dados primários e secundários, as bases de produção dos segmentos estruturadores e de base familiar do Estado de PE.",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x2091mz",
+              "fields": {
+                "numero": "7.2",
+                "nome": "Elaborar os Planos Territoriais de Redes/Cadeias Produtivas do Estado de PE",
+                "responsavel": "Marcus/Caio/ADEPE",
+                "recursos": "2027",
+                "ppIni": "",
+                "ppFim": "",
+                "prIni": "",
+                "prFim": "",
+                "atraso": "-",
+                "indicador": "Planos Territoriais elaborados",
+                "qtd": "",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "OBJETIVO: Elaborar documentos orientadores (PTRPs) das políticas públicas de desenvolvimento econômico territorial (Matriz de Ações e Investimentos; pactuação e governança).",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xa78cob",
+              "fields": {
+                "numero": "7.3",
+                "nome": "Implementar os Planos Territoriais de Redes/Cadeias Produtivas de PE",
+                "responsavel": "SDEC PE/ADEPE",
+                "recursos": "2027",
+                "ppIni": "",
+                "ppFim": "",
+                "prIni": "",
+                "prFim": "",
+                "atraso": "-",
+                "indicador": "Planos Territoriais implementados",
+                "qtd": "",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "OBJETIVO: Fortalecer, a partir de estratégias, as redes e cadeias produtivas territoriais dos segmentos estruturadores e de base familiar de PE.",
+                "driveLink": ""
+              },
+              "sub": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "x93d5ls",
+      "nome": "Núcleo de Relações Institucionais e Comerciais",
+      "responsavel": "Pedro Leonardo/Marcus/ADEPE",
+      "data": "",
+      "collapsed": false,
+      "acoes": [
+        {
+          "id": "xfk6zha",
+          "fields": {
+            "numero": "1",
+            "nome": "Gestão de Relacionamentos",
+            "responsavel": "",
+            "recursos": "",
+            "ppIni": "",
+            "ppFim": "",
+            "prIni": "",
+            "prFim": "",
+            "atraso": "",
+            "indicador": "",
+            "qtd": "",
+            "status": "A INICIAR",
+            "statusPrazo": "-",
+            "obs": "",
+            "driveLink": ""
+          },
+          "itens": [
+            {
+              "id": "xfh8nbd",
+              "fields": {
+                "numero": "1.1",
+                "nome": "Criar e manter relacionamento",
+                "responsavel": "Pedro Leonardo/Marcus Ferraz",
+                "recursos": "-",
+                "ppIni": "1-set-26",
+                "ppFim": "15-dez-26",
+                "prIni": "30-jun-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "-",
+                "qtd": "-",
+                "status": "EM ANDAMENTO",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Associações, consulados, câmaras de comércio, blocos econômicos etc.",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xbg32l9",
+              "fields": {
+                "numero": "1.2",
+                "nome": "Criar mailing (contatos e parceiros)",
+                "responsavel": "Marcus Ferraz",
+                "recursos": "-",
+                "ppIni": "1-set-26",
+                "ppFim": "15-dez-26",
+                "prIni": "30-jun-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "Mailing de parceiros",
+                "qtd": "1",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "ORGANIZAR O MAILING DA SEAIEE",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xf358ld",
+              "fields": {
+                "numero": "1.3",
+                "nome": "Estabelecer acordos de cooperação",
+                "responsavel": "Pedro Leonardo/Marcus Ferraz",
+                "recursos": "-",
+                "ppIni": "1-set-26",
+                "ppFim": "15-dez-26",
+                "prIni": "30-jun-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "Agenda institucional",
+                "qtd": "-",
+                "status": "EM ANDAMENTO",
+                "statusPrazo": "-",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xfvq77u",
+              "fields": {
+                "numero": "1.3.2",
+                "nome": "Comunidade Económica dos Estados da África Ocidental (CEDEAO)",
+                "responsavel": "Pedro Leonardo Lacerda/Marcus Ferraz",
+                "recursos": "-",
+                "ppIni": "-",
+                "ppFim": "-",
+                "prIni": "-",
+                "prFim": "28-jul-26",
+                "atraso": "-",
+                "indicador": "Agenda institucional",
+                "qtd": "3",
+                "status": "EM ANDAMENTO",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Reunião presencial realizada em 28/jul com Rafael Toscano > Identificar segmentos de interesse e oportunidades.",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x5idscj",
+              "fields": {
+                "numero": "1.3.1",
+                "nome": "Câmara de Comércio Índia Brasil (CCIB)",
+                "responsavel": "Pedro Leonardo Lacerda/Marcus Ferraz",
+                "recursos": "-",
+                "ppIni": "-",
+                "ppFim": "-",
+                "prIni": "-",
+                "prFim": "30-jul-26",
+                "atraso": "-",
+                "indicador": "",
+                "qtd": "",
+                "status": "EM ANDAMENTO",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Reunião presencial realizada em 30/jul com Letícia Gomes > Providenciar relatório \"cadeias produtivas de Pernambuco e oportunidades de investimentos e parcerias\".",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xgaf4d5",
+              "fields": {
+                "numero": "1.3.3",
+                "nome": "Câmara de Comércio Árabe-brasileira (CCAB)",
+                "responsavel": "Pedro Leonardo Lacerda/Marcus Ferraz",
+                "recursos": "-",
+                "ppIni": "-",
+                "ppFim": "-",
+                "prIni": "-",
+                "prFim": "19-ago-26",
+                "atraso": "-",
+                "indicador": "",
+                "qtd": "",
+                "status": "EM ANDAMENTO",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Reunião remota realizada em 19/ago com Karen Mizuta > Providenciar relatório \"cadeias produtivas de Pernambuco e oportunidades de investimentos e parcerias\".",
+                "driveLink": ""
+              },
+              "sub": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "x6th68r",
+      "nome": "Núcleo de Relacionamento e Legado (Aftercare)",
+      "responsavel": "Marcus/ADEPE",
+      "data": "",
+      "collapsed": false,
+      "acoes": [
+        {
+          "id": "xc41ypn",
+          "fields": {
+            "numero": "1",
+            "nome": "Aftercare e Expansão de Investimentos",
+            "responsavel": "Marcus Ferraz",
+            "recursos": "",
+            "ppIni": "",
+            "ppFim": "",
+            "prIni": "",
+            "prFim": "",
+            "atraso": "",
+            "indicador": "",
+            "qtd": "",
+            "status": "A INICIAR",
+            "statusPrazo": "-",
+            "obs": "",
+            "driveLink": ""
+          },
+          "itens": [
+            {
+              "id": "x6sl8st",
+              "fields": {
+                "numero": "1.1",
+                "nome": "Fazer contatos com empresas instaladas",
+                "responsavel": "Marcus",
+                "recursos": "-",
+                "ppIni": "18-mai-26",
+                "ppFim": "15-dez-26",
+                "prIni": "18-mai-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "",
+                "qtd": "",
+                "status": "EM ANDAMENTO",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Ação contínua.",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x2xcyom",
+              "fields": {
+                "numero": "1.2",
+                "nome": "Identificar necessidades de ações (dificuldades operacionais, projetos de expansão etc.)",
+                "responsavel": "Marcus",
+                "recursos": "-",
+                "ppIni": "18-mai-26",
+                "ppFim": "15-dez-26",
+                "prIni": "18-mai-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "",
+                "qtd": "",
+                "status": "EM ANDAMENTO",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Ação contínua.",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x7spv6j",
+              "fields": {
+                "numero": "1.3",
+                "nome": "Atuar na facilitação",
+                "responsavel": "Marcus",
+                "recursos": "-",
+                "ppIni": "18-mai-26",
+                "ppFim": "15-dez-26",
+                "prIni": "18-mai-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "Relatório de atendimento",
+                "qtd": "",
+                "status": "EM ANDAMENTO",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Ação contínua.",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x8obzt6",
+              "fields": {
+                "numero": "1.4",
+                "nome": "Criar relacionamento permanente",
+                "responsavel": "Marcus",
+                "recursos": "-",
+                "ppIni": "18-mai-26",
+                "ppFim": "15-dez-26",
+                "prIni": "18-mai-26",
+                "prFim": "15-dez-26",
+                "atraso": "-",
+                "indicador": "Relatórios de satisfação",
+                "qtd": "",
+                "status": "EM ANDAMENTO",
+                "statusPrazo": "NO PRAZO",
+                "obs": "Ação contínua.",
+                "driveLink": ""
+              },
+              "sub": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "x1pr1ew",
+      "nome": "Núcleo de Suporte e Facilitação",
+      "responsavel": "",
+      "data": "",
+      "collapsed": false,
+      "acoes": [
+        {
+          "id": "x1l2cqc",
+          "fields": {
+            "numero": "1",
+            "nome": "",
+            "responsavel": "",
+            "recursos": "",
+            "ppIni": "",
+            "ppFim": "",
+            "prIni": "",
+            "prFim": "",
+            "atraso": "",
+            "indicador": "",
+            "qtd": "",
+            "status": "A INICIAR",
+            "statusPrazo": "-",
+            "obs": "",
+            "driveLink": ""
+          },
+          "itens": [
+            {
+              "id": "xog8b1",
+              "fields": {
+                "numero": "1.1",
+                "nome": "",
+                "responsavel": "",
+                "recursos": "",
+                "ppIni": "",
+                "ppFim": "",
+                "prIni": "",
+                "prFim": "",
+                "atraso": "",
+                "indicador": "",
+                "qtd": "",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xa88n1k",
+              "fields": {
+                "numero": "1.2",
+                "nome": "",
+                "responsavel": "",
+                "recursos": "",
+                "ppIni": "",
+                "ppFim": "",
+                "prIni": "",
+                "prFim": "",
+                "atraso": "",
+                "indicador": "",
+                "qtd": "",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x52m66n",
+              "fields": {
+                "numero": "1.3",
+                "nome": "",
+                "responsavel": "",
+                "recursos": "",
+                "ppIni": "",
+                "ppFim": "",
+                "prIni": "",
+                "prFim": "",
+                "atraso": "",
+                "indicador": "",
+                "qtd": "",
+                "status": "CONCLUÍDA",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "x3hx27o",
+      "nome": "Núcleo de Acompanhamento de Programas e Projetos",
+      "responsavel": "",
+      "data": "",
+      "collapsed": false,
+      "acoes": [
+        {
+          "id": "x37rzt4",
+          "fields": {
+            "numero": "1",
+            "nome": "",
+            "responsavel": "",
+            "recursos": "",
+            "ppIni": "",
+            "ppFim": "",
+            "prIni": "",
+            "prFim": "",
+            "atraso": "",
+            "indicador": "",
+            "qtd": "",
+            "status": "A INICIAR",
+            "statusPrazo": "-",
+            "obs": "",
+            "driveLink": ""
+          },
+          "itens": [
+            {
+              "id": "x3g0evb",
+              "fields": {
+                "numero": "1.1",
+                "nome": "",
+                "responsavel": "",
+                "recursos": "",
+                "ppIni": "",
+                "ppFim": "",
+                "prIni": "",
+                "prFim": "",
+                "atraso": "",
+                "indicador": "",
+                "qtd": "",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xekfir0",
+              "fields": {
+                "numero": "1.2",
+                "nome": "",
+                "responsavel": "",
+                "recursos": "",
+                "ppIni": "",
+                "ppFim": "",
+                "prIni": "",
+                "prFim": "",
+                "atraso": "",
+                "indicador": "",
+                "qtd": "",
+                "status": "A INICIAR",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "x2g2q94",
+              "fields": {
+                "numero": "1.3",
+                "nome": "",
+                "responsavel": "",
+                "recursos": "",
+                "ppIni": "",
+                "ppFim": "",
+                "prIni": "",
+                "prFim": "",
+                "atraso": "",
+                "indicador": "",
+                "qtd": "",
+                "status": "CONCLUÍDA",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
+              "id": "xb1rgar",
+              "fields": {
+                "numero": "1.4",
+                "nome": "",
+                "responsavel": "",
+                "recursos": "",
+                "ppIni": "",
+                "ppFim": "",
+                "prIni": "",
+                "prFim": "",
+                "atraso": "",
+                "indicador": "",
+                "qtd": "",
+                "status": "EM ANDAMENTO",
+                "statusPrazo": "ATRASADA",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

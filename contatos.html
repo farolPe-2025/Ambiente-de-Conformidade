@@ -11,9 +11,15 @@
 <header class="nav" id="site-nav"></header>
 
 <main class="wrap" style="padding:var(--space-6) 0 var(--space-8);">
-  <h1 style="text-transform:uppercase;font-size:32px;margin-bottom:4px;">Mailing / Contatos</h1>
-  <p class="text-muted">Cadastro de contatos institucionais, investidores e parceiros da SEAIEE.</p>
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:var(--space-4);">
+    <div>
+      <h1 style="font-size:32px;margin-bottom:4px;">Mailing / Contatos</h1>
+      <p class="text-muted">Cadastro de contatos institucionais, investidores e parceiros da SEAIEE.</p>
+    </div>
+    <div id="publishArea"></div>
+  </div>
 
+  <div id="draftBanner"></div>
   <div id="gate"></div>
   <div id="content" class="hidden"></div>
 </main>
@@ -28,7 +34,8 @@
 renderNav('contatos');
 renderFooter();
 
-var contacts = loadContacts();
+var contacts = [];
+var published = [];
 var editingId = null;
 var search = '';
 
@@ -40,22 +47,23 @@ function renderContent(){
   }).sort(function(a,b){ return (a.nome||'').localeCompare(b.nome||'','pt-BR'); });
 
   var html = '<div style="display:flex;justify-content:space-between;align-items:center;margin:var(--space-6) 0 var(--space-4);flex-wrap:wrap;gap:8px;">'
-    + '<h2 style="margin:0;text-transform:uppercase;">Contatos cadastrados</h2>'
+    + '<h2 style="margin:0;">Contatos cadastrados</h2>'
     + '<div style="display:flex;gap:8px;"><button class="btn btn-primary" id="btnNew">➕ Novo contato</button></div>'
     + '</div>'
     + '<div class="filters"><input type="text" id="fSearch" placeholder="🔎 Buscar por nome, organização, categoria..." value="'+esc(search)+'"></div>'
     + '<div id="formArea"></div>';
 
-  html += '<div class="table-scroll"><table class="table"><thead><tr><th>Nome</th><th>Organização</th><th>Cargo</th><th>E-mail</th><th>Telefone</th><th>Categoria</th><th></th></tr></thead><tbody>';
+  html += '<div class="table-scroll"><table class="table"><thead><tr><th>Nome</th><th>Organização</th><th>Cargo</th><th>E-mail</th><th>Telefone</th><th>Categoria</th><th>Observação</th><th></th></tr></thead><tbody>';
   filtered.forEach(function(c){
-    html += '<tr><td><strong>'+esc(c.nome)+'</strong>'+(c.obs?'<div class="text-muted" style="font-size:11px;max-width:260px;">'+esc(c.obs)+'</div>':'')+'</td>'
+    html += '<tr><td><strong>'+esc(c.nome)+'</strong></td>'
       + '<td>'+esc(c.organizacao)+'</td><td>'+esc(c.cargo)+'</td>'
       + '<td>'+(c.email?'<a href="mailto:'+esc(c.email)+'">'+esc(c.email)+'</a>':'—')+'</td>'
       + '<td>'+esc(c.telefone||'—')+'</td>'
       + '<td><span class="tag tag-accent">'+esc(c.categoria||'—')+'</span></td>'
+      + '<td style="max-width:260px;white-space:normal;">'+esc(c.obs||'—')+'</td>'
       + '<td><button class="iconbtn" data-edit="'+esc(c.id)+'">✎</button><button class="iconbtn del" data-del="'+esc(c.id)+'">🗑</button></td></tr>';
   });
-  if(filtered.length===0) html += '<tr><td colspan="7" class="text-muted" style="text-align:center;padding:var(--space-6);">Nenhum contato encontrado.</td></tr>';
+  if(filtered.length===0) html += '<tr><td colspan="8" class="text-muted" style="text-align:center;padding:var(--space-6);">Nenhum contato encontrado.</td></tr>';
   html += '</tbody></table></div>';
 
   document.getElementById('content').innerHTML = html;
@@ -63,15 +71,14 @@ function renderContent(){
   document.getElementById('btnNew').onclick = function(){ editingId=null; renderForm(); };
   Array.prototype.forEach.call(document.querySelectorAll('[data-edit]'), function(b){ b.onclick=function(){ editingId=b.getAttribute('data-edit'); renderForm(); }; });
   Array.prototype.forEach.call(document.querySelectorAll('[data-del]'), function(b){ b.onclick=function(){
-    if(confirm('Remover este contato?')){ contacts = contacts.filter(function(c){return c.id!==b.getAttribute('data-del');}); saveContacts(contacts); renderContent(); showToast('Contato removido.'); }
+    if(confirm('Remover este contato?')){ contacts = contacts.filter(function(c){return c.id!==b.getAttribute('data-del');}); saveContactsDraft(contacts); renderContent(); showToast('Contato removido (rascunho local — clique em Publicar para valer para todos).'); }
   }; });
 }
 
 function renderForm(){
   var c = editingId ? contacts.filter(function(x){return x.id===editingId;})[0] : {id:uid(),nome:'',organizacao:'',cargo:'',email:'',telefone:'',categoria:'',obs:''};
   var el = document.getElementById('formArea');
-  el.innerHTML = '<div class="card blueprint" style="padding:var(--space-4);margin-bottom:var(--space-6);">'
-    + '<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>'
+  el.innerHTML = '<div class="card" style="padding:var(--space-4);margin-bottom:var(--space-6);">'
     + '<div class="card-kicker">'+(editingId?'Editar contato':'Novo contato')+'</div>'
     + '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-3);margin-top:var(--space-3);">'
     + '<div class="field"><label>Nome</label><input class="input" id="fNome" value="'+esc(c.nome)+'"></div>'
@@ -96,13 +103,34 @@ function renderForm(){
     if(!c.nome){ alert('Preencha ao menos o nome.'); return; }
     if(editingId){ contacts = contacts.map(function(x){ return x.id===editingId ? c : x; }); }
     else { contacts.push(c); }
-    saveContacts(contacts); editingId=null; renderContent(); showToast('Contato salvo.');
+    saveContactsDraft(contacts); editingId=null; renderContent(); showToast('Salvo como rascunho neste navegador. Clique em "Publicar" para valer para todos.');
   };
+}
+
+function renderPublishArea(){
+  var authed = isAuthed();
+  var el = document.getElementById('publishArea');
+  if(!authed){ el.innerHTML=''; return; }
+  el.innerHTML = '<button class="btn btn-primary" id="btnPublish">💾 Publicar alterações</button>';
+  bindPublishButton('btnPublish', function(){
+    return publishJSON('data/contatos.json', contacts, 'Atualiza contatos via Ambiente de Conformidade');
+  }, function(){
+    published = JSON.parse(JSON.stringify(contacts));
+    localStorage.removeItem(CONTACTS_KEY);
+    document.getElementById('draftBanner').innerHTML = '';
+  });
 }
 
 lockGate('gate', function(){
   document.getElementById('content').classList.remove('hidden');
-  renderContent();
+  fetchContacts(function(list){
+    published = list;
+    var draft = hasLocalDraft(CONTACTS_KEY, published);
+    contacts = draft || JSON.parse(JSON.stringify(published));
+    renderContent();
+    renderPublishArea();
+    renderDraftBanner('draftBanner', CONTACTS_KEY, published, function(d){ contacts = d; renderContent(); }, function(){ contacts = JSON.parse(JSON.stringify(published)); renderContent(); });
+  });
 });
 </script>
 </body>

@@ -13,11 +13,13 @@
 <main class="wrap" style="padding:var(--space-6) 0 var(--space-8);">
   <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:var(--space-4);margin-bottom:var(--space-4);">
     <div>
-      <h1 style="text-transform:uppercase;font-size:32px;margin-bottom:4px;">Painel de acompanhamento</h1>
+      <h1 style="font-size:32px;margin-bottom:4px;">Painel de acompanhamento</h1>
       <p class="text-muted" style="margin:0;">Visão consolidada dos 6 núcleos da SEAIEE — selecione o tipo de acompanhamento abaixo.</p>
     </div>
     <div id="toolbarArea" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;"></div>
   </div>
+
+  <div id="draftBanner"></div>
 
   <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-4);margin-bottom:var(--space-6);">
     <div class="seg" id="viewSeg">
@@ -48,9 +50,22 @@ function renderToolbar(){
   var el = document.getElementById('toolbarArea');
   var authed = isAuthed();
   var buttons = '';
-  if(authed){ buttons += '<button class="btn small btn-danger" id="btnReset">↺ Restaurar publicado</button>'; }
+  if(authed){
+    buttons += '<button class="btn btn-primary" id="btnPublish">💾 Publicar alterações</button>';
+    buttons += '<button class="btn small btn-danger" id="btnReset">↺ Descartar rascunho</button>';
+  }
   el.innerHTML = buttons;
   var rb = document.getElementById('btnReset'); if(rb) rb.onclick = resetData;
+  bindPublishButton('btnPublish', function(){
+    return Promise.all([
+      publishJSON('data/interno.json', DATA.interno, 'Atualiza Acompanhamento Interno via Ambiente de Conformidade'),
+      publishJSON('data/producao.json', DATA.producao, 'Atualiza Acompanhamento de Produção via Ambiente de Conformidade')
+    ]);
+  }, function(){
+    PUBLISHED = JSON.parse(JSON.stringify(DATA));
+    localStorage.removeItem(STORAGE_KEY);
+    document.getElementById('draftBanner').innerHTML = '';
+  });
 
   var editEl = document.getElementById('editToggleArea');
   if(authed){
@@ -204,7 +219,7 @@ function renderSheet(){
   var sh = DATA[UI.sheetKey];
   var nucleosHtml = sh.nucleos.map(function(nu,ni){ return renderNucleo(ni,nu); }).join('');
   var addNucleoBtn = UI.editMode ? '<button class="btn btn-primary" data-act="add-nucleo" data-path="'+UI.sheetKey+'">➕ Adicionar novo núcleo</button>' : '';
-  document.getElementById('sheetContent').innerHTML = '<h3 style="text-transform:uppercase;margin:0 0 var(--space-4);">'+esc(sh.title)+'</h3>'+nucleosHtml+addNucleoBtn;
+  document.getElementById('sheetContent').innerHTML = '<h3 style="margin:0 0 var(--space-4);">'+esc(sh.title)+'</h3>'+nucleosHtml+addNucleoBtn;
 }
 
 /* ---- edit mutation handlers (delegated) ---- */
@@ -265,7 +280,13 @@ Array.prototype.forEach.call(document.querySelectorAll('#viewSeg input'), functi
   r.onchange = function(){ UI.sheetKey = (r.value==='acao') ? 'interno' : 'producao'; renderAll(); };
 });
 
-renderAll();
+initData(function(){
+  renderAll();
+  renderDraftBanner('draftBanner', STORAGE_KEY, PUBLISHED,
+    function(draft){ DATA = draft; renderAll(); },
+    function(){ DATA = JSON.parse(JSON.stringify(PUBLISHED)); renderAll(); }
+  );
+});
 </script>
 </body>
 </html>

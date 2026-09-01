@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reuniões — Ambiente de Conformidade</title>
+<title>Eventos — Ambiente de Conformidade</title>
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
@@ -11,9 +11,15 @@
 <header class="nav" id="site-nav"></header>
 
 <main class="wrap" style="padding:var(--space-6) 0 var(--space-8);">
-  <h1 style="text-transform:uppercase;font-size:32px;margin-bottom:4px;">Controle de reuniões e eventos</h1>
-  <p class="text-muted">O que for salvo aqui alimenta o calendário "Próximas reuniões" da página inicial após publicação.</p>
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:var(--space-4);">
+    <div>
+      <h1 style="font-size:32px;margin-bottom:4px;">Controle de eventos</h1>
+      <p class="text-muted">O que for publicado aqui alimenta o calendário "Próximos eventos" da página inicial.</p>
+    </div>
+    <div id="publishArea"></div>
+  </div>
 
+  <div id="draftBanner"></div>
   <div id="gate"></div>
   <div id="content" class="hidden"></div>
 </main>
@@ -25,10 +31,11 @@
 <script src="assets/data-producao.js"></script>
 <script src="assets/common.js"></script>
 <script>
-renderNav('reunioes');
+renderNav('eventos');
 renderFooter();
 
-var meetings = loadMeetings();
+var meetings = [];
+var published = [];
 var editingId = null;
 
 function statusTag(s){ return s==='CONCLUÍDA'?'tag-good':s==='CANCELADA'?'tag-neutral':'tag-accent'; }
@@ -36,26 +43,27 @@ function statusTag(s){ return s==='CONCLUÍDA'?'tag-good':s==='CANCELADA'?'tag-n
 function renderContent(){
   var sorted = meetings.slice().sort(function(a,b){ return (a.data||'').localeCompare(b.data||''); });
   var html = '<div style="display:flex;justify-content:space-between;align-items:center;margin:var(--space-6) 0 var(--space-4);flex-wrap:wrap;gap:8px;">'
-    + '<h2 style="margin:0;text-transform:uppercase;">Reuniões cadastradas</h2>'
-    + '<div style="display:flex;gap:8px;"><button class="btn btn-primary" id="btnNew">➕ Nova reunião</button></div>'
+    + '<h2 style="margin:0;">Eventos cadastrados</h2>'
+    + '<div style="display:flex;gap:8px;"><button class="btn btn-primary" id="btnNew">➕ Novo evento</button></div>'
     + '</div>';
 
   html += '<div id="formArea"></div>';
 
-  html += '<div class="table-scroll"><table class="table"><thead><tr><th>Data</th><th>Hora</th><th>Título</th><th>Núcleo</th><th>Local</th><th>Participantes</th><th>Status</th><th></th></tr></thead><tbody>';
+  html += '<div class="table-scroll"><table class="table"><thead><tr><th>Data</th><th>Hora</th><th>Título</th><th>Núcleo</th><th>Local</th><th>Participantes</th><th>Status</th><th>Observação</th><th></th></tr></thead><tbody>';
   sorted.forEach(function(m){
     html += '<tr><td>'+esc(m.data)+'</td><td>'+esc(m.hora)+'</td><td>'+esc(m.titulo)+'</td><td>'+esc(m.nucleo)+'</td><td>'+esc(m.local)+'</td><td>'+esc(m.participantes)+'</td>'
       + '<td><span class="tag '+statusTag(m.status)+'">'+esc(m.status)+'</span></td>'
+      + '<td style="max-width:260px;white-space:normal;">'+esc(m.obs||'—')+'</td>'
       + '<td><button class="iconbtn" data-edit="'+esc(m.id)+'">✎</button><button class="iconbtn del" data-del="'+esc(m.id)+'">🗑</button></td></tr>';
   });
-  if(sorted.length===0) html += '<tr><td colspan="8" class="text-muted" style="text-align:center;padding:var(--space-6);">Nenhuma reunião cadastrada.</td></tr>';
+  if(sorted.length===0) html += '<tr><td colspan="9" class="text-muted" style="text-align:center;padding:var(--space-6);">Nenhum evento cadastrado.</td></tr>';
   html += '</tbody></table></div>';
 
   document.getElementById('content').innerHTML = html;
   document.getElementById('btnNew').onclick = function(){ editingId=null; renderForm(); };
   Array.prototype.forEach.call(document.querySelectorAll('[data-edit]'), function(b){ b.onclick=function(){ editingId=b.getAttribute('data-edit'); renderForm(); }; });
   Array.prototype.forEach.call(document.querySelectorAll('[data-del]'), function(b){ b.onclick=function(){
-    if(confirm('Remover esta reunião?')){ meetings = meetings.filter(function(m){return m.id!==b.getAttribute('data-del');}); saveMeetings(meetings); renderContent(); showToast('Reunião removida.'); }
+    if(confirm('Remover este evento?')){ meetings = meetings.filter(function(m){return m.id!==b.getAttribute('data-del');}); saveMeetingsDraft(meetings); renderContent(); showToast('Removido (rascunho local — clique em Publicar para valer para todos).'); }
   }; });
 }
 
@@ -63,9 +71,8 @@ function renderForm(){
   var m = editingId ? meetings.filter(function(x){return x.id===editingId;})[0] : {id:uid(),titulo:'',data:'',hora:'',nucleo:'',local:'',participantes:'',status:'AGENDADA',obs:''};
   var nucleos = DATA.interno.nucleos.map(function(n){return n.nome;});
   var el = document.getElementById('formArea');
-  el.innerHTML = '<div class="card blueprint" style="padding:var(--space-4);margin-bottom:var(--space-6);">'
-    + '<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>'
-    + '<div class="card-kicker">'+(editingId?'Editar reunião':'Nova reunião')+'</div>'
+  el.innerHTML = '<div class="card" style="padding:var(--space-4);margin-bottom:var(--space-6);">'
+    + '<div class="card-kicker">'+(editingId?'Editar evento':'Novo evento')+'</div>'
     + '<div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:var(--space-3);margin-top:var(--space-3);">'
     + '<div class="field"><label>Título</label><input class="input" id="fTitulo" value="'+esc(m.titulo)+'"></div>'
     + '<div class="field"><label>Data</label><input class="input" id="fData" type="date" value="'+esc(m.data)+'"></div>'
@@ -91,13 +98,36 @@ function renderForm(){
     if(!m.titulo || !m.data){ alert('Preencha ao menos título e data.'); return; }
     if(editingId){ meetings = meetings.map(function(x){ return x.id===editingId ? m : x; }); }
     else { meetings.push(m); }
-    saveMeetings(meetings); editingId=null; renderContent(); showToast('Reunião salva.');
+    saveMeetingsDraft(meetings); editingId=null; renderContent(); showToast('Salvo como rascunho neste navegador. Clique em "Publicar" para valer para todos.');
   };
+}
+
+function renderPublishArea(){
+  var authed = isAuthed();
+  var el = document.getElementById('publishArea');
+  if(!authed){ el.innerHTML=''; return; }
+  el.innerHTML = '<button class="btn btn-primary" id="btnPublish">💾 Publicar alterações</button>';
+  bindPublishButton('btnPublish', function(){
+    return publishJSON('data/eventos.json', meetings, 'Atualiza eventos via Ambiente de Conformidade');
+  }, function(){
+    published = JSON.parse(JSON.stringify(meetings));
+    localStorage.removeItem(MEETINGS_KEY);
+    document.getElementById('draftBanner').innerHTML = '';
+  });
 }
 
 lockGate('gate', function(){
   document.getElementById('content').classList.remove('hidden');
-  renderContent();
+  initData(function(){
+    fetchMeetings(function(list){
+      published = list;
+      var draft = hasLocalDraft(MEETINGS_KEY, published);
+      meetings = draft || JSON.parse(JSON.stringify(published));
+      renderContent();
+      renderPublishArea();
+      renderDraftBanner('draftBanner', MEETINGS_KEY, published, function(d){ meetings = d; renderContent(); }, function(){ meetings = JSON.parse(JSON.stringify(published)); renderContent(); });
+    });
+  });
 });
 </script>
 </body>

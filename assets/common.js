@@ -1,6 +1,6 @@
 /* ============================================================
    Ambiente de Conformidade — utilidades compartilhadas
-   (usado por index.html, painel.html, reunioes.html, contatos.html)
+   (usado por index.html, painel.html, eventos.html, contatos.html)
    ============================================================ */
 
 /* ---------- básicos ---------- */
@@ -65,28 +65,66 @@ function buildLiveSheet(seed){
   return live;
 }
 
-/* ---------- persistência local (edição fica no navegador; publicar = exportar JSON e commitar) ---------- */
+/* ============================================================
+   Persistência: os dados "publicados" (visíveis para todo mundo)
+   vivem em data/*.json dentro do próprio repositório. O navegador
+   busca esses arquivos ao carregar a página (fetch). Edições viram
+   um "rascunho" salvo só no localStorage daquele navegador até
+   alguém clicar em "Publicar alterações" — que grava de verdade em
+   data/*.json via a API do GitHub, usando um token que a própria
+   pessoa fornece (nunca fica embutido no código do site).
+   ============================================================ */
 var STORAGE_KEY = "ac_data_v1";
-function loadData(){
-  try{
-    var raw = localStorage.getItem(STORAGE_KEY);
-    if(raw){ return JSON.parse(raw); }
-  }catch(e){}
-  return { interno: buildLiveSheet(SEED_INTERNO), producao: buildLiveSheet(SEED_PRODUCAO) };
+var DATA = null; // populado por initData()
+
+function fetchJSON(path){
+  return fetch(path, {cache:'no-store'})
+    .then(function(r){ if(!r.ok) throw new Error('not found'); return r.json(); })
+    .then(function(v){ return v; }, function(){ return null; });
 }
-var DATA = loadData();
-var saveTimer=null;
+
+function initData(cb){
+  Promise.all([fetchJSON('data/interno.json'), fetchJSON('data/producao.json')]).then(function(res){
+    PUBLISHED = { interno: res[0] || buildLiveSheet(SEED_INTERNO), producao: res[1] || buildLiveSheet(SEED_PRODUCAO) };
+    DATA = { interno: JSON.parse(JSON.stringify(PUBLISHED.interno)), producao: JSON.parse(JSON.stringify(PUBLISHED.producao)) };
+    cb();
+  });
+}
+var PUBLISHED = null; // último estado publicado conhecido (para comparar com rascunho local)
+
 function scheduleSave(){
-  clearTimeout(saveTimer);
-  saveTimer = setTimeout(function(){
-    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(DATA)); showToast("Alterações salvas neste navegador."); }
-    catch(e){ showToast("Falha ao salvar localmente."); }
+  clearTimeout(scheduleSave._t);
+  scheduleSave._t = setTimeout(function(){
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(DATA)); showToast("Alteração salva como rascunho neste navegador. Clique em \"Publicar\" para valer para todo mundo."); }
+    catch(e){ showToast("Falha ao salvar rascunho localmente."); }
   }, 450);
 }
+function hasLocalDraft(key, currentPublished){
+  try{
+    var raw = localStorage.getItem(key);
+    if(!raw) return null;
+    if(JSON.stringify(currentPublished) === raw) return null; // idêntico ao publicado, não é rascunho útil
+    return JSON.parse(raw);
+  }catch(e){ return null; }
+}
+function renderDraftBanner(containerId, draftKey, publishedObj, onRestore, onDiscard){
+  var el = document.getElementById(containerId); if(!el) return;
+  var draft = hasLocalDraft(draftKey, publishedObj);
+  if(!draft){ el.innerHTML=''; return; }
+  el.innerHTML = '<div class="draft-banner">'
+    + '<span>📝 Encontramos um rascunho não publicado neste navegador (de uma edição anterior). Ninguém mais está vendo essas mudanças ainda.</span>'
+    + '<div style="display:flex;gap:8px;flex:none;">'
+    + '<button class="btn small btn-primary" id="draftRestoreBtn">Continuar editando o rascunho</button>'
+    + '<button class="btn small btn-secondary" id="draftDiscardBtn">Descartar e usar o publicado</button>'
+    + '</div></div>';
+  document.getElementById('draftRestoreBtn').onclick = function(){ onRestore(draft); el.innerHTML=''; };
+  document.getElementById('draftDiscardBtn').onclick = function(){
+    if(confirm('Descartar o rascunho local? Essa ação não pode ser desfeita.')){ localStorage.removeItem(draftKey); if(onDiscard) onDiscard(); el.innerHTML=''; }
+  };
+}
 function resetData(){
-  if(!confirm("Isso apaga as edições feitas neste navegador e restaura os dados publicados. Continuar?")) return;
-  DATA = { interno: buildLiveSheet(SEED_INTERNO), producao: buildLiveSheet(SEED_PRODUCAO) };
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(DATA));
+  if(!confirm("Isso descarta o rascunho local (não publicado) e recarrega a versão publicada. Continuar?")) return;
+  localStorage.removeItem(STORAGE_KEY);
   location.reload();
 }
 function downloadBlob(filename, content, type){
@@ -96,9 +134,82 @@ function downloadBlob(filename, content, type){
   document.body.appendChild(a); a.click(); document.body.removeChild(a);
   setTimeout(function(){URL.revokeObjectURL(url);}, 2000);
 }
-function exportDataJson(){
-  downloadBlob('ac_dados_'+new Date().toISOString().slice(0,10)+'.json', JSON.stringify(DATA,null,2), 'application/json');
-  showToast('Backup exportado. Para publicar, substitua assets/data*.js ou peça para regenerar o site.');
+
+/* ---------- publicação real via GitHub Contents API ---------- */
+var GITHUB_REPO = 'farolPe-2025/Ambiente-de-Conformidade';
+var GITHUB_BRANCH = 'main';
+var GH_TOKEN_KEY = 'ac_gh_token';
+
+function utf8ToB64(str){ return btoa(unescape(encodeURIComponent(str))); }
+function getCachedToken(){ try{ return sessionStorage.getItem(GH_TOKEN_KEY); }catch(e){ return null; } }
+function setCachedToken(t){ try{ sessionStorage.setItem(GH_TOKEN_KEY, t); }catch(e){} }
+function clearCachedToken(){ try{ sessionStorage.removeItem(GH_TOKEN_KEY); showToast('Token esquecido.'); }catch(e){} }
+
+function promptForToken(){
+  return new Promise(function(resolve){
+    var existing = getCachedToken();
+    if(existing){ resolve(existing); return; }
+    var overlay = document.createElement('div');
+    overlay.className = 'modal-backdrop';
+    overlay.innerHTML = '<div class="modal-card card elev-lg">'
+      + '<h3 style="margin-top:0;">Publicar no GitHub</h3>'
+      + '<p class="text-muted" style="font-size:13px;">Cole um token de acesso pessoal do GitHub com permissão de escrita neste repositório. '
+      + '<a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Criar um token (fine-grained) →</a><br>'
+      + 'Dê acesso apenas ao repositório <strong>'+esc(GITHUB_REPO)+'</strong>, permissão "Contents: Read and write".</p>'
+      + '<div class="field" style="margin-bottom:8px;"><input type="password" class="input" id="ghTokenInput" placeholder="github_pat_..."></div>'
+      + '<label style="display:flex;align-items:center;gap:6px;font-size:12.5px;margin-bottom:14px;"><input type="checkbox" id="ghTokenRemember" checked> Lembrar neste navegador durante esta sessão (fecha ao fechar a aba)</label>'
+      + '<div style="display:flex;gap:8px;"><button class="btn btn-primary" id="ghTokenOk">Publicar</button><button class="btn btn-secondary" id="ghTokenCancel">Cancelar</button></div>'
+      + '</div>';
+    document.body.appendChild(overlay);
+    document.getElementById('ghTokenInput').focus();
+    document.getElementById('ghTokenCancel').onclick = function(){ document.body.removeChild(overlay); resolve(null); };
+    document.getElementById('ghTokenOk').onclick = function(){
+      var v = document.getElementById('ghTokenInput').value.trim();
+      var remember = document.getElementById('ghTokenRemember').checked;
+      document.body.removeChild(overlay);
+      if(!v){ resolve(null); return; }
+      if(remember) setCachedToken(v);
+      resolve(v);
+    };
+  });
+}
+function ghRequest(url, options, token){
+  options = options || {};
+  options.headers = options.headers || {};
+  options.headers['Authorization'] = 'Bearer '+token;
+  options.headers['Accept'] = 'application/vnd.github+json';
+  return fetch(url, options);
+}
+function publishJSON(path, dataObj, message){
+  return promptForToken().then(function(token){
+    if(!token){ var e = new Error('cancelled'); e.cancelled = true; throw e; }
+    var url = 'https://api.github.com/repos/'+GITHUB_REPO+'/contents/'+path;
+    return ghRequest(url, {}, token).then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(existing){
+        var body = { message: message, content: utf8ToB64(JSON.stringify(dataObj, null, 2)), branch: GITHUB_BRANCH };
+        if(existing && existing.sha) body.sha = existing.sha;
+        return ghRequest(url, { method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) }, token);
+      })
+      .then(function(r){
+        if(!r.ok){ return r.json().then(function(e){ clearCachedToken(); throw new Error((e&&e.message)||('Erro HTTP '+r.status)); }); }
+        return r.json();
+      });
+  });
+}
+function bindPublishButton(btnId, publishFn, onSuccess){
+  var btn = document.getElementById(btnId); if(!btn) return;
+  btn.onclick = function(){
+    var orig = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Publicando…';
+    publishFn().then(function(){
+      showToast('Publicado! A alteração já está no ar para todo mundo.');
+      btn.disabled = false; btn.textContent = orig;
+      if(onSuccess) onSuccess();
+    }, function(err){
+      btn.disabled = false; btn.textContent = orig;
+      if(!(err && err.cancelled)) showToast('Falha ao publicar: '+(err&&err.message||'erro desconhecido'));
+    });
+  };
 }
 
 /* ---------- autenticação (barreira simples — NÃO é segurança real: qualquer
@@ -176,7 +287,7 @@ function donutSvg(k, size){
     offset+=len; });
   return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 '+size+' '+size+'">'+segs
     + '<circle cx="'+cx+'" cy="'+cy+'" r="'+(R*0.62)+'" fill="var(--color-bg)"></circle>'
-    + '<text x="'+cx+'" y="'+(cy-2)+'" text-anchor="middle" font-size="'+(size*0.16)+'" font-family="Barlow Condensed" font-weight="700" fill="var(--color-text)">'+k.total+'</text>'
+    + '<text x="'+cx+'" y="'+(cy-2)+'" text-anchor="middle" font-size="'+(size*0.16)+'" style="font-family:var(--font-heading);font-weight:800;" fill="var(--color-navy)">'+k.total+'</text>'
     + '<text x="'+cx+'" y="'+(cy+size*0.11)+'" text-anchor="middle" font-size="'+(size*0.07)+'" fill="var(--color-neutral-700)">atividades</text>'
     + '</svg>';
 }
@@ -188,17 +299,15 @@ function showToast(msg){
   clearTimeout(t._h); t._h = setTimeout(function(){ t.classList.remove('show'); }, 2200);
 }
 
-/* ---------- reuniões / contatos (localStorage, exportáveis) ---------- */
-function loadMeetings(){
-  try{ var raw = localStorage.getItem('ac_meetings_v1'); if(raw) return JSON.parse(raw); }catch(e){}
-  return SEED_MEETINGS.map(function(r){ return {id:r[0],titulo:r[1],data:r[2],hora:r[3],nucleo:r[4],local:r[5],participantes:r[6],status:r[7],obs:r[8]}; });
-}
-function saveMeetings(list){ localStorage.setItem('ac_meetings_v1', JSON.stringify(list)); }
-function loadContacts(){
-  try{ var raw = localStorage.getItem('ac_contacts_v1'); if(raw) return JSON.parse(raw); }catch(e){}
-  return SEED_CONTACTS.map(function(r){ return {id:r[0],nome:r[1],organizacao:r[2],cargo:r[3],email:r[4],telefone:r[5],categoria:r[6],obs:r[7]}; });
-}
-function saveContacts(list){ localStorage.setItem('ac_contacts_v1', JSON.stringify(list)); }
+/* ---------- eventos / contatos: publicado em data/*.json, rascunho no localStorage ---------- */
+var MEETINGS_KEY = 'ac_meetings_v1';
+var CONTACTS_KEY = 'ac_contacts_v1';
+function seedMeetingsArr(){ return SEED_MEETINGS.map(function(r){ return {id:r[0],titulo:r[1],data:r[2],hora:r[3],nucleo:r[4],local:r[5],participantes:r[6],status:r[7],obs:r[8]}; }); }
+function seedContactsArr(){ return SEED_CONTACTS.map(function(r){ return {id:r[0],nome:r[1],organizacao:r[2],cargo:r[3],email:r[4],telefone:r[5],categoria:r[6],obs:r[7]}; }); }
+function fetchMeetings(cb){ fetchJSON('data/eventos.json').then(function(d){ cb(d || seedMeetingsArr()); }); }
+function fetchContacts(cb){ fetchJSON('data/contatos.json').then(function(d){ cb(d || seedContactsArr()); }); }
+function saveMeetingsDraft(list){ localStorage.setItem(MEETINGS_KEY, JSON.stringify(list)); }
+function saveContactsDraft(list){ localStorage.setItem(CONTACTS_KEY, JSON.stringify(list)); }
 
 /* ---------- shell: navbar + footer (injetados via JS para reuso entre páginas) ---------- */
 function renderNav(activePage){
@@ -207,7 +316,7 @@ function renderNav(activePage){
   var items = [
     {href:'index.html#painel-geral', key:'index', label:'Início'},
     {href:'painel.html', key:'painel', label:'Painel'},
-    {href:'reunioes.html', key:'reunioes', label:'Reuniões'},
+    {href:'eventos.html', key:'eventos', label:'Eventos'},
     {href:'contatos.html', key:'contatos', label:'Contatos'}
   ];
   var links = items.map(function(it){

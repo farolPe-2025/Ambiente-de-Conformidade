@@ -244,7 +244,7 @@ P.push({ nome:"Núcleo de Relações Institucionais e Comerciais", responsavel:"
   ]
 });
 
-P.push({ nome:"Núcleo de Recionamento e Legado (Aftercare)", responsavel:"Marcus Ferraz", data:"",
+P.push({ nome:"Núcleo de Relacionamento e Legado (Aftercare)", responsavel:"Marcus Ferraz", data:"",
   acoes:[
     { row:["1","Aftercare e Expansão de Investimentos","Marcus Ferraz/ADEPE","","","","","","","","","","",""],
       itens:[

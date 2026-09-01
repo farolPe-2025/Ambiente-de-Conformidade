@@ -1,0 +1,102 @@
+﻿[
+  {
+    "id": "c1",
+    "nome": "Rafael Toscano",
+    "organizacao": "CEDEAO — Comunidade Econ. dos Estados da África Ocidental",
+    "cargo": "Representante",
+    "email": "",
+    "telefone": "",
+    "categoria": "Câmara/Bloco Econômico",
+    "obs": "Articulação em 28/jul — segmentos de interesse e oportunidades."
+  },
+  {
+    "id": "c2",
+    "nome": "Letícia Gomes",
+    "organizacao": "CCIB — Câmara de Comércio Índia Brasil",
+    "cargo": "Representante",
+    "email": "",
+    "telefone": "",
+    "categoria": "Câmara de Comércio",
+    "obs": "Reunião em 30/jul — relatório de cadeias produtivas em andamento."
+  },
+  {
+    "id": "c3",
+    "nome": "Karen Mizuta",
+    "organizacao": "CCAB — Câmara de Comércio Árabe-Brasileira",
+    "cargo": "Representante",
+    "email": "",
+    "telefone": "",
+    "categoria": "Câmara de Comércio",
+    "obs": "Reunião remota em 19/ago — relatório de cadeias produtivas em andamento."
+  },
+  {
+    "id": "c4",
+    "nome": "Artur Ferraz",
+    "organizacao": "Amazon",
+    "cargo": "Contato comercial",
+    "email": "",
+    "telefone": "",
+    "categoria": "Investidor / Prospecção",
+    "obs": "Expansão Amazon — contato a pedido da Secretária Danielle."
+  },
+  {
+    "id": "c5",
+    "nome": "Ricardo Vendramel",
+    "organizacao": "Shopee",
+    "cargo": "RI",
+    "email": "",
+    "telefone": "",
+    "categoria": "Investidor / Prospecção",
+    "obs": ""
+  },
+  {
+    "id": "c6",
+    "nome": "Vinícius Lima",
+    "organizacao": "Raguife (Grupo Âmbar Amaral)",
+    "cargo": "COO",
+    "email": "",
+    "telefone": "",
+    "categoria": "Investidor / Prospecção",
+    "obs": "Expansão para o NE — fábrica de ração para tilápia (R$ 50 mi)."
+  },
+  {
+    "id": "c7",
+    "nome": "Margarita Iskandirova",
+    "organizacao": "JET Latam (mobilidade elétrica)",
+    "cargo": "CEO",
+    "email": "",
+    "telefone": "",
+    "categoria": "Investidor / Prospecção",
+    "obs": "Planta fabril em PE — aguardando posição."
+  },
+  {
+    "id": "c8",
+    "nome": "André Taube",
+    "organizacao": "Grupo PortoBello",
+    "cargo": "COO",
+    "email": "",
+    "telefone": "",
+    "categoria": "Investidor / Prospecção",
+    "obs": "Contato a pedido da Secretária Danielle."
+  },
+  {
+    "id": "c9",
+    "nome": "Mariana Brito",
+    "organizacao": "Pague Menos",
+    "cargo": "Contato comercial",
+    "email": "",
+    "telefone": "",
+    "categoria": "Investidor / Prospecção",
+    "obs": "Contato a pedido da Secretária Danielle."
+  },
+  {
+    "id": "c10",
+    "nome": "Guilherme Sá",
+    "organizacao": "Governo de PE",
+    "cargo": "Jurídico",
+    "email": "",
+    "telefone": "",
+    "categoria": "Institucional",
+    "obs": "MoU China Petroleum and Chemical Industry Federation — SEI."
+  }
+]

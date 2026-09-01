@@ -1,0 +1,57 @@
+﻿[
+  {
+    "id": "m1",
+    "titulo": "Ciclo de Monitoramento — Núcleo de Inteligência de Mercado",
+    "data": "2026-09-02",
+    "hora": "09:00",
+    "nucleo": "Inteligência de Mercado e Estratégia",
+    "local": "Sala de reuniões SEAIEE",
+    "participantes": "Caio, Marcus",
+    "status": "AGENDADA",
+    "obs": ""
+  },
+  {
+    "id": "m2",
+    "titulo": "Ciclo de Monitoramento — Atração de Investimentos (Front-End)",
+    "data": "2026-09-04",
+    "hora": "14:00",
+    "nucleo": "Atração de Investimentos (Front-End)",
+    "local": "Sala de reuniões SEAIEE / Online",
+    "participantes": "Marcus, Pedro Lacerda, ADEPE",
+    "status": "AGENDADA",
+    "obs": ""
+  },
+  {
+    "id": "m3",
+    "titulo": "Reunião de Governança — Dashboard de Gestão",
+    "data": "2026-09-09",
+    "hora": "10:00",
+    "nucleo": "Governança e Monitoramento",
+    "local": "Gabinete SEAIEE",
+    "participantes": "Marcus, Pedro Lacerda, Caio",
+    "status": "AGENDADA",
+    "obs": "Revisão de indicadores trimestrais."
+  },
+  {
+    "id": "m4",
+    "titulo": "Reunião técnica — Infraestrutura FarolPE (ATI)",
+    "data": "2026-09-11",
+    "hora": "11:00",
+    "nucleo": "Inteligência de Mercado e Estratégia",
+    "local": "ATI",
+    "participantes": "Cleyton, Caio, Pedro",
+    "status": "AGENDADA",
+    "obs": "Follow-up da reunião de 21/ago sobre hospedagem/armazenagem."
+  },
+  {
+    "id": "m5",
+    "titulo": "Ciclo de Monitoramento — Relações Institucionais",
+    "data": "2026-09-16",
+    "hora": "09:30",
+    "nucleo": "Relações Institucionais e Comerciais",
+    "local": "Sala de reuniões SEAIEE",
+    "participantes": "Pedro Leonardo, Marcus",
+    "status": "AGENDADA",
+    "obs": ""
+  }
+]

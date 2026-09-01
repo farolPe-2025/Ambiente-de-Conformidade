@@ -13,7 +13,7 @@
 <section class="hero">
   <div>
     <span class="tag tag-outline" style="margin-bottom:var(--space-4);display:inline-block;text-transform:uppercase;">Secretaria de Desenvolvimento Econômico · PE</span>
-    <h1 style="font-size:44px;line-height:1.1;text-transform:uppercase;margin:var(--space-4) 0 var(--space-4);">Ambiente de Conformidade da SEAIEE</h1>
+    <h1 style="font-size:44px;line-height:1.1;margin:var(--space-4) 0 var(--space-4);">Ambiente de Conformidade da SEAIEE</h1>
     <p style="font-size:17px;line-height:1.6;color:color-mix(in srgb, var(--color-text) 82%, transparent);max-width:560px;margin:0 0 var(--space-6);">
       Acompanhamento e controle da Secretaria Executiva de Atração de Investimentos e Estudos Econômicos (SEAIEE), da Secretaria de Desenvolvimento Econômico de Pernambuco.
       Um único ambiente para prazos, responsáveis e status de cada ação e cada entrega — visível para toda a secretaria, com edição restrita ao time.
@@ -39,8 +39,8 @@
 <section class="wrap" id="login" style="padding:var(--space-8) 0;">
   <div class="grid2" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8);align-items:start;">
     <div>
-      <h2 style="text-transform:uppercase;">Acesso ao ambiente</h2>
-      <p class="text-muted" style="max-width:480px;">Acesse sua conta institucional para acompanhar os planos de ação, as reuniões e o mailing da SEAIEE.</p>
+      <h2 style="">Acesso ao ambiente</h2>
+      <p class="text-muted" style="max-width:480px;">Acesse sua conta institucional para acompanhar os planos de ação, os eventos e o mailing da SEAIEE.</p>
     </div>
     <div class="card blueprint" style="padding:var(--space-6);">
       <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
@@ -54,7 +54,7 @@
 <section class="wrap" id="painel-geral" style="padding:var(--space-8) 0;scroll-margin-top:70px;">
   <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--space-6);flex-wrap:wrap;gap:var(--space-3);">
     <div>
-      <h2 style="text-transform:uppercase;">Painel geral</h2>
+      <h2 style="">Painel geral</h2>
       <p class="text-muted" style="margin:0;">Visão consolidada — Acompanhamento Interno de Ações + Acompanhamento de Produção.</p>
     </div>
     <a href="painel.html" class="btn btn-secondary">Abrir painel completo →</a>
@@ -75,7 +75,7 @@
 <div class="wrap"><hr class="hr"></div>
 
 <section class="wrap" id="nucleos" style="padding:var(--space-8) 0;">
-  <h2 style="text-transform:uppercase;margin-bottom:var(--space-6);">Núcleos da SEAIEE</h2>
+  <h2 style="margin-bottom:var(--space-6);">Núcleos da SEAIEE</h2>
   <div id="nucleoCards" style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-6);"></div>
 </section>
 
@@ -84,10 +84,10 @@
 <section class="wrap" id="agenda" style="padding:var(--space-8) 0;">
   <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--space-4);flex-wrap:wrap;gap:var(--space-3);">
     <div>
-      <h2 style="text-transform:uppercase;">Próximas reuniões de monitoramento</h2>
-      <p class="text-muted" style="margin:0;">Calendário de acompanhamento — atualizado pela equipe na área de Reuniões.</p>
+      <h2 style="">Próximos eventos de monitoramento</h2>
+      <p class="text-muted" style="margin:0;">Calendário de acompanhamento — atualizado pela equipe na área de Eventos.</p>
     </div>
-    <a href="reunioes.html" class="btn btn-secondary">Gerenciar reuniões →</a>
+    <a href="eventos.html" class="btn btn-secondary">Gerenciar eventos →</a>
   </div>
   <div class="card" style="padding:var(--space-4);">
     <div id="agendaList"></div>
@@ -104,8 +104,7 @@
 renderNav('index');
 renderFooter();
 
-/* hero stats */
-(function(){
+function renderHeroStats(){
   var rowsAll = collectAllRows();
   var nucleosTotal = DATA.interno.nucleos.length;
   var stats = [
@@ -114,10 +113,10 @@ renderFooter();
     [META.cycle, 'ciclo de gestão']
   ];
   document.getElementById('heroStats').innerHTML = stats.map(function(s){
-    return '<div><div style="font-family:var(--font-heading);font-size:30px;font-variant-numeric:tabular-nums;">'+esc(s[0])+'</div>'
-      + '<div style="font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:color-mix(in srgb, var(--color-text) 60%, transparent);">'+esc(s[1])+'</div></div>';
+    return '<div><div style="font-family:var(--font-heading);font-weight:800;font-size:28px;font-variant-numeric:tabular-nums;color:var(--color-navy);">'+esc(s[0])+'</div>'
+      + '<div style="font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--color-neutral-600);font-weight:600;">'+esc(s[1])+'</div></div>';
   }).join('');
-})();
+}
 
 /* login card */
 (function(){
@@ -125,14 +124,14 @@ renderFooter();
   function render(){
     if(isAuthed()){
       el.innerHTML = '<div class="card-kicker">Sessão ativa</div>'
-        + '<h2 class="card-title" style="font-size:22px;margin:var(--space-2) 0 var(--space-4);text-transform:uppercase;">Bem-vindo(a)</h2>'
+        + '<h2 class="card-title" style="font-size:22px;margin:var(--space-2) 0 var(--space-4);">Bem-vindo(a)</h2>'
         + '<p style="font-size:13px;">Conectado como <strong>'+esc(localStorage.getItem(AUTH_STORAGE+'_user')||'')+'</strong>.</p>'
         + '<a class="btn btn-primary btn-block" href="painel.html" style="margin-bottom:var(--space-2);">Ir para o painel (modo edição)</a>'
         + '<button class="btn btn-secondary btn-block" id="logoutBtn">Sair</button>';
       document.getElementById('logoutBtn').onclick = doLogout;
     } else {
       el.innerHTML = '<div class="card-kicker">Acesso ao sistema</div>'
-        + '<h2 class="card-title" style="font-size:22px;margin:var(--space-2) 0 var(--space-4);text-transform:uppercase;">Entrar na sua conta</h2>'
+        + '<h2 class="card-title" style="font-size:22px;margin:var(--space-2) 0 var(--space-4);">Entrar na sua conta</h2>'
         + '<div class="field" style="margin-bottom:var(--space-4);"><label for="email">E-mail institucional</label><input class="input" id="email" type="email" placeholder="nome@seaiee.pe.gov.br"></div>'
         + '<div class="field" style="margin-bottom:var(--space-3);"><label for="senha">Senha</label><input class="input" id="senha" type="password" placeholder="••••••••"></div>'
         + '<button class="btn btn-primary btn-block" id="loginBtn">Acessar painel</button>'
@@ -148,8 +147,7 @@ renderFooter();
   render();
 })();
 
-/* painel geral */
-(function(){
+function renderPainelGeral(){
   var rows = collectAllRows();
   var k = computeKpis(rows);
   document.getElementById('kpiRow').innerHTML = ''
@@ -181,16 +179,15 @@ renderFooter();
       + '<div style="width:70px;text-align:right;color:var(--color-neutral-700);">'+n.done+'/'+n.total+' ('+n.pct+'%)</div>'
       + '</div>';
   }).join('');
-})();
+}
 
-/* núcleo cards */
-(function(){
+function renderNucleoCards(){
   var descs = {
     "Reestruturação da SEAIEE": "Modelagem da nova estrutura, planos de trabalho e ciclos de monitoramento internos.",
     "Núcleo de Inteligência de Mercado e Estratégia": "Estudos setoriais, mapas de oportunidades e a plataforma FarolPE.",
     "Núcleo de Atração de Investimentos (Front-End)": "Prospecção ativa, promoção de Pernambuco e atendimento a investidores.",
     "Núcleo de Relações Institucionais e Comerciais": "Câmaras de comércio, embaixadas, blocos econômicos e acordos de cooperação.",
-    "Núcleo de Recionamento e Legado (Aftercare)": "Acompanhamento pós-investimento e expansão de empresas instaladas.",
+    "Núcleo de Relacionamento e Legado (Aftercare)": "Acompanhamento pós-investimento e expansão de empresas instaladas.",
     "Núcleo de Suporte e Facilitação": "Facilitação de processos e apoio junto a órgãos públicos.",
     "Núcleo de Acompanhamento de Programas e Projetos": "Pipeline de investimentos e acompanhamento de projetos em curso."
   };
@@ -198,19 +195,18 @@ renderFooter();
   document.getElementById('nucleoCards').innerHTML = stats.map(function(n){
     return '<div class="card blueprint" style="padding:var(--space-6);">'
       + '<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>'
-      + '<h3 class="card-title" style="font-size:17px;text-transform:uppercase;">'+esc(n.nome)+'</h3>'
+      + '<h3 class="card-title" style="font-size:17px;">'+esc(n.nome)+'</h3>'
       + '<p class="card-body">'+esc(descs[n.nome]||'')+'</p>'
       + '<div class="card-meta">'+n.done+'/'+n.total+' concluídas ('+n.pct+'%)</div>'
       + '</div>';
   }).join('');
-})();
+}
 
-/* agenda (calendário de reuniões) */
-(function(){
-  var meetings = loadMeetings().filter(function(m){ var d=parseISODate(m.data); return d && d >= new Date(2026,7,28); })
+function renderAgenda(list){
+  var meetings = list.filter(function(m){ var d=parseISODate(m.data); return d && d >= new Date(2026,7,28); })
     .sort(function(a,b){ return parseISODate(a.data)-parseISODate(b.data); }).slice(0,8);
   var el = document.getElementById('agendaList');
-  if(meetings.length===0){ el.innerHTML = '<p class="text-muted" style="padding:var(--space-4);">Nenhuma reunião futura cadastrada.</p>'; return; }
+  if(meetings.length===0){ el.innerHTML = '<p class="text-muted" style="padding:var(--space-4);">Nenhum evento futuro cadastrado.</p>'; return; }
   el.innerHTML = meetings.map(function(m){
     var d = parseISODate(m.data);
     return '<div class="agenda-item">'
@@ -219,7 +215,14 @@ renderFooter();
       + '<span class="tag '+(m.status==='CONCLUÍDA'?'tag-good':m.status==='CANCELADA'?'tag-neutral':'tag-accent')+'">'+esc(m.status)+'</span>'
       + '</div>';
   }).join('');
-})();
+}
+
+initData(function(){
+  renderHeroStats();
+  renderPainelGeral();
+  renderNucleoCards();
+});
+fetchMeetings(renderAgenda);
 </script>
 </body>
 </html>

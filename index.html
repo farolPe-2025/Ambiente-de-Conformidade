@@ -97,8 +97,8 @@ function renderHeroStats(){
     [META.cycle, 'ciclo de gestão']
   ];
   document.getElementById('heroStats').innerHTML = stats.map(function(s){
-    return '<div><div style="font-family:var(--font-heading);font-weight:800;font-size:28px;font-variant-numeric:tabular-nums;color:var(--color-navy);">'+esc(s[0])+'</div>'
-      + '<div style="font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--color-neutral-600);font-weight:600;">'+esc(s[1])+'</div></div>';
+    return '<div><div style="font-family:var(--font-heading);font-weight:800;font-size:28px;font-variant-numeric:tabular-nums;color:#fff;">'+esc(s[0])+'</div>'
+      + '<div style="font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:rgba(255,255,255,.7);font-weight:600;">'+esc(s[1])+'</div></div>';
   }).join('');
 }
 

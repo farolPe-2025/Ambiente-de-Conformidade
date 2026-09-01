@@ -55,14 +55,47 @@
     "obs": ""
   },
   {
-    "id": "xqaqiojrt",
-    "titulo": "teste",
+    "id": "xh9t32eyg",
+    "titulo": "Reunião SEGWay",
     "data": "2026-09-02",
-    "hora": "",
-    "nucleo": "",
-    "local": "",
-    "participantes": "",
+    "hora": "16:00",
+    "nucleo": "Núcleo de Atração de Investimentos (Front-End)",
+    "local": "ADEPE",
+    "participantes": "Pedr, Marcus, Carmem, Cleber e Kledson",
     "status": "AGENDADA",
-    "obs": ""
+    "obs": "Instalação de operação fabril de veículos elétricos."
+  },
+  {
+    "id": "xoai9xyb8",
+    "titulo": "Reunião JUCEPE",
+    "data": "2026-09-02",
+    "hora": "10:00",
+    "nucleo": "Núcleo de Inteligência de Mercado e Estratégia",
+    "local": "SDEC PE",
+    "participantes": "Pedro, Mariana, Caio, Marcus e representante da JUCEPE",
+    "status": "AGENDADA",
+    "obs": "Troca de informações e parceria"
+  },
+  {
+    "id": "xyn4xr7t5",
+    "titulo": "Pedro cobrar Raquel (Stellantis) cadastro de sistemistas",
+    "data": "2026-09-02",
+    "hora": "10:00",
+    "nucleo": "Núcleo de Atração de Investimentos (Front-End)",
+    "local": "Remoto",
+    "participantes": "Pedro e Raquel",
+    "status": "AGENDADA",
+    "obs": "Cadastro dos sistemistas da Stellantis"
+  },
+  {
+    "id": "x1pkbamzf",
+    "titulo": "Reunião de nivelamento com Janine Guerra (SAESPRI)",
+    "data": "2026-09-03",
+    "hora": "10:00",
+    "nucleo": "Núcleo de Inteligência de Mercado e Estratégia",
+    "local": "Remota",
+    "participantes": "Pedro, Caio, Marcus e Janine",
+    "status": "AGENDADA",
+    "obs": "Nivelamento de status para coleta de informações para evento China (Vallya)"
   }
 ]

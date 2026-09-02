@@ -422,7 +422,7 @@
               "fields": {
                 "numero": "2.2",
                 "nome": "Modelar o ambiente",
-                "responsavel": "Caio Coutinho/Pedro Melo/Eduardo Aguiar/Marcus Ferraz",
+                "responsavel": "Caio/Pedro/Eduardo/Marcus",
                 "recursos": "-",
                 "ppIni": "19-out-26",
                 "ppFim": "30-out-26",
@@ -443,7 +443,7 @@
               "fields": {
                 "numero": "2.3",
                 "nome": "Construir o módulo (coleta inicial/definir infra)",
-                "responsavel": "Pedro Melo/Eduardo Aguiar",
+                "responsavel": "Pedro/Eduardo",
                 "recursos": "-",
                 "ppIni": "após nov/26",
                 "ppFim": "",
@@ -464,7 +464,7 @@
               "fields": {
                 "numero": "2.4",
                 "nome": "Definir identidade (nome (logomarca) e aspectos gráficos da plataforma)",
-                "responsavel": "Caio Coutinho/Marcus Ferraz",
+                "responsavel": "Caio/Marcus",
                 "recursos": "-",
                 "ppIni": "",
                 "ppFim": "",
@@ -485,7 +485,7 @@
               "fields": {
                 "numero": "2.5",
                 "nome": "Realizar os ajustes finais no módulo \"Integrador\"",
-                "responsavel": "Caio Coutinho/Pedro Melo/Eduardo Aguiar",
+                "responsavel": "Caio/Pedro/Eduardo",
                 "recursos": "-",
                 "ppIni": "",
                 "ppFim": "",
@@ -506,7 +506,7 @@
               "fields": {
                 "numero": "2.6",
                 "nome": "Entregar o módulo \"Integrador\"",
-                "responsavel": "Caio Coutinho/Pedro Melo/Eduardo Aguiar/Marcus Ferraz",
+                "responsavel": "Caio/Pedro/Eduardo/Marcus",
                 "recursos": "",
                 "ppIni": "",
                 "ppFim": "",
@@ -527,7 +527,7 @@
               "fields": {
                 "numero": "2.7",
                 "nome": "Lançamento do módulo \"Integrador\"",
-                "responsavel": "Secretária Danielle",
+                "responsavel": "Secretária",
                 "recursos": "?",
                 "ppIni": "mar/27",
                 "ppFim": "",
@@ -548,7 +548,7 @@
               "fields": {
                 "numero": "2.8",
                 "nome": "Manter o módulo \"Integrador\" (coletar, tratar, inserir, ajustar etc.)",
-                "responsavel": "Caio Coutinho/Pedro Melo/Eduardo Aguiar",
+                "responsavel": "Caio/Pedro/Eduardo",
                 "recursos": "",
                 "ppIni": "",
                 "ppFim": "",

@@ -573,7 +573,7 @@
       "nome": "Núcleo de Atração de Investimentos (Front-End)",
       "responsavel": "Marcus/Pedro Lacerda/ADEPE",
       "data": "",
-      "collapsed": true,
+      "collapsed": false,
       "acoes": [
         {
           "id": "xbqejqf",
@@ -600,7 +600,7 @@
               "fields": {
                 "numero": "1.1",
                 "nome": "Realizar prospecção ativa (empresas nacionais e internacionais)",
-                "responsavel": "Marcus/ADEPE",
+                "responsavel": "Marcus Ferraz/ADEPE",
                 "recursos": "-",
                 "ppIni": "1-jul-26",
                 "ppFim": "15-dez-26",
@@ -621,7 +621,7 @@
               "fields": {
                 "numero": "1.2",
                 "nome": "Receber investidores e realizar reuniões (empresas, fundos e grupos econômicos)",
-                "responsavel": "Marcus/Pedro/ADEPE",
+                "responsavel": "Pedro Lacerda/Marcus Ferraz/ADEPE",
                 "recursos": "-",
                 "ppIni": "1-jul-26",
                 "ppFim": "15-dez-26",
@@ -642,7 +642,7 @@
               "fields": {
                 "numero": "1.3",
                 "nome": "Registrar contatos (Planilha de Prospecção)",
-                "responsavel": "Marcus",
+                "responsavel": "Marcus Ferraz",
                 "recursos": "-",
                 "ppIni": "1-jul-26",
                 "ppFim": "15-dez-26",
@@ -663,7 +663,7 @@
               "fields": {
                 "numero": "1.4",
                 "nome": "Registrar informações (Planilha de E-mail)",
-                "responsavel": "Marcus",
+                "responsavel": "Marcus Ferraz",
                 "recursos": "-",
                 "ppIni": "1-jul-26",
                 "ppFim": "15-dez-26",
@@ -684,7 +684,7 @@
               "fields": {
                 "numero": "1.5",
                 "nome": "Criar pipeline de oportunidades",
-                "responsavel": "Marcus/Caio/ADEPE",
+                "responsavel": "Marcus Ferraz/Caio Coutinho/ADEPE",
                 "recursos": "-",
                 "ppIni": "",
                 "ppFim": "",
@@ -1513,7 +1513,7 @@
       "nome": "Núcleo de Relações Institucionais e Comerciais",
       "responsavel": "Pedro Leonardo/Marcus/ADEPE",
       "data": "",
-      "collapsed": false,
+      "collapsed": true,
       "acoes": [
         {
           "id": "xfk6zha",

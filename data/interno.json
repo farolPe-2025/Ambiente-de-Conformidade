@@ -142,7 +142,7 @@
       "nome": "Núcleo de Inteligência de Mercado e Estratégia",
       "responsavel": "Caio/Marcus",
       "data": "9-jun-26",
-      "collapsed": true,
+      "collapsed": false,
       "acoes": [
         {
           "id": "x8pmd6f",
@@ -401,7 +401,7 @@
               "fields": {
                 "numero": "2.1",
                 "nome": "Coleta de dados (construir instrumento/contato/coleta primária)",
-                "responsavel": "Caio/Marcus",
+                "responsavel": "Caio Coutinho/Marcus Ferraz",
                 "recursos": "-",
                 "ppIni": "1-set-26",
                 "ppFim": "16-out-26",
@@ -422,7 +422,7 @@
               "fields": {
                 "numero": "2.2",
                 "nome": "Modelar o ambiente",
-                "responsavel": "Caio/Pedro/Eduardo/Marcus",
+                "responsavel": "Caio Coutinho/Pedro Melo/Eduardo Aguiar/Marcus Ferraz",
                 "recursos": "-",
                 "ppIni": "19-out-26",
                 "ppFim": "30-out-26",
@@ -443,7 +443,7 @@
               "fields": {
                 "numero": "2.3",
                 "nome": "Construir o módulo (coleta inicial/definir infra)",
-                "responsavel": "Pedro/Eduardo",
+                "responsavel": "Pedro Melo/Eduardo Aguiar",
                 "recursos": "-",
                 "ppIni": "após nov/26",
                 "ppFim": "",
@@ -464,7 +464,7 @@
               "fields": {
                 "numero": "2.4",
                 "nome": "Definir identidade (nome (logomarca) e aspectos gráficos da plataforma)",
-                "responsavel": "Caio/Marcus",
+                "responsavel": "Caio Coutinho/Marcus Ferraz",
                 "recursos": "-",
                 "ppIni": "",
                 "ppFim": "",
@@ -485,7 +485,7 @@
               "fields": {
                 "numero": "2.5",
                 "nome": "Realizar os ajustes finais no módulo \"Integrador\"",
-                "responsavel": "Caio/Pedro/Eduardo",
+                "responsavel": "Caio Coutinho/Pedro Melo/Eduardo Aguiar",
                 "recursos": "-",
                 "ppIni": "",
                 "ppFim": "",
@@ -506,7 +506,7 @@
               "fields": {
                 "numero": "2.6",
                 "nome": "Entregar o módulo \"Integrador\"",
-                "responsavel": "Caio/Pedro/Eduardo/Marcus",
+                "responsavel": "Caio Coutinho/Pedro Melo/Eduardo Aguiar/Marcus Ferraz",
                 "recursos": "",
                 "ppIni": "",
                 "ppFim": "",
@@ -527,7 +527,7 @@
               "fields": {
                 "numero": "2.7",
                 "nome": "Lançamento do módulo \"Integrador\"",
-                "responsavel": "Secretária",
+                "responsavel": "Secretária Danielle",
                 "recursos": "?",
                 "ppIni": "mar/27",
                 "ppFim": "",
@@ -548,7 +548,7 @@
               "fields": {
                 "numero": "2.8",
                 "nome": "Manter o módulo \"Integrador\" (coletar, tratar, inserir, ajustar etc.)",
-                "responsavel": "Caio/Pedro/Eduardo",
+                "responsavel": "Caio Coutinho/Pedro Melo/Eduardo Aguiar",
                 "recursos": "",
                 "ppIni": "",
                 "ppFim": "",
@@ -573,7 +573,7 @@
       "nome": "Núcleo de Atração de Investimentos (Front-End)",
       "responsavel": "Marcus/Pedro Lacerda/ADEPE",
       "data": "",
-      "collapsed": false,
+      "collapsed": true,
       "acoes": [
         {
           "id": "xbqejqf",

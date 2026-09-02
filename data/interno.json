@@ -1513,7 +1513,7 @@
       "nome": "Núcleo de Relações Institucionais e Comerciais",
       "responsavel": "Pedro Leonardo/Marcus/ADEPE",
       "data": "",
-      "collapsed": true,
+      "collapsed": false,
       "acoes": [
         {
           "id": "xfk6zha",
@@ -1540,7 +1540,7 @@
               "fields": {
                 "numero": "1.1",
                 "nome": "Criar e manter relacionamento",
-                "responsavel": "Pedro Leonardo/Marcus Ferraz",
+                "responsavel": "Pedro Lacerda/Marcus Ferraz",
                 "recursos": "-",
                 "ppIni": "1-set-26",
                 "ppFim": "15-dez-26",
@@ -1582,7 +1582,7 @@
               "fields": {
                 "numero": "1.3",
                 "nome": "Estabelecer acordos de cooperação",
-                "responsavel": "Pedro Leonardo/Marcus Ferraz",
+                "responsavel": "Pedro Lacerda/Marcus Ferraz",
                 "recursos": "-",
                 "ppIni": "1-set-26",
                 "ppFim": "15-dez-26",
@@ -1603,7 +1603,7 @@
               "fields": {
                 "numero": "1.3.2",
                 "nome": "Comunidade Económica dos Estados da África Ocidental (CEDEAO)",
-                "responsavel": "Pedro Leonardo Lacerda/Marcus Ferraz",
+                "responsavel": "Pedro Lacerda/Marcus Ferraz",
                 "recursos": "-",
                 "ppIni": "-",
                 "ppFim": "-",
@@ -1624,7 +1624,7 @@
               "fields": {
                 "numero": "1.3.1",
                 "nome": "Câmara de Comércio Índia Brasil (CCIB)",
-                "responsavel": "Pedro Leonardo Lacerda/Marcus Ferraz",
+                "responsavel": "Pedro Lacerda/Marcus Ferraz",
                 "recursos": "-",
                 "ppIni": "-",
                 "ppFim": "-",
@@ -1645,7 +1645,7 @@
               "fields": {
                 "numero": "1.3.3",
                 "nome": "Câmara de Comércio Árabe-brasileira (CCAB)",
-                "responsavel": "Pedro Leonardo Lacerda/Marcus Ferraz",
+                "responsavel": "Pedro Lacerda/Marcus Ferraz",
                 "recursos": "-",
                 "ppIni": "-",
                 "ppFim": "-",
@@ -1670,7 +1670,7 @@
       "nome": "Núcleo de Relacionamento e Legado (Aftercare)",
       "responsavel": "Marcus/ADEPE",
       "data": "",
-      "collapsed": false,
+      "collapsed": true,
       "acoes": [
         {
           "id": "xc41ypn",

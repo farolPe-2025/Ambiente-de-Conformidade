@@ -370,10 +370,11 @@ function renderNav(activePage, opts){
   var loginBtn = authed
     ? '<button class="btn btn-secondary small" id="navLogoutBtn">Sair ('+esc((localStorage.getItem(AUTH_STORAGE+'_user')||'').split('@')[0])+')</button>'
     : '<button class="btn btn-primary small" id="navLoginBtn">Entrar</button>';
+  var logoSrc = opts.overlay ? 'assets/logo-icon-white.png' : 'assets/logo-icon.png';
   el.innerHTML = ''
     + '<a class="nav-brand" href="index.html">'
-    +   '<img src="assets/logo-pe.png" alt="Governo de Pernambuco" onerror="this.style.display=\'none\'">'
-    +   '<span><span class="t1">SEAIEE</span><br><span class="t2">SDEC-PE</span></span>'
+    +   '<img id="navLogoImg" src="'+logoSrc+'" alt="Governo de Pernambuco" onerror="this.style.display=\'none\'">'
+    +   '<span><span class="t1">Ambiente de Conformidade</span><br><span class="t2">SDEC-PE</span></span>'
     + '</a>'
     + '<button class="nav-burger" id="navBurger" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>'
     + '<div class="nav-links" id="navLinks">'+links+loginBtn+'</div>';
@@ -385,7 +386,12 @@ function renderNav(activePage, opts){
     burger.setAttribute('aria-expanded', open?'true':'false');
   };
   if(opts.overlay){
-    var onScroll = function(){ el.classList.toggle('nav-solid', window.scrollY > window.innerHeight*0.7); };
+    var logoImg = document.getElementById('navLogoImg');
+    var onScroll = function(){
+      var solid = window.scrollY > window.innerHeight*0.7;
+      el.classList.toggle('nav-solid', solid);
+      if(logoImg) logoImg.src = solid ? 'assets/logo-icon.png' : 'assets/logo-icon-white.png';
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, {passive:true});
   }

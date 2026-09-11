@@ -11,7 +11,7 @@
 <header class="nav" id="site-nav"></header>
 
 <section class="hero-cover" id="heroCover">
-  <img class="hero-bg" src="assets/secretaria.jpg" alt="" onerror="this.style.display='none';document.getElementById('heroCover').classList.add('no-image');">
+  <img class="hero-bg" src="assets/suape.jpg" alt="" onerror="this.style.display='none';document.getElementById('heroCover').classList.add('no-image');">
   <div class="hero-scrim"></div>
   <div class="hero-cover-content">
     <span class="hero-eyebrow hero-anim d1">Secretaria de Desenvolvimento Econômico de Pernambuco</span>
@@ -190,7 +190,8 @@ function renderNucleoCards(){
 }
 
 function renderAgenda(list){
-  var meetings = list.filter(function(m){ var d=parseISODate(m.data); return d && d >= new Date(2026,7,28); })
+  var hoje = new Date(); hoje.setHours(0,0,0,0);
+  var meetings = list.filter(function(m){ var d=parseISODate(m.data); return d && d >= hoje; })
     .sort(function(a,b){ return parseISODate(a.data)-parseISODate(b.data); }).slice(0,8);
   var el = document.getElementById('agendaList');
   if(meetings.length===0){ el.innerHTML = '<p class="text-muted" style="padding:var(--space-4);">Nenhum evento futuro cadastrado.</p>'; return; }

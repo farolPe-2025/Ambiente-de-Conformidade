@@ -282,11 +282,3 @@ var SEED_MEETINGS = [
   ["m4","Reunião técnica — Infraestrutura FarolPE (ATI)","2026-09-11","11:00","Inteligência de Mercado e Estratégia","ATI","Cleyton, Caio, Pedro","AGENDADA","Follow-up da reunião de 21/ago sobre hospedagem/armazenagem."],
   ["m5","Ciclo de Monitoramento — Relações Institucionais","2026-09-16","09:30","Relações Institucionais e Comerciais","Sala de reuniões SEAIEE","Pedro Leonardo, Marcus","AGENDADA",""]
 ];
-
-/* ============================================================
-   Mailing / Contatos institucionais (página privada "contatos.html")
-   Campos: [id, nome, organizacao, cargo, email, telefone, categoria, obs]
-   ============================================================ */
-/* Dados de contato reais foram retirados do site e do repositório por
-   questão de segurança (2026-09-11). Cópia local preservada fora do git. */
-var SEED_CONTACTS = [];

@@ -13,18 +13,20 @@ Repositório: `farolPe-2025/Ambiente-de-Conformidade` · Site publicado:
 index.html               Página inicial (pública): hero, login, painel geral (rolagem), núcleos, calendário
 painel.html               Painel completo, com seletor Ação (Interno) / Execução (Produção)
 eventos.html              Área privada: controle de eventos de monitoramento
-contatos.html             Área privada: mailing / contatos institucionais
 assets/styles.css         Design (inspirado no FarolPE — navy + laranja, cards claros, layout amplo)
 assets/data.js            Seed de fallback: Acompanhamento Interno de Ações
-assets/data-producao.js   Seed de fallback: Acompanhamento de Produção + eventos + contatos
+assets/data-producao.js   Seed de fallback: Acompanhamento de Produção + eventos
 assets/common.js          Lógica compartilhada (dados, publicação, autenticação, dashboard, nav)
 assets/logo-pe.png        Logo do Governo de Pernambuco (barra de navegação)
 assets/secretaria.jpg     Foto da sede da secretaria (hero da página inicial)
 data/interno.json         ★ Dados PUBLICADOS de Acompanhamento Interno (fonte da verdade)
 data/producao.json        ★ Dados PUBLICADOS de Acompanhamento de Produção (fonte da verdade)
 data/eventos.json         ★ Eventos publicados (calendário da página inicial)
-data/contatos.json        ★ Contatos publicados
 ```
+
+> A página de mailing/contatos institucionais (`contatos.html` e `data/contatos.json`) foi
+> removida do site e do repositório por questão de segurança (2026-09-11). Uma cópia dos
+> dados que existiam foi preservada apenas localmente, fora do controle de versão.
 
 Os arquivos em `data/*.json` são o que todo mundo vê. Os arquivos `assets/data*.js` só entram
 em jogo como *fallback* caso os JSON não carreguem (ex.: antes do primeiro deploy).
@@ -32,7 +34,7 @@ em jogo como *fallback* caso os JSON não carreguem (ex.: antes do primeiro depl
 ## Como funciona a edição e a publicação
 
 1. A página carrega os dados de `data/*.json` (via `fetch`, ao abrir a página).
-2. Uma pessoa loga e edita algo no Painel, em Eventos ou em Contatos. Essa edição vira um
+2. Uma pessoa loga e edita algo no Painel ou em Eventos. Essa edição vira um
    **rascunho salvo só no navegador dela** (localStorage) — ainda não é visível para mais
    ninguém.
 3. Ao clicar em **"💾 Publicar alterações"**, o site pede um **token de acesso pessoal do

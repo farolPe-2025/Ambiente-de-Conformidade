@@ -1,6 +1,6 @@
 /* ============================================================
    Ambiente de Conformidade — utilidades compartilhadas
-   (usado por index.html, painel.html, eventos.html, contatos.html)
+   (usado por index.html, painel.html, eventos.html)
    ============================================================ */
 
 /* ---------- básicos ---------- */
@@ -344,15 +344,11 @@ function showToast(msg){
   clearTimeout(t._h); t._h = setTimeout(function(){ t.classList.remove('show'); }, 2200);
 }
 
-/* ---------- eventos / contatos: publicado em data/*.json, rascunho no localStorage ---------- */
+/* ---------- eventos: publicado em data/eventos.json, rascunho no localStorage ---------- */
 var MEETINGS_KEY = 'ac_meetings_v1';
-var CONTACTS_KEY = 'ac_contacts_v1';
 function seedMeetingsArr(){ return SEED_MEETINGS.map(function(r){ return {id:r[0],titulo:r[1],data:r[2],hora:r[3],nucleo:r[4],local:r[5],participantes:r[6],status:r[7],obs:r[8]}; }); }
-function seedContactsArr(){ return SEED_CONTACTS.map(function(r){ return {id:r[0],nome:r[1],organizacao:r[2],cargo:r[3],email:r[4],telefone:r[5],categoria:r[6],obs:r[7]}; }); }
 function fetchMeetings(cb){ fetchJSON('data/eventos.json').then(function(d){ cb(d || seedMeetingsArr()); }); }
-function fetchContacts(cb){ fetchJSON('data/contatos.json').then(function(d){ cb(d || seedContactsArr()); }); }
 function saveMeetingsDraft(list){ localStorage.setItem(MEETINGS_KEY, JSON.stringify(list)); }
-function saveContactsDraft(list){ localStorage.setItem(CONTACTS_KEY, JSON.stringify(list)); }
 
 /* ---------- shell: navbar + footer (injetados via JS para reuso entre páginas) ---------- */
 function renderNav(activePage){
@@ -361,8 +357,7 @@ function renderNav(activePage){
   var items = [
     {href:'index.html#painel-geral', key:'index', label:'Início'},
     {href:'painel.html', key:'painel', label:'Painel'},
-    {href:'eventos.html', key:'eventos', label:'Eventos'},
-    {href:'contatos.html', key:'contatos', label:'Contatos'}
+    {href:'eventos.html', key:'eventos', label:'Eventos'}
   ];
   var links = items.map(function(it){
     return '<a class="navlink'+(activePage===it.key?' active':'')+'" href="'+it.href+'">'+esc(it.label)+'</a>';

@@ -53,7 +53,7 @@ img { display: block; max-width: 100%; }
 :focus { outline: none; }
 :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
 .wrap { max-width: 1480px; margin: 0 auto; padding-left: var(--space-8); padding-right: var(--space-8); }
-@media (max-width: 900px) { .wrap { padding-left: var(--space-4); padding-right: var(--space-4); } }
+@media (max-width: 900px) { .wrap { padding-left: var(--space-6); padding-right: var(--space-6); } }
 .hr { height: 1px; border: 0; margin: var(--space-4) 0; background: var(--color-divider); }
 .hidden { display: none !important; }
 
@@ -186,7 +186,7 @@ textarea.input { min-height: 80px; resize: vertical; }
 .hero-cover .hero-scrim { position: absolute; inset: 0; z-index: 1;
   background: linear-gradient(180deg, rgba(0,25,40,.78) 0%, rgba(0,38,58,.82) 45%, rgba(0,20,32,.92) 100%); }
 .hero-cover-content { position: relative; z-index: 2; max-width: 720px; padding: var(--space-8); padding-top: 90px; display: flex; flex-direction: column; align-items: flex-start; }
-@media (max-width: 900px) { .hero-cover-content { padding-left: var(--space-4); padding-right: var(--space-4); } }
+@media (max-width: 900px) { .hero-cover-content { padding-left: var(--space-6); padding-right: var(--space-6); } }
 .hero-eyebrow { color: rgba(255,255,255,.75); font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: var(--space-6); }
 .hero-cover h1 { color: #fff; font-size: 58px; line-height: 1.08; margin: 0 0 var(--space-4); letter-spacing: -0.015em; }
 .hero-cover h1 span { display: block; }
@@ -214,7 +214,7 @@ textarea.input { min-height: 80px; resize: vertical; }
 @media (max-width: 760px) {
   .hero-cover h1 { font-size: 36px; }
   .hero-cover p.lede { font-size: 16px; }
-  .hero-cover-content { padding: var(--space-6) var(--space-4); }
+  .hero-cover-content { padding-top: var(--space-6); padding-bottom: var(--space-6); }
 }
 @media (max-width: 420px) {
   .hero-cover h1 { font-size: 30px; }

@@ -1,0 +1,68 @@
+[
+  {
+    "id": "xh9t32eyg",
+    "titulo": "Reunião SEGWay",
+    "data": "2026-09-02",
+    "hora": "16:00",
+    "nucleo": "Núcleo de Atração de Investimentos (Front-End)",
+    "local": "ADEPE",
+    "participantes": "Pedr, Marcus, Carmem, Cleber e Kledson",
+    "status": "CONCLUÍDA",
+    "obs": "Instalação de operação fabril de veículos elétricos."
+  },
+  {
+    "id": "xoai9xyb8",
+    "titulo": "Reunião JUCEPE",
+    "data": "2026-09-02",
+    "hora": "10:00",
+    "nucleo": "Núcleo de Inteligência de Mercado e Estratégia",
+    "local": "SDEC PE",
+    "participantes": "Pedro, Mariana, Caio, Marcus e representante da JUCEPE",
+    "status": "CONCLUÍDA",
+    "obs": "Troca de informações e parceria"
+  },
+  {
+    "id": "xyn4xr7t5",
+    "titulo": "Pedro cobrar Raquel (Stellantis) cadastro de sistemistas",
+    "data": "2026-09-02",
+    "hora": "10:00",
+    "nucleo": "Núcleo de Atração de Investimentos (Front-End)",
+    "local": "Remoto",
+    "participantes": "Pedro e Raquel",
+    "status": "CONCLUÍDA",
+    "obs": "Cadastro dos sistemistas da Stellantis"
+  },
+  {
+    "id": "x1pkbamzf",
+    "titulo": "Reunião de nivelamento com Janine Guerra (SAESPRI)",
+    "data": "2026-09-03",
+    "hora": "10:00",
+    "nucleo": "Núcleo de Inteligência de Mercado e Estratégia",
+    "local": "Remota",
+    "participantes": "Pedro, Caio, Marcus e Janine",
+    "status": "CANCELADA",
+    "obs": "Nivelamento de status para coleta de informações para evento China (Vallya)"
+  },
+  {
+    "id": "xxel9u8xf",
+    "titulo": "SEPLAG/Hugo > SEAIEE/Marcus e Caio",
+    "data": "2026-09-09",
+    "hora": "15:00",
+    "nucleo": "Núcleo de Inteligência de Mercado e Estratégia",
+    "local": "SDEC PE",
+    "participantes": "Hugo Vasconcelos e Equipe/Marcus, Caio e Eduardo.",
+    "status": "CONCLUÍDA",
+    "obs": "Apresentação da plataforma SEPLAG e do FarolPE."
+  },
+  {
+    "id": "xsdy6h3on",
+    "titulo": "Retomada com Câmaras de Comércio",
+    "data": "2026-09-10",
+    "hora": "10:00",
+    "nucleo": "Núcleo de Relações Institucionais e Comerciais",
+    "local": "SDEC PE",
+    "participantes": "Marcus, Aldicéia e Luiz.",
+    "status": "AGENDADA",
+    "obs": "Retomar os contatos com as Câmaras da Índia e Países Árabes para planejamento de eventos (road shows etc.) em Pernambuco > 1 evento até dez/26."
+  }
+]

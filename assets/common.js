@@ -351,27 +351,79 @@ function fetchMeetings(cb){ fetchJSON('data/eventos.json').then(function(d){ cb(
 function saveMeetingsDraft(list){ localStorage.setItem(MEETINGS_KEY, JSON.stringify(list)); }
 
 /* ---------- shell: navbar + footer (injetados via JS para reuso entre páginas) ---------- */
-function renderNav(activePage){
+var NAV_ITEMS = [
+  {href:'index.html#panorama', key:'panorama', label:'Panorama'},
+  {href:'painel.html', key:'painel', label:'Acompanhamento'},
+  {href:'index.html#nucleos', key:'estrategia', label:'Estratégia'},
+  {href:'eventos.html', key:'eventos', label:'Eventos'}
+];
+function renderNav(activePage, opts){
+  opts = opts || {};
   var el = document.getElementById('site-nav'); if(!el) return;
+  renderNav._lastPage = activePage;
+  renderNav._lastOpts = opts;
+  el.classList.toggle('nav-overlay', !!opts.overlay);
   var authed = isAuthed();
-  var items = [
-    {href:'index.html#painel-geral', key:'index', label:'Início'},
-    {href:'painel.html', key:'painel', label:'Painel'},
-    {href:'eventos.html', key:'eventos', label:'Eventos'}
-  ];
-  var links = items.map(function(it){
+  var links = NAV_ITEMS.map(function(it){
     return '<a class="navlink'+(activePage===it.key?' active':'')+'" href="'+it.href+'">'+esc(it.label)+'</a>';
   }).join('');
   var loginBtn = authed
     ? '<button class="btn btn-secondary small" id="navLogoutBtn">Sair ('+esc((localStorage.getItem(AUTH_STORAGE+'_user')||'').split('@')[0])+')</button>'
-    : '<a class="btn btn-primary small" href="index.html#login">Entrar</a>';
+    : '<button class="btn btn-primary small" id="navLoginBtn">Entrar</button>';
   el.innerHTML = ''
     + '<a class="nav-brand" href="index.html">'
     +   '<img src="assets/logo-pe.png" alt="Governo de Pernambuco" onerror="this.style.display=\'none\'">'
-    +   '<span><span class="t1">Ambiente de Conformidade</span><br><span class="t2">SEAIEE · SDEC-PE</span></span>'
+    +   '<span><span class="t1">SEAIEE</span><br><span class="t2">SDEC-PE</span></span>'
     + '</a>'
-    + '<nav style="display:flex;align-items:center;gap:var(--space-6);">'+links+loginBtn+'</nav>';
+    + '<button class="nav-burger" id="navBurger" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>'
+    + '<div class="nav-links" id="navLinks">'+links+loginBtn+'</div>';
   var lo = document.getElementById('navLogoutBtn'); if(lo) lo.onclick = doLogout;
+  var lb = document.getElementById('navLoginBtn'); if(lb) lb.onclick = function(){ openLoginModal(opts.onLogin); };
+  var burger = document.getElementById('navBurger');
+  if(burger) burger.onclick = function(){
+    var open = el.classList.toggle('nav-open');
+    burger.setAttribute('aria-expanded', open?'true':'false');
+  };
+  if(opts.overlay){
+    var onScroll = function(){ el.classList.toggle('nav-solid', window.scrollY > window.innerHeight*0.7); };
+    onScroll();
+    window.addEventListener('scroll', onScroll, {passive:true});
+  }
+}
+
+/* ---------- modal de login (acessível a partir da navegação, em qualquer página) ---------- */
+function openLoginModal(onSuccess){
+  if(document.getElementById('loginModalOverlay')) return;
+  var overlay = document.createElement('div');
+  overlay.className = 'modal-backdrop';
+  overlay.id = 'loginModalOverlay';
+  overlay.innerHTML = '<div class="modal-card card elev-lg" style="padding:var(--space-6);">'
+    + '<div class="card-kicker">Acesso ao sistema</div>'
+    + '<h2 class="card-title" style="font-size:22px;margin:var(--space-2) 0 var(--space-4);">Entrar na sua conta</h2>'
+    + '<div class="field" style="margin-bottom:var(--space-4);"><label for="lmEmail">E-mail institucional</label><input class="input" id="lmEmail" type="email" placeholder="nome@seaiee.pe.gov.br"></div>'
+    + '<div class="field" style="margin-bottom:var(--space-3);"><label for="lmSenha">Senha</label><input class="input" id="lmSenha" type="password" placeholder="••••••••"></div>'
+    + '<button class="btn btn-primary btn-block" id="lmOk">Acessar painel</button>'
+    + '<button class="btn btn-secondary btn-block" id="lmCancel" style="margin-top:8px;">Cancelar</button>'
+    + '<p id="lmErr" style="font-size:12px;color:var(--color-bad);text-align:center;margin-top:var(--space-3);display:none;">E-mail ou senha inválidos.</p>'
+    + '</div>';
+  document.body.appendChild(overlay);
+  var emailEl = document.getElementById('lmEmail'), passEl = document.getElementById('lmSenha');
+  emailEl.focus();
+  function close(){ if(overlay.parentNode) document.body.removeChild(overlay); }
+  overlay.onclick = function(e){ if(e.target===overlay) close(); };
+  document.getElementById('lmCancel').onclick = close;
+  function submit(){
+    var email = emailEl.value.trim(), pass = passEl.value;
+    if(doLogin(email, pass)){
+      close(); showToast('Login realizado.');
+      if(renderNav._lastPage) renderNav(renderNav._lastPage, renderNav._lastOpts);
+      if(typeof onSuccess==='function') onSuccess();
+    } else {
+      document.getElementById('lmErr').style.display = 'block';
+    }
+  }
+  document.getElementById('lmOk').onclick = submit;
+  [emailEl, passEl].forEach(function(inp){ inp.onkeydown = function(e){ if(e.key==='Enter') submit(); }; });
 }
 function renderFooter(){
   var el = document.getElementById('site-foot'); if(!el) return;

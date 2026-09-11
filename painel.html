@@ -41,7 +41,7 @@
 <script src="assets/data-producao.js"></script>
 <script src="assets/common.js"></script>
 <script>
-renderNav('painel');
+renderNav('painel', {onLogin: function(){ renderAll(); }});
 renderFooter();
 
 var UI = { sheetKey:'interno', editMode:false, filters:{text:'',responsavel:'',status:'',nucleo:''} };

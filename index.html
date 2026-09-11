@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ambiente de Conformidade — SEAIEE / SDEC-PE</title>
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/styles.css?v=4">
 </head>
 <body>
 
@@ -15,8 +15,8 @@
   <div class="hero-scrim"></div>
   <div class="hero-cover-content">
     <span class="hero-eyebrow hero-anim d1">Secretaria de Desenvolvimento Econômico de Pernambuco</span>
-    <h1 class="hero-anim d2"><span>Ambiente de Conformidade</span><span>da SEAIEE</span></h1>
-    <p class="lede hero-anim d3">Gestão, acompanhamento e execução das ações estratégicas da Secretaria.</p>
+    <h1 class="hero-anim d2"><span>Ambiente de Conformidade</span></h1>
+    <p class="lede hero-anim d3">Gestão, acompanhamento e execução das ações da Secretaria Executiva de Atração de Investimentos e Estudos Econômicos.</p>
     <div class="hero-anim d4">
       <a href="painel.html" class="btn hero-cta">Acessar o ambiente →</a>
     </div>
@@ -43,11 +43,7 @@
         <div class="card-kicker">Progresso por núcleo</div>
         <div id="nucleoBars"></div>
       </div>
-      <div class="card panorama-panel reveal">
-        <div class="card-kicker">Volume por responsável</div>
-        <div id="respBars"></div>
-      </div>
-      <div class="card panorama-panel reveal">
+      <div class="card panorama-panel panorama-panel-wide reveal">
         <div class="card-kicker">Prioridades de gestão</div>
         <div id="prioridadesList"></div>
         <a href="painel.html" class="btn-ghost" style="font-size:12.5px;font-weight:600;margin-top:var(--space-2);display:inline-block;">Ver tudo no painel →</a>
@@ -83,9 +79,9 @@
 <footer class="site-foot" id="site-foot"></footer>
 <div class="toast" id="toast"></div>
 
-<script src="assets/data.js"></script>
-<script src="assets/data-producao.js"></script>
-<script src="assets/common.js"></script>
+<script src="assets/data.js?v=4"></script>
+<script src="assets/data-producao.js?v=4"></script>
+<script src="assets/common.js?v=4"></script>
 <script>
 renderNav('panorama', {overlay:true});
 renderFooter();
@@ -135,22 +131,6 @@ function renderNucleoBars(){
       + '<div style="background:var(--color-neutral-300);height:8px;border-radius:4px;overflow:hidden;"><div class="bar-fill" data-target="'+n.pct+'"></div></div>'
       + '</div>';
   }).join('');
-}
-
-function renderResponsavelBars(){
-  var rows = collectAllRows();
-  var list = computeByResponsavel(rows).slice(0,8);
-  var max = list.length ? list[0].n : 1;
-  document.getElementById('respBars').innerHTML = list.length ? list.map(function(r){
-    var pct = max ? Math.round(r.n/max*100) : 0;
-    return '<div style="margin-bottom:12px;">'
-      + '<div style="display:flex;justify-content:space-between;gap:8px;font-size:12.5px;margin-bottom:4px;">'
-      +   '<span style="color:var(--color-navy);font-weight:600;">'+esc(r.nome)+'</span>'
-      +   '<span style="color:var(--color-neutral-600);flex:none;">'+r.n+'</span>'
-      + '</div>'
-      + '<div style="background:var(--color-neutral-300);height:8px;border-radius:4px;overflow:hidden;"><div class="bar-fill gold" data-target="'+pct+'"></div></div>'
-      + '</div>';
-  }).join('') : '<p class="text-muted" style="margin:0;">Sem dados de responsáveis.</p>';
 }
 
 function renderPrioridades(){
@@ -240,7 +220,6 @@ initData(function(){
   renderStatStrip();
   renderStatusDonut();
   renderNucleoBars();
-  renderResponsavelBars();
   renderPrioridades();
   renderNucleoCards();
   setupReveal();

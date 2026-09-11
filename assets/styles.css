@@ -246,6 +246,7 @@ textarea.input { min-height: 80px; resize: vertical; }
 @media (max-width: 900px) { .panorama-grid { grid-template-columns: 1fr; } }
 .panorama-panel { padding: var(--space-6); }
 .panorama-panel .card-kicker { margin-bottom: var(--space-3); }
+.panorama-panel-wide { grid-column: 1 / -1; }
 
 .bar-fill { height: 100%; width: 0; background: var(--color-accent); transition: width 1s cubic-bezier(.2,.7,.2,1); }
 .bar-fill.gold { background: var(--color-gold); }

@@ -6,7 +6,7 @@
       "nome": "Produções Gerais",
       "responsavel": "Marcus Ferraz",
       "data": "15-abr-26",
-      "collapsed": false,
+      "collapsed": true,
       "acoes": [
         {
           "id": "x9i7rnb",
@@ -2231,7 +2231,7 @@
       "nome": "Núcleo de Atração de Investimentos (Front-End)",
       "responsavel": "Marcus Ferraz",
       "data": "",
-      "collapsed": true,
+      "collapsed": false,
       "acoes": [
         {
           "id": "xdow4pm",
@@ -2267,7 +2267,7 @@
                 "atraso": "-",
                 "indicador": "-",
                 "qtd": "1",
-                "status": "EM ANDAMENTO",
+                "status": "CONCLUÍDA",
                 "statusPrazo": "NO PRAZO",
                 "obs": "Retomado contato com Artur Ferraz (expansão Amazon) e Reunião remota com Bruno Canto e Carmine di Rosso > Identicar novas expansões e programa governamental da Amazon para governos, e nos colocar a disposição > Aguardando envio de material > Contato a pedido da Secretária Danielle.",
                 "driveLink": ""
@@ -2288,7 +2288,7 @@
                 "atraso": "-",
                 "indicador": "-",
                 "qtd": "1",
-                "status": "EM ANDAMENTO",
+                "status": "CONCLUÍDA",
                 "statusPrazo": "NO PRAZO",
                 "obs": "Contato com Ricardo Vendramel (RI Shopee) e Manuel Filho (operações) para retomada dos contatos e nos colocarmos a disposição para eventuais ações.",
                 "driveLink": ""
@@ -2305,7 +2305,7 @@
                 "ppIni": "",
                 "ppFim": "",
                 "prIni": "13-ago-26",
-                "prFim": "26-ago-26",
+                "prFim": "30-set-26",
                 "atraso": "-",
                 "indicador": "-",
                 "qtd": "1",
@@ -2330,7 +2330,7 @@
                 "atraso": "-",
                 "indicador": "-",
                 "qtd": "1",
-                "status": "EM ANDAMENTO",
+                "status": "CONCLUÍDA",
                 "statusPrazo": "NO PRAZO",
                 "obs": "Contato com Marcos Lima (diretor) para retomada de contato e nos colocarmos a disposição para eventuais ações. Renato Barreto GG Pernambuco.",
                 "driveLink": ""

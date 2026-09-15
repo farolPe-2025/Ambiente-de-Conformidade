@@ -934,6 +934,27 @@
               "sub": []
             },
             {
+              "id": "xwapm0khv",
+              "fields": {
+                "numero": "",
+                "nome": "Relatório Analítico Setorial - Têxtil e de Confecções",
+                "responsavel": "Marcus Ferraz",
+                "recursos": "-",
+                "ppIni": "10-set-26",
+                "ppFim": "17-set-26",
+                "prIni": "10-set-26",
+                "prFim": "17-set-26",
+                "atraso": "-",
+                "indicador": "-",
+                "qtd": "1",
+                "status": "EM ANDAMENTO",
+                "statusPrazo": "NO PRAZO",
+                "obs": "",
+                "driveLink": ""
+              },
+              "sub": []
+            },
+            {
               "id": "x6oe4bt",
               "fields": {
                 "numero": "1.3",
@@ -1260,27 +1281,6 @@
                   }
                 }
               ]
-            },
-            {
-              "id": "xwapm0khv",
-              "fields": {
-                "numero": "",
-                "nome": "Relatório Analítico Setorial - Têxtil e de Confecções",
-                "responsavel": "Marcus Ferraz",
-                "recursos": "-",
-                "ppIni": "10-set-26",
-                "ppFim": "17-set-26",
-                "prIni": "10-set-26",
-                "prFim": "17-set-26",
-                "atraso": "-",
-                "indicador": "-",
-                "qtd": "1",
-                "status": "EM ANDAMENTO",
-                "statusPrazo": "NO PRAZO",
-                "obs": "",
-                "driveLink": ""
-              },
-              "sub": []
             }
           ]
         }
